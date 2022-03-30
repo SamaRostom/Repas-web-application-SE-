@@ -1,29 +1,29 @@
 <?php
 class UserModel extends model
 {
-    protected $email;
+    protected $username;
     protected $password;
 
-    protected $emailErr;
+    protected $usernameErr;
     protected $passwordErr;
 
     public function __construct()
     {
         parent::__construct();
-        $this->email    = '';
+        $this->username    = '';
         $this->password = '';
 
-        $this->emailErr    = '';
+        $this->usernameErr    = '';
         $this->passwordErr = '';
     }
 
-    public function getEmail()
+    public function getUsername()
     {
-        return $this->email;
+        return $this->username;
     }
-    public function setEmail($email)
+    public function setUsername($username)
     {
-        $this->email = $email;
+        $this->username = $username;
     }
 
     public function getPassword()
@@ -35,13 +35,13 @@ class UserModel extends model
         $this->password = $password;
     }
 
-    public function getEmailErr()
+    public function getUsernameErr()
     {
-        return $this->emailErr;
+        return $this->usernameErr;
     }
-    public function setEmailErr($emailErr)
+    public function setUsernameErr($usernameErr)
     {
-        $this->emailErr = $emailErr;
+        $this->usernameErr = $usernameErr;
     }
 
     public function getPasswordErr()
@@ -53,17 +53,27 @@ class UserModel extends model
         $this->passwordErr = $passwordErr;
     }
 
-    public function findUserByEmail($email)
+    public function findUserByUsername($username)
     {
-        $this->dbh->query('select * from users where email= :email');
-        $this->dbh->bind(':email', $email);
+        $this->dbh->query('select * from person where Username= :Username');
+        $this->dbh->bind(':Username', $username);
 
         $userRecord = $this->dbh->single();
         return $this->dbh->rowCount();
     }
 
-    public function emailExist($email)
+    public function usernameExist($username)
     {
-        return $this->findUserByEmail($email) > 0;
+        return $this->findUserByUsername($username) > 0;
+    }
+
+    public function login()
+    {
+        $this->dbh->query("SELECT * FROM person WHERE Username=:Username AND Password=:Password");
+        $this->dbh->bind(':Username', $username);
+        $this->dbh->bind(':Password', $Password);
+
+        // $userRecord = $this->dbh->single();
+        return $this->dbh->resultSet();
     }
 }

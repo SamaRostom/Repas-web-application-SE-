@@ -6,35 +6,36 @@ class Users extends Controller
         $registerModel = $this->getModel();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Process form
-            $registerModel->setName(trim($_POST['name']));
-            $registerModel->setEmail(trim($_POST['email']));
-            $registerModel->setPassword(trim($_POST['password']));
-            $registerModel->setConfirmPassword(trim($_POST['confirm_password']));
-
+            $registerModel->setUsername(trim($_POST['Username']));
+            $registerModel->setPassword(trim($_POST['Password']));
+            $registerModel->setAddress(trim($_POST['Address']));
+            $registerModel->setPhone_Number(trim($_POST['Phone_Number']));
+            $registerModel->setBackup_Number(trim($_POST['Backup_Number']));
             //validation
-            if (empty($registerModel->getName())) {
+            if (empty($registerModel->getUsername())) {
                 $registerModel->setNameErr('Please enter a name');
-            }
-            if (empty($registerModel->getEmail())) {
-                $registerModel->setEmailErr('Please enter an email');
-            } elseif ($registerModel->emailExist($_POST['email'])) {
-                $registerModel->setEmailErr('Email is already registered');
             }
             if (empty($registerModel->getPassword())) {
                 $registerModel->setPasswordErr('Please enter a password');
             } elseif (strlen($registerModel->getPassword()) < 4) {
                 $registerModel->setPasswordErr('Password must contain at least 4 characters');
             }
-
-            if ($registerModel->getPassword() != $registerModel->getConfirmPassword()) {
-                $registerModel->setConfirmPasswordErr('Passwords do not match');
+            if (empty($registerModel->getAddress())) {
+                $registerModel->setAddressErr('Please enter your address');
+            } 
+            if (empty($registerModel->getPhone_Number())) {
+                $registerModel->setPhone_NumberErr('Please enter a phone number');
+            }
+            if (empty($registerModel->getBackup_Number())) {
+                $registerModel->setBackup_NumberErr('Please enter a backup phone number');
             }
 
             if (
-                empty($registerModel->getNameErr()) &&
-                empty($registerModel->getEmailErr()) &&
+                empty($registerModel->getUsernameErr()) &&
                 empty($registerModel->getPasswordErr()) &&
-                empty($registerModel->getConfirmPasswordErr())
+                empty($registerModel->getAddressErr()) &&
+                empty($registerModel->getPhone_NumberErr()) &&
+                empty($registerModel->getBackup_NumberErr())
             ) {
                 //Hash Password
                 $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));

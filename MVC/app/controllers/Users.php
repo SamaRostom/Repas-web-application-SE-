@@ -6,35 +6,36 @@ class Users extends Controller
         $registerModel = $this->getModel();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Process form
-            $registerModel->setName(trim($_POST['name']));
-            $registerModel->setEmail(trim($_POST['email']));
-            $registerModel->setPassword(trim($_POST['password']));
-            $registerModel->setConfirmPassword(trim($_POST['confirm_password']));
-
+            $registerModel->setUsername(trim($_POST['Username']));
+            $registerModel->setPassword(trim($_POST['Password']));
+            $registerModel->setAddress(trim($_POST['Address']));
+            $registerModel->setPhone_Number(trim($_POST['Phone_Number']));
+            $registerModel->setBackup_Number(trim($_POST['Backup_Number']));
             //validation
-            if (empty($registerModel->getName())) {
+            if (empty($registerModel->getUsername())) {
                 $registerModel->setNameErr('Please enter a name');
-            }
-            if (empty($registerModel->getEmail())) {
-                $registerModel->setEmailErr('Please enter an email');
-            } elseif ($registerModel->emailExist($_POST['email'])) {
-                $registerModel->setEmailErr('Email is already registered');
             }
             if (empty($registerModel->getPassword())) {
                 $registerModel->setPasswordErr('Please enter a password');
             } elseif (strlen($registerModel->getPassword()) < 4) {
                 $registerModel->setPasswordErr('Password must contain at least 4 characters');
             }
-
-            if ($registerModel->getPassword() != $registerModel->getConfirmPassword()) {
-                $registerModel->setConfirmPasswordErr('Passwords do not match');
+            if (empty($registerModel->getAddress())) {
+                $registerModel->setAddressErr('Please enter your address');
+            } 
+            if (empty($registerModel->getPhone_Number())) {
+                $registerModel->setPhone_NumberErr('Please enter a phone number');
+            }
+            if (empty($registerModel->getBackup_Number())) {
+                $registerModel->setBackup_NumberErr('Please enter a backup phone number');
             }
 
             if (
-                empty($registerModel->getNameErr()) &&
-                empty($registerModel->getEmailErr()) &&
+                empty($registerModel->getUsernameErr()) &&
                 empty($registerModel->getPasswordErr()) &&
-                empty($registerModel->getConfirmPasswordErr())
+                empty($registerModel->getAddressErr()) &&
+                empty($registerModel->getPhone_NumberErr()) &&
+                empty($registerModel->getBackup_NumberErr())
             ) {
                 //Hash Password
                 $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
@@ -60,14 +61,14 @@ class Users extends Controller
         $userModel = $this->getModel();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //process form
-            $userModel->setEmail(trim($_POST['email']));
+            $userModel->setUsername(trim($_POST['Username']));
             $userModel->setPassword(trim($_POST['password']));
 
             //validate login form
-            if (empty($userModel->getEmail())) {
-                $userModel->setEmailErr('Please enter an email');
-            } elseif (!($userModel->emailExist($_POST['email']))) {
-                $userModel->setEmailErr('No user found');
+            if (empty($userModel->getUsername())) {
+                $userModel->setUsernameErr('Please enter an username');
+            } elseif (!($userModel->UsernameExist($_POST['Username']))) {
+                $userModel->setUsernameErr('No user found');
             }
 
             if (empty($userModel->getPassword())) {
@@ -78,7 +79,7 @@ class Users extends Controller
 
             // If no errors
             if (
-                empty($userModel->getEmailErr()) &&
+                empty($userModel->getUsernameErr()) &&
                 empty($userModel->getPasswordErr())
             ) {
                 //Check login is correct
@@ -87,6 +88,9 @@ class Users extends Controller
                     //create related session variables
                     $this->createUserSession($loggedUser);
                     die('Success log in User');
+                    // redirect('public/public');
+                    flash('login_success', 'You have logged in successfully');
+                    redirect('users/signup');
                 } else {
                     $userModel->setPasswordErr('Password is not correct');
                 }

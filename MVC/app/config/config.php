@@ -3,7 +3,7 @@
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'miublog');
+define('DB_NAME', 'repas');
 
 // App Root
 //echo dirname(dirname(__FILE__));

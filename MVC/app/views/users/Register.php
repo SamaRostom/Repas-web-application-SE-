@@ -1,62 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>       
+   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+<style>
+   input[type="number"]{
+   width:48% !important 
+}
+
+.showBtn{
+   position: absolute;
+   right:15px;
+   top:8px;
+   color: rgb(128, 128, 128);
+   cursor: pointer;
+}
+</style>
+
+<script>
+  function ShowPassword() {
+  var pass = document.querySelector('input[name="Password"]');
+  var icon = document.querySelector('.showBtn i');
+  if (pass.type === "password") {
+    pass.type = "text";
+    icon.setAttribute('class','far fa-eye-slash');
+  } else {
+    pass.type = "password";
+    icon.setAttribute('class','far fa-eye');
+  }
+}
+</script>
+</head>
+<body>
 <?php
 class Register extends view
 {
   public function output()
   {
     $title = $this->model->title;
-
-    require APPROOT . '/views/inc/header.php';
+    require APPROOT .'/views/inc/header.php';
     $text = <<<EOT
-    <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4"> $title</h1>
-    </div>
-  </div>
+    <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
+    <h1 class='display-6 text-center'>Create An Account</h1>
+<form action="Register.php" method="post" onsubmit="validate(this,event)">
+<div class="input-group mt-4 mb-3">
+    <span class="input-group-text"><i class="fas fa-user"></i></span>
+    <input type="text" class="form-control" placeholder="Insert your username" name="Username">
+</div>
 
-  </div>
-  </div>
-  </div>
+<div class="input-group mb-3">
+    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+    <input type="password" class="form-control" placeholder="Insert your password" name="Password">
+    <div class='showBtn' onclick="ShowPassword()"><i class='far fa-eye'></i></div>
+</div>
+
+<div class="input-group mt-4 mb-3">
+    <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+    <input type="text" class="form-control" placeholder="Address" name="Address">
+</div>
+
+
+<p class='mt-3 mb-2'>Insert your contact info:</p> 
+
+<input type="number" class="form-control d-sm-inline mb-3" placeholder="Personal number" name="Phone Number"> 
+<input type="number" class="form-control d-sm-inline mb-3" placeholder="Backup number" name="Backup Number"> 
+</div>
+
+<div class='mt-4 text-center'>
+<input type="submit" class='btn btn-primary px-5 mb-3' value="Sign Up" name="Submit">
+<input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
+</div>
+</form> 
+</div>
 EOT;
     echo $text;
-    $this->printForm();
-    require APPROOT . '/views/inc/footer.php';
+    // $this->printForm();
+    // require APPROOT . '/views/inc/footer.php';
   }
 
-  private function printForm()
-  {
-    $action = URLROOT . 'users/register';
-    $loginUrl = URLROOT . 'users/login';
-
-    $text = <<<EOT
-    <div class="row">
-    <div class="col-md-6 mx-auto">
-    <div class="card card-body bg-light mt-5">
-    <h2>Sign Up</h2>
-    <form action="$action" method="post">
-EOT;
-    echo $text;
-    $this->printName();
-    $this->printEmail();
-    $this->printPassword();
-    $this->printConfirmPassword();
-    $text = <<<EOT
-    <div class="container">
-      <div class="row mt-4">
-        <div class="col">
-          <input type="submit" value="Register" class="form-control btn btn-lg btn-primary btn-block">
-        </div>
-        <div class="col">
-          <a href="$loginUrl" class="form-control btn btn-lg btn-block">Current user, login here</a>
-        </div>
-      </div>
-      </div>
-    </form>
-    </div>
-    </div>
-    </div>
-EOT;
-    echo $text;
-  }
+  // private function printForm()
+  // {
+  //   $action = URLROOT . 'users/register';
+  //   $loginUrl = URLROOT . 'users/login';
+  //   $this->printName();
+  //   $this->printPassword();
+  //   $this->printPersonal_Number();
+  //   $this->printBackup_Number();
+  // }
 
   private function printName()
   {
@@ -65,14 +98,6 @@ EOT;
     $valid = (!empty($err) ? 'is-invalid' : '');
 
     $this->printInput('text', 'name', $val, $err, $valid);
-  }
-  private function printEmail()
-  {
-    $val = $this->model->getEmail();
-    $err = $this->model->getEmailErr();
-    $valid = (!empty($err) ? 'is-invalid' : '');
-
-    $this->printInput('email', 'email', $val, $err, $valid);
   }
 
   private function printPassword()
@@ -83,26 +108,13 @@ EOT;
 
     $this->printInput('password', 'password', $val, $err, $valid);
   }
-  private function printConfirmPassword()
-  {
-    $val = $this->model->getConfirmPassword();
-    $err = $this->model->getConfirmPasswordErr();
-    $valid = (!empty($err) ? 'is-invalid' : '');
-
-    $this->printInput('password', 'confirm_password', $val, $err, $valid);
-  }
-
+  
   private function printInput($type, $fieldName, $val, $err, $valid)
   {
     $label = str_replace("_", " ", $fieldName);
     $label = ucwords($label);
-    $text = <<<EOT
-    <div class="form-group">
-      <label for="$fieldName"> $label: <sup>*</sup></label>
-      <input type="$type" name="$fieldName" class="form-control form-control-lg $valid" id="$fieldName" value="$val">
-      <span class="invalid-feedback">$err</span>
-    </div>
-EOT;
-    echo $text;
   }
 }
+?>
+</body>
+</html>

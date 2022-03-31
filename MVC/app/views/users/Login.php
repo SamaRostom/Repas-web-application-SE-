@@ -17,6 +17,17 @@
       }
     }
   </script>
+  <style type="text/css">
+    .showBtn{
+    /*to show over the textbox*/
+    position: absolute;
+    right:15px;
+    top:8px;
+    color: rgb(128, 128, 128);
+    /*to show it when hover*/
+    z-index: 99999;
+}
+  </style>
 </head>
 <body>
 <?php
@@ -51,26 +62,20 @@ EOT;
 
     $text = <<<EOT
     <div class="row">
-    <div class="col-md-6 mx-auto">
+    <div class="col-md-5 mx-auto">
     <div class="card card-body bg-light mt-5">
     <h2>Log in</h2>
     <form action="$action" method="post">
 EOT;
 
     echo $text;
-    $this->printEmail();
+    $this->printUsername();
     $this->printPassword();
 
     $text = <<<EOT
     <div class="container">
-    <div class="checkbox mb-3 mt-3">
-        <label>
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-      </div>
       <div class="row mt-4">
-        <div class="col">
-          
+        <div class="col">  
         <div class='mt-4 text-center'>
     <input type="submit" class='btn btn-primary px-5 mb-3' value="Log in" name="Submit">
    <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
@@ -88,11 +93,20 @@ EOT;
   
   private function printEmail()
   {
-    $val = $this->model->getEmail();
-    $err = $this->model->getEmailErr();
-    $valid = (!empty($err) ? 'is-invalid' : '');
+    // $val = $this->model->getEmail();
+    // $err = $this->model->getEmailErr();
+    // $valid = (!empty($err) ? 'is-invalid' : '');
 
-    $this->printInput('email', 'email', $val, $err, $valid);
+    // $this->printInput('email', 'email', $val, $err, $valid);
+
+    $text = <<<EOT
+    <br>
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" placeholder="Insert your username" name="Username">
+    </div>
+EOT;
+    echo $text;
   }
 
   private function printPassword()
@@ -105,11 +119,11 @@ EOT;
     $text = <<<EOT
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-lock"></i></span>
-        <input type="password" class="form-control" placeholder="Insert your password" name="Password">
-        <div class='showBtn' onclick="ShowPassword()"><i class='far fa-eye'></i></div>
+        <input type="password" class="form-control" placeholder="Insert your password" name="password">
+        <div class= 'showBtn'  onclick="ShowPassword()"><i class='far fa-eye'></i></div>
     </div>
 EOT;
-    echo $text;    
+    echo $text;        
   }
 
   private function printInput($type, $fieldName, $val, $err, $valid)

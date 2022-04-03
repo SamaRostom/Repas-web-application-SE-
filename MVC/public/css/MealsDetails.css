@@ -1,0 +1,32 @@
+.container {
+  padding: 64px;
+}
+
+.column-66 {
+  float: left;
+  width: 66.66666%;
+  padding: 250px;
+  /*font-family: 'Roboto Mono', monospace;*/
+}
+
+.column {
+  float: left;
+  width: 33.33333%;
+  height: 40%;
+  padding: 10px;
+}
+
+img {
+  display: block;
+  height: auto;
+  max-width: 150%;
+}
+
+#addtocartbtn{
+	color:white;
+}
+
+/*button{
+	color:white;
+	background-color: blue;
+}*/

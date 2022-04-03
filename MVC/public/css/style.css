@@ -27,3 +27,10 @@
     background-size: cover;
     background-repeat: no-repeat;*/
 /* } */
+
+.column-66 {
+  float: right;
+  width: 66.66666%;
+  padding: 20px;
+  font-family: 'Roboto Mono', monospace;
+}

@@ -1,0 +1,43 @@
+body{
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+section{
+	padding: 100px 200px;
+}
+.cards a{
+	width: 100%;
+	display: flex;
+	/*font-family: 'Parisienne', cursive;*/
+	font-size: 35px;
+	justify-content: center;
+}
+.cards{
+	display: flex;
+	width: 100%;
+	/*display: table;*/
+	justify-content: center;
+	flex-direction: row;
+}
+.card{
+	background-color: white;
+	/*from em to px (value*16)*/
+	/*width: 21.25em;*/
+	height: 100%;
+	flex-direction: column;
+    flex-wrap: wrap;
+	border-radius: 8px;
+  	padding: 16px;
+	margin: 15px;
+	transition: 0.6s;
+}
+.column {
+  float: left;
+  width: 33.3333%;
+ /* padding: 0 10px;*/
+  display: table-cell;
+  padding: 16px;
+}
+button{
+	color: white;
+}

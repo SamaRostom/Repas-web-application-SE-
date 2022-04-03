@@ -67,7 +67,7 @@ class Users extends Controller
             //validate login form
             if (empty($userModel->getUsername())) {
                 $userModel->setUsernameErr('Please enter an username');
-            } elseif (!($userModel->UsernameExist($_POST['Username']))) {
+            } elseif (!($userModel->usernameExist($_POST['Username']))) {
                 $userModel->setUsernameErr('No user found');
             }
 
@@ -85,12 +85,14 @@ class Users extends Controller
                 //Check login is correct
                 $loggedUser = $userModel->login();
                 if ($loggedUser) {
+
                     //create related session variables
                     $this->createUserSession($loggedUser);
                     die('Success log in User');
                     // redirect('public/public');
                     flash('login_success', 'You have logged in successfully');
-                    redirect('users/signup');
+                    redirect('users/Register');
+                    header('location: ' . URLROOT . 'users/Register');
                 } else {
                     $userModel->setPasswordErr('Password is not correct');
                 }

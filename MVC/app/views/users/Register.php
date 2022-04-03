@@ -6,19 +6,6 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>       
    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   
-<style>
-   input[type="number"]{
-   width:48% !important 
-}
-
-.showBtn{
-   position: absolute;
-   right:15px;
-   top:8px;
-   color: rgb(128, 128, 128);
-   cursor: pointer;
-}
-</style>
 
 <script>
   function ShowPassword() {
@@ -42,8 +29,18 @@ class Register extends view
   {
     $title = $this->model->title;
     require APPROOT .'/views/inc/header.php';
+    
+    $this->printForm();
+    // require APPROOT . '/views/inc/footer.php';
+  }
+
+  private function printForm()
+  {
+    $action = URLROOT . 'users/register';
+    $loginUrl = URLROOT . 'users/login';
     $text = <<<EOT
     <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
+    <div class="card card-body bg-light mt-5">
     <h1 class='display-6 text-center'>Create An Account</h1>
 <form action="Register.php" method="post" onsubmit="validate(this,event)">
 <div class="input-group mt-4 mb-3">
@@ -72,47 +69,14 @@ class Register extends view
 <div class='mt-4 text-center'>
 <input type="submit" class='btn btn-primary px-5 mb-3' value="Sign Up" name="Submit">
 <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
+<p class='mb-4 mt-2'>Already have an account? <a class='linkClick' href="$loginUrl">Login here</a></p>
+
 </div>
 </form> 
 </div>
+</div>
 EOT;
     echo $text;
-    // $this->printForm();
-    // require APPROOT . '/views/inc/footer.php';
-  }
-
-  // private function printForm()
-  // {
-  //   $action = URLROOT . 'users/register';
-  //   $loginUrl = URLROOT . 'users/login';
-  //   $this->printName();
-  //   $this->printPassword();
-  //   $this->printPersonal_Number();
-  //   $this->printBackup_Number();
-  // }
-
-  private function printName()
-  {
-    $val = $this->model->getName();
-    $err = $this->model->getNameErr();
-    $valid = (!empty($err) ? 'is-invalid' : '');
-
-    $this->printInput('text', 'name', $val, $err, $valid);
-  }
-
-  private function printPassword()
-  {
-    $val = $this->model->getPassword();
-    $err = $this->model->getPasswordErr();
-    $valid = (!empty($err) ? 'is-invalid' : '');
-
-    $this->printInput('password', 'password', $val, $err, $valid);
-  }
-  
-  private function printInput($type, $fieldName, $val, $err, $valid)
-  {
-    $label = str_replace("_", " ", $fieldName);
-    $label = ucwords($label);
   }
 }
 ?>

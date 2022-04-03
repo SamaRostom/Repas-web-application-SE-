@@ -27,6 +27,18 @@
     /*to show it when hover*/
     z-index: 99999;
 }
+   .form-container{
+  background-color: rgba(255, 255, 255, 0.774);
+}
+.row{
+  background-color: black:
+}
+body{
+    /* background-image: url("C:\x\htdocs\web\web project\108.jpg"); */
+    background-color: black:
+    background-size: cover;
+    background-repeat: no-repeat;
+}
   </style>
 </head>
 <body>
@@ -39,18 +51,18 @@ class Login extends view
 
     require APPROOT . '/views/inc/header.php';
     flash('register_success');
-    $text = <<<EOT
-    <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-      <h1 class="display-4"> $title</h1>
-    </div>
-  </div>
+//     $text = <<<EOT
+//   //   <div class="jumbotron jumbotron-fluid">
+//   //   <div class="container">
+//   //     <h1 class="display-4"> $title</h1>
+//   //   </div>
+//   // </div>
 
-  </div>
-  </div>
-  </div>
-EOT;
-    echo $text;
+//   </div>
+//   </div>
+//   </div>
+// EOT;
+//     echo $text;
     $this->printForm();
     require APPROOT . '/views/inc/footer.php';
   }
@@ -61,9 +73,11 @@ EOT;
     $registerUrl = URLROOT . 'users/register';
 
     $text = <<<EOT
-    <div class="row">
-    <div class="col-md-5 mx-auto">
-    <div class="card card-body bg-light mt-5">
+    <div class="form-container">
+     <div class="row">
+    <div class="col-md-6 py-5 mx-auto">
+
+    <div class="card card-body bg-light mt-5" style="--bs-bg-opacity: .5;">
     <h2>Log in</h2>
     <form action="$action" method="post">
 EOT;
@@ -76,10 +90,10 @@ EOT;
     <div class="container">
       <div class="row mt-4">
         <div class="col">  
-        <div class='mt-4 text-center'>
-    <input type="submit" class='btn btn-primary px-5 mb-3' value="Log in" name="Submit">
+        <div class='mt-3 text-center'>
+    <input type="submit" class='btn btn-primary px-5 mb-3 submit' value="Log in" name="Submit">
    <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
-   <p>Don't have an account? <a class='linkClick' href="$registerUrl">Sign up for free</a></p>
+   <p class='mb-4 mt-2'>Don't have an account? <a class='linkClick' href="$registerUrl">Sign up for free</a></p>
   </div>
       </div>
       </div>
@@ -87,11 +101,13 @@ EOT;
     </div>
     </div>
     </div>
+    </div>
+    </div>
 EOT;
     echo $text;
   }
   
-  private function printEmail()
+  private function printUsername()
   {
     // $val = $this->model->getEmail();
     // $err = $this->model->getEmailErr();
@@ -101,12 +117,13 @@ EOT;
 
     $text = <<<EOT
     <br>
-    <div class="input-group mb-3">
+    <div class="input-group mb-4">
         <span class="input-group-text"><i class="fa fa-user"></i></span>
         <input type="text" class="form-control" placeholder="Insert your username" name="Username">
     </div>
 EOT;
     echo $text;
+
   }
 
   private function printPassword()
@@ -123,7 +140,7 @@ EOT;
         <div class= 'showBtn'  onclick="ShowPassword()"><i class='far fa-eye'></i></div>
     </div>
 EOT;
-    echo $text;        
+    echo $text;    
   }
 
   private function printInput($type, $fieldName, $val, $err, $valid)

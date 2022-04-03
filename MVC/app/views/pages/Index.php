@@ -16,7 +16,6 @@
  
 
     <script type="application/ld+json">{
-
 		"@type": "Organization",
 		"name": "",
 		"logo": "images/re.jpg"
@@ -57,9 +56,7 @@ EOT;
 			<div class="image">
 				<img src="appetizers.jpeg" width=100% height=100% class="card-img-top">
 			</div>
-			<div class="info">
-				<a href="appetizers.php">Appetizers</a>
-			</div>
+			
 		</div>
 	</div>
 
@@ -68,9 +65,7 @@ EOT;
 		<div class="image">
 			<img src="1.jpg" width=100% class="card-img-top">
 		</div>
-		<div class="info">
-			<a href="appetizers.php">Meals Menu</a>
-		</div>
+	
 	</div>
 </div>
 
@@ -79,20 +74,16 @@ EOT;
 			<div class="image">
 				<img src="2.jpg" width=100% height=100% class="card-img-top">
 			</div>
-			<div class="info">
-				<a href="appetizers.php">Cooked Menu</a>
-			</div>
+		
 		</div>
 </div>
 
 <div class="column">
 <div class="card">
 			<div class="image">
-				<img src="miniburger.jpg" width=100% height=100% class="card-img-top">
+				<img src="15.jpg" width=100% height=100% class="card-img-top">
 			</div>
-			<div class="info">
-				<a href="appetizers.php">Finger Bites Menu</a>
-			</div>
+	
 		</div>
 	</div>
 
@@ -102,9 +93,7 @@ EOT;
 			<div class="image">
 				<img src="3.jpg" width=100% height=100% class="card-img-top">
 			</div>
-			<div class="info">
-				<a href="appetizers.php">Salad & Soup Menu</a>
-			</div>
+			
 		</div>
 	</div>
 
@@ -114,9 +103,7 @@ EOT;
 			<div class="image">
 				<img src="catering.jpg" width=100% height=100% class="card-img-top">
 			</div>
-			<div class="info">
-				<a href="appetizers.php">Customize Meals For Caterings</a>
-			</div>
+		
 		</div>
 	</div>
 

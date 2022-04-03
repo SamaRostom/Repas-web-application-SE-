@@ -4,9 +4,9 @@
   <title></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <script type="text/javascript">
+  <script>
     function ShowPassword() {
-      var pass = document.querySelector('input[name="Password"]');
+      var pass = document.querySelector('input[name="password"]');
       var icon = document.querySelector('.showBtn i');
       if (pass.type === "password") {
         pass.type = "text";
@@ -17,7 +17,7 @@
       }
     }
   </script>
-  <style type="text/css">
+  <!-- <style type="text/css">
     .showBtn{
     /*to show over the textbox*/
     position: absolute;
@@ -26,20 +26,25 @@
     color: rgb(128, 128, 128);
     /*to show it when hover*/
     z-index: 99999;
-}
-   .form-container{
+} -->
+   <!-- /* .form-container{
   background-color: rgba(255, 255, 255, 0.774);
-}
-.row{
-  background-color: black:
-}
-body{
-    /* background-image: url("C:\x\htdocs\web\web project\108.jpg"); */
+} */ -->
+<!-- /* .row{
+  /* background-color: black: */
+/* } */ */
+/* body{
+    /* background-image: url(IMGROOT . '2.jpg');
     background-color: black:
     background-size: cover;
-    background-repeat: no-repeat;
-}
-  </style>
+    background-repeat: no-repeat; */ */
+/* } */ -->
+  <!-- </style> -->
+  <style>
+    body{
+      background-image: url(IMGROOT . '2.jpg');
+    }
+  </style>  
 </head>
 <body>
 <?php
@@ -64,7 +69,7 @@ class Login extends view
 // EOT;
 //     echo $text;
     $this->printForm();
-    require APPROOT . '/views/inc/footer.php';
+    // require APPROOT . '/views/inc/footer.php';
   }
 
   private function printForm()
@@ -73,10 +78,10 @@ class Login extends view
     $registerUrl = URLROOT . 'users/register';
 
     $text = <<<EOT
-    <div class="form-container">
-     <div class="row">
+     <div class="r">
+     
     <div class="col-md-6 py-5 mx-auto">
-
+    <div class="form-container">
     <div class="card card-body bg-light mt-5" style="--bs-bg-opacity: .5;">
     <h2>Log in</h2>
     <form action="$action" method="post">
@@ -137,7 +142,7 @@ EOT;
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-lock"></i></span>
         <input type="password" class="form-control" placeholder="Insert your password" name="password">
-        <div class= 'showBtn'  onclick="ShowPassword()"><i class='far fa-eye'></i></div>
+        <div class='showBtn' onclick="ShowPassword()"><i class='far fa-eye'></i></div>
     </div>
 EOT;
     echo $text;    

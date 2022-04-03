@@ -91,8 +91,8 @@ class Users extends Controller
                     die('Success log in User');
                     // redirect('public/public');
                     flash('login_success', 'You have logged in successfully');
-                    redirect('users/Register');
-                    header('location: ' . URLROOT . 'users/Register');
+                    // redirect('users/Register');
+                    header('location: ' . URLROOT );
                 } else {
                     $userModel->setPasswordErr('Password is not correct');
                 }
@@ -135,5 +135,14 @@ class Users extends Controller
     public function isLoggedIn()
     {
         return isset($_SESSION['user_id']);
+    }
+
+    public function cart()
+    {
+		$viewPath = VIEWS_PATH . 'users/Cart.php';
+        require_once $viewPath;
+        $cartModel = $this->getModel();
+        $view = new Cart($cartModel, $this);
+        $view->output();
     }
 }

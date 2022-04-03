@@ -11,9 +11,9 @@ define('APPROOT', dirname(dirname(__FILE__)));
 // URL Root 
 define('URLROOT', 'http://localhost/software/repas-web-application--se-/mvc/public/');
 // Site Name
-define('SITENAME', 'MIU Blog MVC');
+define('SITENAME', '<b>Repas</b>');
 
-define('APP_VERSION', '1.2');
+define('APP_VERSION', '');
 
 //public pages path
 define('VIEWS_PATH', '../app/views/');

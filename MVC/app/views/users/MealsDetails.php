@@ -9,63 +9,22 @@
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
-<style>
-.container {
-  padding: 64px;
-}
-
-.column-66 {
-  float: left;
-  width: 66.66666%;
-  padding: 250px;
-  /*font-family: 'Roboto Mono', monospace;*/
-}
-
-.column {
-  float: left;
-  width: 33.33333%;
-  height: 40%;
-  padding: 10px;
-}
-
-img {
-  display: block;
-  height: auto;
-  max-width: 150%;
-}
-
-#addtocartbtn{
-	color:white;
-}
-
-/*button{
-	color:white;
-	background-color: blue;
-}*/
-
-
-</style>
 </head>
 
 <body>
-<!-- <section>
 
-	<div class="column">
-		<div class="card">
-			<div class="image">
-				<img src="kobeba.jpeg" width=100% height=100% class="card-img-top">
-			</div>
-			<div class="info">
-				<h4>Kobeba Soiree</h4>
-			</div>
-			<button>View More</button>
-		</div>
-	</div>
+<?php
+class MealsDetails extends View
+{
+  public function output()
+  {
+    $title = $this->model->title;
+    $subtitle = $this->model->subtitle;
+    // $user_id = $_SESSION['user_id'];
+    // $user_name = $_SESSION['user_name'];
 
-</section> -->
-
-
+    require APPROOT . '/views/inc/header.php';
+    $text = <<<EOT
 <div class="container">
   <div class="row">
     <div class="column">
@@ -75,16 +34,22 @@ img {
     <h1 style=" color:#2a718e;">Kobeba Soiree</h1>
     <h4>Description:</h4>
     <p>
-    	10 pieces for 65 L.E.
+      10 pieces for 65 L.E.
     </p>
 
     <div class="quantity buttons_added">
-  	<input type="number" step="1" min="1" max="" value="1" id="quantity" name="quantity">
+    <input type="number" step="1" min="1" max="" value="1" id="quantity" name="quantity">
     <br><br>
     <input type="submit" name="add" id="addtocartbtn" class="btn btn-warning" value="Add to Cart">
     </div>
   </div>
 </div>
+EOT;
+    echo $text;
+    require APPROOT . '/views/inc/footer.php';
+  }
+}
+?>
 
 </body>
 </html>

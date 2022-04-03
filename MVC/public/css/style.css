@@ -11,17 +11,19 @@
     z-index: 99999;
 }
    .form-container{
-  background-color: rgba(255, 255, 0, 0.774);
+ /* background-color: rgba(255, 255, 0, 0.774);*/
+   background-color: rgb(255,255,255,0.74);
 }
-.row{
-  background-color: black:
-}
-h2{
-	color: red;
-}
-body{
-    /* background-image: url("C:\x\htdocs\web\web project\108.jpg"); */
+/* .r{
+  background-color: rgb(231, 231, 231);
+} */
+/* .bg-light {
+  --bs-bg-opacity: .5;
+  background-color: rgb(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+} */
+/* body{
+     /* background-image: url(IMGROOT . '2.jpg');  */
     /*background-color: black:
     background-size: cover;
     background-repeat: no-repeat;*/
-}
+/* } */

@@ -13,7 +13,7 @@
 <body>
 
 <?php
-class MealsDetails extends View
+class appetizers extends View
 {
   public function output()
   {

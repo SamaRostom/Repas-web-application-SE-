@@ -28,7 +28,7 @@ class MealsDetails extends View
 <div class="container">
   <div class="row">
     <div class="column">
-      <img src="kobeba.jpeg">
+      <img src="../../public/images/kobeba.jpeg">
     </div>
     <div class="column-66">
     <h1 style=" color:#2a718e;">Kobeba Soiree</h1>

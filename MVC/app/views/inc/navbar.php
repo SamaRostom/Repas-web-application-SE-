@@ -13,7 +13,7 @@
           <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'public'; ?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT . 'pages/allmeals'; ?>">Shop</a>
+          <a class="nav-link" href="<?php echo URLROOT . 'users/allmeals'; ?>">Shop</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT . 'pages/about'; ?>">About Us</a>

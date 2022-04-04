@@ -4,6 +4,7 @@
   <title></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo URLROOT; ?>css/Login.css">
   <script>
     function ShowPassword() {
       var pass = document.querySelector('input[name="password"]');
@@ -17,34 +18,6 @@
       }
     }
   </script>
-  <!-- <style type="text/css">
-    .showBtn{
-    /*to show over the textbox*/
-    position: absolute;
-    right:15px;
-    top:8px;
-    color: rgb(128, 128, 128);
-    /*to show it when hover*/
-    z-index: 99999;
-} -->
-   <!-- /* .form-container{
-  background-color: rgba(255, 255, 255, 0.774);
-} */ -->
-<!-- /* .row{
-  /* background-color: black: */
-/* } */ */
-/* body{
-    /* background-image: url(IMGROOT . '2.jpg');
-    background-color: black:
-    background-size: cover;
-    background-repeat: no-repeat; */ */
-/* } */ -->
-  <!-- </style> -->
-  <style>
-    body{
-      background-image: url(IMGROOT . '2.jpg');
-    }
-  </style>  
 </head>
 <body>
 <?php
@@ -56,20 +29,8 @@ class Login extends view
 
     require APPROOT . '/views/inc/header.php';
     flash('register_success');
-//     $text = <<<EOT
-//   //   <div class="jumbotron jumbotron-fluid">
-//   //   <div class="container">
-//   //     <h1 class="display-4"> $title</h1>
-//   //   </div>
-//   // </div>
-
-//   </div>
-//   </div>
-//   </div>
-// EOT;
-//     echo $text;
     $this->printForm();
-    // require APPROOT . '/views/inc/footer.php';
+    require APPROOT . '/views/inc/footer.php';
   }
 
   private function printForm()
@@ -78,11 +39,9 @@ class Login extends view
     $registerUrl = URLROOT . 'users/register';
 
     $text = <<<EOT
-     <div class="r">
-     
     <div class="col-md-6 py-5 mx-auto">
     <div class="form-container">
-    <div class="card card-body bg-light mt-5" style="--bs-bg-opacity: .5;">
+    <div class="card card-body bg-transparent mt-5" style="--bs-bg-opacity: .5;">
     <h2>Log in</h2>
     <form action="$action" method="post">
 EOT;
@@ -107,19 +66,12 @@ EOT;
     </div>
     </div>
     </div>
-    </div>
 EOT;
     echo $text;
   }
   
   private function printUsername()
   {
-    // $val = $this->model->getEmail();
-    // $err = $this->model->getEmailErr();
-    // $valid = (!empty($err) ? 'is-invalid' : '');
-
-    // $this->printInput('email', 'email', $val, $err, $valid);
-
     $text = <<<EOT
     <br>
     <div class="input-group mb-4">
@@ -133,11 +85,6 @@ EOT;
 
   private function printPassword()
   {
-    // $val = $this->model->getPassword();
-    // $err = $this->model->getPasswordErr();
-    // $valid = (!empty($err) ? 'is-invalid' : '');
-
-    // $this->printInput('password', 'password', $val, $err, $valid);
     $text = <<<EOT
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-lock"></i></span>
@@ -147,21 +94,6 @@ EOT;
 EOT;
     echo $text;    
   }
-
-  private function printInput($type, $fieldName, $val, $err, $valid)
-  {
-    $label = str_replace("_", " ", $fieldName);
-    $label = ucwords($label);
-    $text = <<<EOT
-    <div class="form-group">
-      <label for="$fieldName"> $label: <sup>*</sup></label>
-      <input type="$type" name="$fieldName" class="form-control form-control-lg $valid" id="$fieldName" value="$val" required="">
-      <span class="invalid-feedback">$err</span>
-    </div>
-EOT;
-    echo $text;
-  }
-
 
 }
 ?>

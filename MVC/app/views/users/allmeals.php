@@ -31,7 +31,7 @@ class allmeals extends View
 	<div class="column">
 		<div class="card">
 			<div class="image1">
-				<img src="images/appetizers.jpeg" width=100% height=100% class="card-img-top">
+				<img src="../../public/images/appetizers.jpeg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Appetizers</a>
@@ -42,7 +42,7 @@ class allmeals extends View
 	<div class="column">
 	<div class="card">
 		<div class="image2">
-			<img src="images/panne.jpg" width=100% class="card-img-top">
+			<img src="../../public/images/panne.jpg" width=100% class="card-img-top">
 		</div>
 		<div class="info">
 			<a href="appetizers.php">Meals Menu</a>
@@ -53,7 +53,7 @@ class allmeals extends View
 <div class="column">
 <div class="card">
 			<div class="image3">
-				<img src="images/bashamel2.jpg" width=100% height=100% class="card-img-top">
+				<img src="../../public/images/bashamel2.jpg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Cooked Menu</a>
@@ -64,7 +64,7 @@ class allmeals extends View
 <div class="column">
 <div class="card">
 			<div class="image4">
-				<img src="images/miniburger.jpg" width=100% height=100% class="card-img-top">
+				<img src="../../public/images/miniburger.jpg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Finger Bites Menu</a>
@@ -76,7 +76,7 @@ class allmeals extends View
 <div class="column">
 <div class="card">
 			<div class="image5">
-				<img src="images/BabaGanoush.jpg" width=100% height=100% class="card-img-top">
+				<img src="../../public/images/BabaGanoush.jpg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Salad & Soup Menu</a>
@@ -88,7 +88,7 @@ class allmeals extends View
 <div class="column">
 <div class="card">
 			<div class="image6">
-				<img src="images/catering.jpg" width=100% height=100% class="card-img-top">
+				<img src="../../public/images/catering.jpg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Customize Meals For Caterings</a>

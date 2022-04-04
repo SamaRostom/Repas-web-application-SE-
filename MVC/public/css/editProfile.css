@@ -2,6 +2,7 @@ input{
 	margin-bottom: 10px;
 }
 body{
+	background-image: url("../../public/images/loginbackground.jpg");
 	background-size: contain;
 	background-repeat: no-repeat;	
 	background-position-y: bottom;

@@ -6,6 +6,7 @@ class CartModel extends UserModel
     protected $Meal_ID;
     protected $Meal_Name;
     protected $Meal_Price;
+    protected $Order_ID;
     
 
     public function __construct()
@@ -14,6 +15,7 @@ class CartModel extends UserModel
         $this->Meal_ID     = "";
         $this->Meal_Name = "";
         $this->Meal_Price = "";
+        $this->Order_ID = "";
     }
 
     public function getMeal_ID()
@@ -45,6 +47,16 @@ class CartModel extends UserModel
         $this->Meal_Price = $Meal_Price;
     }
 
+    public function getOrder_ID()
+    {
+        return $this->Order_ID;
+    }
+
+    public function setOrder_ID($Order_ID)
+    {
+        $this->Order_ID = $Order_ID;
+    }
+
     public function addtocart()
     {
         // $this->dbh->query("INSERT INTO orders (`Username`, `Password`, `Address`, `Phone_Number`, `Backup_Number`) VALUES(':Username', ':Password', ':Address', ':Phone_Number', ':Backup_Number')");
@@ -53,5 +65,11 @@ class CartModel extends UserModel
         // $this->dbh->bind(':Address', $this->Address);
 
         // return $this->dbh->execute();
+    }
+
+    public function setAll(){
+        $this->dbh->query("SELECT `Meal_ID`, `Quantity` FROM `order_details` WHERE Order_ID = :Order_ID ");
+        $this->dbh->bind(':Order_ID', $this->Order_ID);
+        //set model from the output of the query
     }
 }

@@ -119,8 +119,8 @@ class Users extends Controller
     {
         $_SESSION['user_id'] = $user->id;
         $_SESSION['user_name'] = $user->name;
-        //header('location: ' . URLROOT . 'pages');
-        redirect('pages');
+        header('location: ' . URLROOT . 'pages');
+        // redirect('pages');
     }
 
     public function logout()

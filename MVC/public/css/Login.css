@@ -1,0 +1,25 @@
+.showBtn {
+  /*to show over the textbox*/
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  color: rgb(128, 128, 128);
+  /*to show it when hover*/
+  z-index: 99999;
+  cursor: pointer;
+}
+
+.form-container {
+  background-color: rgb(255, 255, 255, 0.774);
+}
+
+body {
+  background-image: url('../images/loginbackground.jpg');
+}
+
+.column-66 {
+  float: right;
+  width: 66.66666%;
+  padding: 20px;
+  font-family: 'Roboto Mono', monospace;
+}

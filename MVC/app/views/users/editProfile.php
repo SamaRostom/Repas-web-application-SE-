@@ -8,54 +8,6 @@
   <link rel="stylesheet" href="<?php echo URLROOT; ?>css/editProfile.css">
 
 </head>
-<script>
-	  function ShowPassword() {
-  var pass = document.querySelector('input[name="Password"]');
-  var icon = document.querySelector('.showBtn i');
-  if (pass.type === "password") {
-    pass.type = "text";
-    icon.setAttribute('class','far fa-eye-slash');
-  } else {
-    pass.type = "password";
-    icon.setAttribute('class','far fa-eye');
-  }
-
-}
-function validate(form,e){
-        var fail="";
-      var alertBox = document.querySelector('.alert')
-      if(form.Username.value ==""){
-            fail+="Please fill the Username field\n";
-        }
-        if(form.Email.value ==""){
-            fail+="Please fill the Email field\n";
-        }
-        if(form.Password.value ==""){
-    		fail+="Please fill the password field\n";
-    	}
-        if(form.City.value ==""){
-        fail+="Please fill the City field\n";
-          }
-        if(form.Gender.value ==""){
-        fail+="Please fill the Gender field\n";
-          }
-        if(form.Phone_Number.value ==""){
-        fail+="Please fill the Phone_Number field\n";
-          }
-          if(form.Emergency_Number.value ==""){
-        fail+="Please fill the Emergency_Number field\n";
-          }
-        if(fail==""){
-            return true;
-        }
-        else{
-        alertBox.querySelector('span').innerText = fail
-            alertBox.style.display = 'block';
-            setTimeout(function(){alertBox.style.display = 'none';},5000)
-            e.preventDefault()
-        }
-    }
-</script>
 <body>
 
 <?php
@@ -70,9 +22,24 @@ class editProfile extends View
 
     require APPROOT . '/views/inc/header.php';
     $text = <<<EOT
-	<div class="alert alert-warning" role="alert">
-    <i class="fas fa-exclamation-triangle"></i>
-</div>
+	<div class='col-10 col-md-8 col-lg-6 container p-4 my-5 mx-auto'>
+		<h1 class='display-6 mb-3 text-center'>Edit your Profile</h1>
+	    <form action='' method='post'>
+
+		Username: <input type= 'text' class='form-control' name= 'Username'  value="">
+
+		Password: <input type= 'password' class= 'form-control' name='Password' value="">
+
+		Address: <input type= 'text'  class='form-control' name= 'Address' value="">
+
+		Phone Number: <input type= 'text'  class='form-control' name= 'Phone_Number' value="">
+
+		Backup Number: <input type= 'text'  class='form-control' name= 'Backup Number' value="">
+
+		<div style='text-align:center'><input type='submit' class='btn btn-primary px-5 mt-4' name='submit' value='Save'>
+		<input type='button' class='btn btn-outline-dark px-5 ms-3 mt-4' onclick='history.back();' value='Cancel'></div>
+		</form>
+		</div>
 EOT;
     echo $text;
     require APPROOT . '/views/inc/footer.php';
@@ -80,5 +47,4 @@ EOT;
 }
 ?>
 </body>
-
 </html>

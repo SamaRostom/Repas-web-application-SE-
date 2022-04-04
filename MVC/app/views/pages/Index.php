@@ -37,14 +37,7 @@ class Index extends View
 
     require APPROOT . '/views/inc/header.php';
     $text = <<<EOT
-  
-EOT;
-    echo $text;
-    require APPROOT . '/views/inc/footer.php';
-  }
-}
-?>
-<a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="339" data-image-height="339">
+	<a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="339" data-image-height="339">
           <img src="images/re.jpg" class="u-logo-image u-logo-image-1">
         </a>
         <p class="u-text u-text-palette-1-base u-text-1">Delicious Homemade F​ood</p>
@@ -110,6 +103,14 @@ EOT;
 
 </div>
 </section>
+  
+EOT;
+    echo $text;
+    require APPROOT . '/views/inc/footer.php';
+  }
+}
+?>
+
 
 </body>
 </html>

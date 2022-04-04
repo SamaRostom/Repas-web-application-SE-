@@ -1,0 +1,22 @@
+input{
+			margin-bottom: 10px;
+		}
+		body{
+			background-image: url("images/edit.png");
+			background-size: contain;
+			background-repeat: no-repeat;	
+			background-position-y: bottom;
+			height:11
+			0vh;
+		}
+		.container{
+			background-color: #ffffffad;
+		}
+		.showBtn{
+position: absolute;
+  right:15px;
+  top:8px;
+  color: rgb(128, 128, 128);
+  cursor: pointer;
+  z-index: 99999;
+}

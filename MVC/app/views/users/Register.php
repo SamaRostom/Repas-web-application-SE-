@@ -40,7 +40,6 @@ class Register extends view
     $loginUrl = URLROOT . 'users/login';
     $text = <<<EOT
     <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
-    <div class="card card-body bg-light mt-5">
     <h1 class='display-6 text-center'>Create An Account</h1>
 <form action="Register.php" method="post" onsubmit="validate(this,event)">
 <div class="input-group mt-4 mb-3">
@@ -64,7 +63,7 @@ class Register extends view
 
 <input type="number" class="form-control d-sm-inline mb-3" placeholder="Personal number" name="Phone Number"> 
 <input type="number" class="form-control d-sm-inline mb-3" placeholder="Backup number" name="Backup Number"> 
-</div>
+
 
 <div class='mt-4 text-center'>
 <input type="submit" class='btn btn-primary px-5 mb-3' value="Sign Up" name="Submit">
@@ -73,7 +72,6 @@ class Register extends view
 
 </div>
 </form> 
-</div>
 </div>
 EOT;
     echo $text;

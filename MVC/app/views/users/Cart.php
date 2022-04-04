@@ -16,6 +16,7 @@ class Cart extends view
   public function output()
   {
     $title = $this->model->title;
+    $checkout = URLROOT . 'users/checkout';
 
     require APPROOT . '/views/inc/header.php';
     flash('register_success');
@@ -28,13 +29,14 @@ class Cart extends view
                 <th width="10%">Meal Code</th>
                 <th width="25%">Meal Name</th>
                 <th width="25%">Meal Price</th>
+                <th width="25%">Quantity</th>
                 <th width="25%">Remove Meal</th>
             </tr>
 
             <tr>
-                <td colspan="2" align="right"><b>Total</b></td>
+                <td colspan="3" align="right"><b>Total</b></td>
                 <th width="15%" align="left"><?php echo number_format(100, 2); ?> L.E </th>
-                <th width="15%">   <a href="CheckOut.php"> <input type="button" class="btn btn-dark" name="submit" value="Checkout"></th>
+                <th width="15%"><a href="$checkout"> <input type="button" class="btn btn-dark" name="submit" value="Checkout"></th>
             </tr>
 
             </table>

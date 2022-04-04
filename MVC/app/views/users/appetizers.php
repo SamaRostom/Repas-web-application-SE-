@@ -29,7 +29,7 @@ class appetizers extends View
 	<div class="column">
 		<div class="card">
 			<div class="image">
-				<img src="kobeba.jpeg" width=100% height=100% class="card-img-top">
+				<img src="../../public/images/kobeba.jpeg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<h4>Kobeba Soiree</h4>

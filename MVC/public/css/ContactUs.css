@@ -8,7 +8,8 @@ body{
    }
 
     #equipcard{
-      background-image: url("images/c.jpg");
+      /*background-image: url("images/c.jpg");*/
+      background-image: url('../images/ContactUs.jpg');
   width: 60%;
   box-shadow: 0 5px 25px rgba(1 1 5 / 9%);
   padding: 5px;

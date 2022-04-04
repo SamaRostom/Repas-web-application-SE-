@@ -1,36 +1,4 @@
 .jumbotron{
     background-color:#cbcacc;
 }
-    .showBtn{
-    /*to show over the textbox*/
-    position: absolute;
-    right:15px;
-    top:8px;
-    color: rgb(128, 128, 128);
-    /*to show it when hover*/
-    z-index: 99999;
-}
-   .form-container{
- /* background-color: rgba(255, 255, 0, 0.774);*/
-   background-color: rgb(255,255,255,0.74);
-}
-/* .r{
-  background-color: rgb(231, 231, 231);
-} */
-/* .bg-light {
-  --bs-bg-opacity: .5;
-  background-color: rgb(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
-} */
-/* body{
-     /* background-image: url(IMGROOT . '2.jpg');  */
-    /*background-color: black:
-    background-size: cover;
-    background-repeat: no-repeat;*/
-/* } */
-
-.column-66 {
-  float: right;
-  width: 66.66666%;
-  padding: 20px;
-  font-family: 'Roboto Mono', monospace;
-}
+  

@@ -137,6 +137,7 @@ class Users extends Controller
         return isset($_SESSION['user_id']);
     }
 
+<<<<<<< Updated upstream
     public function cart()
     {
 		$viewPath = VIEWS_PATH . 'users/Cart.php';
@@ -146,3 +147,29 @@ class Users extends Controller
         $view->output();
     }
 }
+=======
+    public function allmeals()
+    {
+        $viewPath = VIEWS_PATH . 'users/allmeals.php';
+        require_once $viewPath;
+        $allmealsView = new allmeals($this->getModel(), $this);
+        $allmealsView->output();
+    }
+
+    public function MealsDetails()
+    {
+        $viewPath = VIEWS_PATH . 'users/MealsDetails.php';
+        require_once $viewPath;
+        $MealsDetailsView = new MealsDetails($this->getModel(), $this);
+        $MealsDetailsView->output();
+    }
+
+    public function appetizers()
+    {
+        $viewPath = VIEWS_PATH . 'users/appetizers.php';
+        require_once $viewPath;
+        $appetizersView = new appetizers($this->getModel(), $this);
+        $appetizersView->output();
+    }
+}
+>>>>>>> Stashed changes

@@ -170,4 +170,29 @@ class Users extends Controller
         $appetizersView = new appetizers($this->getModel(), $this);
         $appetizersView->output();
     }
+
+    public function Profile()
+    {
+        $viewPath = VIEWS_PATH . 'users/Profile.php';
+        require_once $viewPath;
+        $ProfileView = new Profile($this->getModel(), $this);
+        $ProfileView->output();
+    }
+
+    public function editProfile()
+    {
+        $viewPath = VIEWS_PATH . 'users/editProfile.php';
+        require_once $viewPath;
+        $editProfileView = new editProfile($this->getModel(), $this);
+        $editProfileView->output();
+    }
+
+    public function review()
+    {
+        $viewPath = VIEWS_PATH . 'users/Review.php';
+        require_once $viewPath;
+        $ReviewModel = $this->getModel();
+        $view = new Review($ReviewModel, $this);
+        $view->output();
+    }
 }

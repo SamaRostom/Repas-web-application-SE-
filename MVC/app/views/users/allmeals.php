@@ -10,8 +10,8 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   	<link rel="stylesheet" href="<?php echo URLROOT; ?>css/StyleMeals.css">
-</head>
 
+</head>
 <body>
 
 <?php
@@ -30,8 +30,8 @@ class allmeals extends View
 <div>
 	<div class="column">
 		<div class="card">
-			<div class="image">
-				<img src="appetizers.jpeg" width=100% height=100% class="card-img-top">
+			<div class="image1">
+				<img src="images/appetizers.jpeg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Appetizers</a>
@@ -41,8 +41,8 @@ class allmeals extends View
 
 	<div class="column">
 	<div class="card">
-		<div class="image">
-			<img src="panne.jpg" width=100% class="card-img-top">
+		<div class="image2">
+			<img src="images/panne.jpg" width=100% class="card-img-top">
 		</div>
 		<div class="info">
 			<a href="appetizers.php">Meals Menu</a>
@@ -52,8 +52,8 @@ class allmeals extends View
 
 <div class="column">
 <div class="card">
-			<div class="image">
-				<img src="bashamel2.jpg" width=100% height=100% class="card-img-top">
+			<div class="image3">
+				<img src="images/bashamel2.jpg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Cooked Menu</a>
@@ -63,8 +63,8 @@ class allmeals extends View
 
 <div class="column">
 <div class="card">
-			<div class="image">
-				<img src="miniburger.jpg" width=100% height=100% class="card-img-top">
+			<div class="image4">
+				<img src="images/miniburger.jpg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Finger Bites Menu</a>
@@ -75,8 +75,8 @@ class allmeals extends View
 
 <div class="column">
 <div class="card">
-			<div class="image">
-				<img src="BabaGanoush.jpg" width=100% height=100% class="card-img-top">
+			<div class="image5">
+				<img src="images/BabaGanoush.jpg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Salad & Soup Menu</a>
@@ -87,15 +87,14 @@ class allmeals extends View
 
 <div class="column">
 <div class="card">
-			<div class="image">
-				<img src="catering.jpg" width=100% height=100% class="card-img-top">
+			<div class="image6">
+				<img src="images/catering.jpg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
 				<a href="appetizers.php">Customize Meals For Caterings</a>
 			</div>
 		</div>
 	</div>
-
 
 </div>
 </section>

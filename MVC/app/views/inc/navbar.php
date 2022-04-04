@@ -1,5 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4" id="nb">
   <div class="container-fluid">
+    <!-- <a class="logo" href='../../../public/images/re.jpg'></a> -->
+    <!-- <img src='../../../public/images/re.jpg'> -->
+    <img src='images/re.jpg' style="border-radius: 50%;" width="50" height="50">
     <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,8 +13,10 @@
           <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'public'; ?>">Home</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="<?php echo URLROOT . 'pages/allmeals'; ?>">Shop</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="<?php echo URLROOT . 'pages/about'; ?>">About Us</a>
-		          
         </li>
 		<li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'pages/contact'; ?>">Contact Us</a>
          </li>
@@ -19,13 +24,10 @@
          </li>
          <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/register'; ?>">SignUp</a>
          </li>
-		
             <?php if (isset($_SESSION['user_id'])) {
               echo $_SESSION['user_name'];
             } 
             ?>
-          
-          
             <?php if (isset($_SESSION['user_id'])) : ?>
               <li><a class="dropdown-item" href="users/logout">Logout</a></li>
               <?php else : ?>

@@ -20,7 +20,7 @@
 </head>
 <body onload="setImage()">
 	<?php
-class MealsDetails extends View
+class Profile extends View
 {
   public function output()
   {

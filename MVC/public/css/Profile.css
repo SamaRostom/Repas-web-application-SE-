@@ -1,0 +1,10 @@
+		/* css in case of a short page */
+		@media (min-width: 995px) {
+		body{
+			height:100vh
+		}
+		.footer{
+			position: absolute;
+			bottom:0;
+		}
+	}

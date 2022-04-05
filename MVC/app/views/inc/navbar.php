@@ -42,8 +42,38 @@
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
       </form>
     </div>
   </div>
 </nav>
+<!-- <h6>Searching on:</h6> -->
+    <div id="searchresult"></div>
+    <script>
+$(document).ready(function(){
+    $('.search-box input[type="text"]').on("keyup input", function(){
+        /* Get input value on change */
+        var inputVal = $(this).val();
+        if(inputVal!=""){
+            $.ajax({
+              // url:" echo URLROOT . 'views/inc/livesearch'; ?>",
+              url:"livesearch.php",
+					   method:"POST",
+					   data:{term:inputVal}, 
+					   success:function(data){
+						   $("#searchresult").html(data);
+					   }
+
+            });
+        } else{
+            $("#searchresult").empty();
+        }
+    });
+    
+    // Set search input value on click of result item
+    $(document).on("click", ".result p", function(){
+        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+        $(this).parent(".result").empty();
+    });
+});
+</script>

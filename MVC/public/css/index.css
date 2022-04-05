@@ -88,12 +88,12 @@ section{
 }
  h2{
     text-align: center;
-    color: blue;
+    color: rgb(70, 110, 170);
  }
 
  h3{
     text-align: center;
-    color: blue;
+    color: rgb(81, 129, 202);
 
 }
 .mySlides {display:none;}

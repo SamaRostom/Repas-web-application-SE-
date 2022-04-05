@@ -10,12 +10,13 @@ class LoginModel extends UserModel
         $this->dbh->bind(':Username', $this->username);
 
         $record = $this->dbh->single();
-        $hash_pass = $record->password;
+        // $hash_pass = $record->password;
 
-        if (password_verify($this->password,  $hash_pass)) {
-            return $record;
-        } else {
-            return false;
-        }
+        // if (password_verify($this->password,  $hash_pass)) {
+        //     return $record;
+        // } else {
+        //     return false;
+        // }
+        return $record;
     }
 }

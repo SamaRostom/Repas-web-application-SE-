@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="utf-8">
-    <meta name="keywords" content="​Delicious Homemade Food">
-    <meta name="description" content="">
-    <meta name="page_type" content="np-template-header-footer-from-plugin">
+<
     <title>Home</title>
-    <link rel="stylesheet" href="nicepage.css" media="screen">
-<link rel="stylesheet" href="Home.css" media="screen">
-    <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
-    <meta name="generator" content="Nicepage 4.8.2, nicepage.com">
-    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
- 
+    
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+	<link rel="stylesheet" href="<?php echo URLROOT; ?>css/index.css">
 
-    <script type="application/ld+json">{
-		"@type": "Organization",
-		"name": "",
-		"logo": "images/re.jpg"
-}</script>
-    <meta name="theme-color" content="#478ac9">
-    <meta property="og:title" content="Home">
-    <meta property="og:type" content="website">
+	<script>
+ function currentDiv(n) {
+  showDivs(slideIndex = n);
+ }
+
+ function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>
+  
 </head>
-<body data-home-page="https://website1694322.nicepage.io/Home.html?version=c6c298e9-6a4e-4307-a122-98768eed9c0d" data-home-page-title="Home" class="u-body u-xl-mode"><header class="u-clearfix u-header u-header" id="sec-2464"><div class="u-clearfix u-sheet u-sheet-1">
+<body>
 <?php
 class Index extends View
 {
@@ -32,77 +40,65 @@ class Index extends View
   {
     $title = $this->model->title;
     $subtitle = $this->model->subtitle;
-    $user_id = $_SESSION['user_id'];
-    $user_name = $_SESSION['user_name'];
+    // $user_id = $_SESSION['user_id'];
+    // $user_name = $_SESSION['user_name'];
 
     require APPROOT . '/views/inc/header.php';
     $text = <<<EOT
-	<a href="https://nicepage.com" class="u-image u-logo u-image-1" data-image-width="339" data-image-height="339">
-          <img src="images/re.jpg" class="u-logo-image u-logo-image-1">
-        </a>
-        <p class="u-text u-text-palette-1-base u-text-1">Delicious Homemade F​ood</p>
-</header>
-        <section class="cards">
+	
+
+	<div class="w3-content" style="max-width:1200px">
+	<img class="mySlides" src="images/g.jpeg" style="width:100%;display:none">
+	<img class="mySlides" src="images/d.jpeg" style="width:100%">
+	<img class="mySlides" src="images/f.jpeg" style="width:100%;display:none">
+	
+  
+	<div class="w3-row-padding w3-section">
+	  <div class="w3-col s4">
+		<img class="demo w3-opacity w3-hover-opacity-off" src="images/g.jpeg" style="width:100%;cursor:pointer" onclick="currentDiv(1)">
+	  </div>
+	  <div class="w3-col s4">
+		<img class="demo w3-opacity w3-hover-opacity-off" src="images/d.jpeg" style="width:100%;cursor:pointer" onclick="currentDiv(2)">
+	  </div>
+	  <div class="w3-col s4">
+		<img class="demo w3-opacity w3-hover-opacity-off" src="images/f.jpeg" style="width:100%;cursor:pointer" onclick="currentDiv(3)">
+	  </div>
+	</div>
+  </div>
+
+  <h3> Categories</h3>
+  <section class="cards">
 <div>
 	<div class="column">
-		<div class="card">
-			<div class="image">
-				<img src="appetizers.jpeg" width=100% height=100% class="card-img-top">
+		<div class="card" id="equipcard">
+			<div class="image1">
+				<img src="images/h.jpeg" width=100% height=50% class="card-img-top">
+				<h3>Cooked</h3>
 			</div>
-			
 		</div>
 	</div>
 
 	<div class="column">
-	<div class="card">
-		<div class="image">
-			<img src="1.jpg" width=100% class="card-img-top">
+	<div class="card" id="equipcard">
+		<div class="image2">
+			<img src="images/m.jpeg" width=100%  height=20% class="card-img-top">
+			<h3>Frozen</h3>
 		</div>
-	
+
 	</div>
 </div>
-
 <div class="column">
-<div class="card">
-			<div class="image">
-				<img src="2.jpg" width=100% height=100% class="card-img-top">
-			</div>
-		
+	<div class="card" id="equipcard">
+		<div class="image2">
+			<img src="images/e.jpeg" width=100%  height=50% class="card-img-top">
+			<h3>Meals and mini sandwiches</h3>
 		</div>
-</div>
 
-<div class="column">
-<div class="card">
-			<div class="image">
-				<img src="15.jpg" width=100% height=100% class="card-img-top">
-			</div>
-	
-		</div>
 	</div>
-
-
-<div class="column">
-<div class="card">
-			<div class="image">
-				<img src="3.jpg" width=100% height=100% class="card-img-top">
-			</div>
-			
-		</div>
-	</div>
-
-
-<div class="column">
-<div class="card">
-			<div class="image">
-				<img src="catering.jpg" width=100% height=100% class="card-img-top">
-			</div>
-		
-		</div>
-	</div>
-
-
 </div>
 </section>
+
+<h2>   To all the housewives you deserve all the best......</h2>
   
 EOT;
     echo $text;

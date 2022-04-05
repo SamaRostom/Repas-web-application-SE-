@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- <a class="logo" href='../../../public/images/re.jpg'></a> -->
     <!-- <img src='../../../public/images/re.jpg'> -->
-    <img src='images/re.jpg' style="border-radius: 50%;" width="50" height="50">
+    <img src='images/re.jpg' style="border-radius: 50%;" width="90" height="90">
     <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -23,6 +23,8 @@
          <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/login'; ?>">Login</a>
          </li>
          <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/register'; ?>">SignUp</a>
+         </li>
+         <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/cart'; ?>">Cart</a>
          </li>
             <?php if (isset($_SESSION['user_id'])) {
               echo $_SESSION['user_name'];

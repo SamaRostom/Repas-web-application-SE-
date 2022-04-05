@@ -3,7 +3,7 @@
     <!-- <a class="logo" href='../../../public/images/re.jpg'></a> -->
     <!-- <img src='../../../public/images/re.jpg'> -->
     <img src='../images/re.jpg' style="border-radius: 50%;" width="90" height="90">
-    <img src='images/re.jpg' style="border-radius: 50%;" width="90" height="90">
+    
     <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>

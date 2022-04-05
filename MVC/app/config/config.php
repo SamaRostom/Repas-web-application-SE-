@@ -11,7 +11,7 @@ define('APPROOT', dirname(dirname(__FILE__)));
 // URL Root 
 define('URLROOT', 'http://localhost/software/repas-web-application--se-/mvc/public/');
 // Site Name
-define('SITENAME', '<b>Repas</b>');
+define('SITENAME', '');
 
 define('APP_VERSION', '');
 

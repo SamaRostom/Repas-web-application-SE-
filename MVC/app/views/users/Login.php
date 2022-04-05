@@ -37,6 +37,7 @@ class Login extends view
   {
     $action = URLROOT . 'users/login';
     $registerUrl = URLROOT . 'users/register';
+    $home=URLROOT;
 
     $text = <<<EOT
     <div class="col-md-6 py-5 mx-auto">
@@ -45,7 +46,8 @@ class Login extends view
     <h2>Log in</h2>
     <form action="$action" method="post">
 EOT;
-
+// <input type="submit" class='btn btn-primary px-5 mb-3 submit' value="Log in" name="Submit">
+// <a class='btn btn-primary px-5 mb-3 submit' href= "$home"></a> 
     echo $text;
     $this->printUsername();
     $this->printPassword();
@@ -55,7 +57,7 @@ EOT;
       <div class="row mt-4">
         <div class="col">  
         <div class='mt-3 text-center'>
-    <input type="submit" class='btn btn-primary px-5 mb-3 submit' value="Log in" name="Submit">
+        <input type="submit" class='btn btn-primary px-5 mb-3 submit' value="Log in" name="Submit">
    <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
    <p class='mb-4 mt-2'>Don't have an account? <a class='linkClick' href="$registerUrl">Sign up for free</a></p>
   </div>

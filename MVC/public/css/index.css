@@ -1,0 +1,99 @@
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+ #equipcard{
+      /*background-image: url("images/c.jpg");*/
+      /*background-image: url('../../../images/a.jpeg');*/
+  width: 60%;
+  box-shadow: 0 5px 25px rgba(1 1 5 / 9%);
+  padding: 5px;
+  margin: 3rem auto;
+  transition: 0.7s ease;
+  text-align: center;
+}
+ #equipcard:hover{
+  transform: scale(0.9);
+}
+.networks a{
+            text-decoration: none;
+            color: black;
+            padding: 0rem .5rem;
+        }
+        iframe{
+            width: 60%;
+            height:400px;
+            margin-bottom:3rem;
+        }
+
+body{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+section{
+    padding: 100px 200px;
+}
+.cards a{
+    width: 100%;
+    display: flex;
+    font-family: 'Parisienne', cursive;
+    font-size: 35px;
+    justify-content: center;
+}
+.cards{
+    display: flex;
+    width: 100%;
+    /*display: table;*/
+    justify-content: center;
+    flex-direction: row;
+}
+.card{
+    background-color: white;
+    /*from em to px (value*16)*/
+    /*width: 21.25em;*/
+    height: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /*lw 3ayza shadow fo2 aw ta7t yeb2a awel value n7otaha be ay rakham ana 3ayzah w ymen aw shemal yeb2a tany value (+ve or -ve)->for the direction talet value hya el blur w rabe3 value color of shadow*/
+    /*rgb-> red green blue, a-> for opacity of color*/
+    box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
+    /*border lines teb2a curved*/
+    border-radius: 8px;
+    /*lw value wa7da bs yeb2a kol el directions teb2a 25px top bottom right and left*/
+    /*padding-> by3mel mesa7a gwa el element nafso ely hwa el card 3andy dlwa2ty
+    margin->by3mel el mesa7a ben el elements w ba3daha*/
+    /*display: table-cell;*/
+    padding: 16px;
+    /*padding: 25px;*/
+    margin: 15px;
+    transition: 0.6s;
+}
+.column {
+  float: left;
+  width: 33.3333%;
+ /* padding: 0 10px;*/
+  display: table-cell;
+  padding: 16px;
+}
+.card:hover{
+    /*color: white;*/
+    background-color: white;
+    transform: scale(1.1);
+}
+.img{
+    /*color: black;*/
+    height: 15vw;
+    object-fit: cover;
+    font-size: 8em;
+    text-align: center;
+}
+ h2{
+    text-align: center;
+    color: blue;
+ }
+
+ h3{
+    text-align: center;
+    color: blue;
+
+}
+.mySlides {display:none;}

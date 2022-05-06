@@ -97,6 +97,9 @@ class Users extends Controller
                     $userModel->setPasswordErr('Password is not correct');
                 }
             }
+            else{
+                echo $userModel->getUsernameErr() . $userModel->getPasswordErr();
+            }
         }
         // Load form
         //echo 'Load form, Request method: ' . $_SERVER['REQUEST_METHOD'];

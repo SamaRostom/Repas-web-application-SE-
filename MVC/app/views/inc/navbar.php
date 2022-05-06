@@ -27,6 +27,8 @@
          </li>
          <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/cart'; ?>">Cart</a>
          </li>
+         <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/profile'; ?>">Profile</a>
+         </li>
             <?php if (isset($_SESSION['user_id'])) {
               echo $_SESSION['user_name'];
             } 

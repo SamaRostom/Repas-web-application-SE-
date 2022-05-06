@@ -67,13 +67,13 @@ class UserModel extends model
         return $this->findUserByUsername($username) > 0;
     }
 
-    public function login()
-    {
-        $this->dbh->query("SELECT * FROM person WHERE Username=:Username AND Password=:Password");
-        $this->dbh->bind(':Username', $username);
-        $this->dbh->bind(':Password', $Password);
+    // public function login()
+    // {
+    //     $this->dbh->query("SELECT * FROM person WHERE Username=:Username AND Password=:Password");
+    //     $this->dbh->bind(':Username', $username);
+    //     $this->dbh->bind(':Password', $Password);
 
-        // $userRecord = $this->dbh->single();
-        return $this->dbh->resultSet();
-    }
+    //     // $userRecord = $this->dbh->single();
+    //     return $this->dbh->resultSet();
+    // }
 }

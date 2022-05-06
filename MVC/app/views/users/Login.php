@@ -51,7 +51,7 @@ EOT;
     echo $text;
     $this->printUsername();
     $this->printPassword();
-
+    // $this->errordisplay();
     $text = <<<EOT
     <div class="container">
       <div class="row mt-4">
@@ -96,6 +96,30 @@ EOT;
 EOT;
     echo $text;    
   }
+
+//   public function errordisplay()
+//   {
+//     $passwordErr= $this->UserModel->passwordErr;
+//     $usernameErr= $this->UserModel->usernameErr;
+//     if($passwordErr=="" && $usernameErr=""){
+//       $d="none";
+//     }
+//     else{
+//       $d="block";
+//     }
+//     $text = <<<EOT
+//     <br>
+//     <div class="alert alert-warning" role="alert" style="display: $d;">
+//         <i class="fas fa-exclamation-triangle"></i>
+//         <span>
+//             $passwordErr
+//             <br>
+//             $usernameErr
+//         </span>
+//     </div>
+// EOT;
+//     echo $text;
+//   }
 
 }
 ?>

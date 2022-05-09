@@ -42,15 +42,24 @@
         
 
       </ul>
-      <form class="d-flex">
+      <!-- <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <!-- <button class="btn btn-outline-success" type="submit">Search</button> -->
-      </form>
+         <button class="btn btn-outline-success" type="submit">Search</button> -->
+      <!-- </form> --> 
+      <div class='col-5 row'>
+      <div class='px-4 col-7'>
+        <div class="input-group mt-4 mb-3 search-box">
+        <span class="input-group-text"><i class="fas fa-search"></i></span>
+        <input type="text" class="form-control" placeholder="Search..">
+    </div>
     </div>
   </div>
 </nav>
 <!-- <h6>Searching on:</h6> -->
+    <!-- <div id="searchresult"></div> -->
     <div id="searchresult"></div>
+    </div>
+
     <script>
 $(document).ready(function(){
     $('.search-box input[type="text"]').on("keyup input", function(){
@@ -73,9 +82,9 @@ $(document).ready(function(){
     });
     
     // Set search input value on click of result item
-    $(document).on("click", ".result p", function(){
-        $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-        $(this).parent(".result").empty();
-    });
+    // $(document).on("click", ".result p", function(){
+    //     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+    //     $(this).parent(".result").empty();
+    // });
 });
 </script>

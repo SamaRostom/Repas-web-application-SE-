@@ -59,6 +59,7 @@ class Users extends Controller
     public function login()
     {
         $userModel = $this->getModel();
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //process form
             $userModel->setUsername(trim($_POST['Username']));
@@ -98,7 +99,9 @@ class Users extends Controller
                 }
             }
             else{
-                echo $userModel->getUsernameErr() . $userModel->getPasswordErr();
+                //echo $userModel->getUsernameErr() . $userModel->getPasswordErr();
+                $v = $userModel->getUsernameErr() . $userModel->getPasswordErr();
+                echo "<script>alert('$v');</script>";
             }
         }
         // Load form

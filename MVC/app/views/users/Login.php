@@ -5,6 +5,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="<?php echo URLROOT; ?>css/Login.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script>
     function ShowPassword() {
       var pass = document.querySelector('input[name="password"]');
@@ -23,10 +24,12 @@
 <?php
 class Login extends view
 {
+  public $v;
   public function output()
   {
     $title = $this->model->title;
 
+    // $this->v= $v;
     require APPROOT . '/views/inc/header.php';
     flash('register_success');
     $this->printForm();
@@ -51,7 +54,7 @@ EOT;
     echo $text;
     $this->printUsername();
     $this->printPassword();
-    // $this->errordisplay();
+    $this->errordisplay();
     $text = <<<EOT
     <div class="container">
       <div class="row mt-4">
@@ -97,8 +100,8 @@ EOT;
     echo $text;    
   }
 
-//   public function errordisplay()
-//   {
+  public function errordisplay()
+  {
 //     $passwordErr= $this->UserModel->passwordErr;
 //     $usernameErr= $this->UserModel->usernameErr;
 //     if($passwordErr=="" && $usernameErr=""){
@@ -119,7 +122,26 @@ EOT;
 //     </div>
 // EOT;
 //     echo $text;
-//   }
+
+
+      $text = <<<EOT
+     
+
+      <div class="alert alert-warning">
+        This alert will automatically 
+        close in 2 seconds.
+    </div>
+  
+    <script type="text/javascript">
+        setTimeout(function () {
+  
+            // Closing the alert
+            $('.alert').alert('close');
+        }, 5000);
+    </script>
+EOT;
+      echo $text;
+  }
 
 }
 ?>

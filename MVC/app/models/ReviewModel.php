@@ -1,6 +1,11 @@
 <?php
-class ReviewModel extends model
+require_once 'UserModel.php';
+class ReviewModel extends UserModel
 {
-    public $title = 'Repas ' . APP_VERSION;
-    public $subtitle = 'Example of MVC PHP framework for SE305';
+    public  $title = 'Review Page';
+
+    public function review()
+    {
+
+    }
 }

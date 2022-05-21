@@ -25,28 +25,32 @@ for(var i=0; i<img.length;i++){
 }
 </style>
 ";
-
+//include_once('http://localhost/software/repas-web-application--se-/mvc/app/libraries/Database');
 if(isset($_POST["term"])){
     // Prepare a select statement
-    //$sql = "SELECT * FROM `Meals` AND Username LIKE '%".$_POST["term"]."%'";
-    $this->dbh->query("SELECT * FROM `Meals` Where Meal_Name LIKE '%".$_POST["term"]."%'");
-         
+    // $sql = "SELECT * FROM `Meals` AND Username LIKE '%".$_POST["term"]."%'";
+    $dbh = new mysqli('localhost','root','','repas');
+
+    $result=mysqli_query($dbh,"SELECT * FROM Meals Where Meal_Name LIKE '%".$_POST["term"]."%'");
+    //fe fetch array     
+
+
     // $record = $this->dbh->single();
-    // if($stmt = mysqli_prepare($conn, $sql)){
+    if($stmt = mysqli_prepare($dbh, $result)){
         
         // Attempt to execute the prepared statement
-        // if(mysqli_stmt_execute($stmt)){
-        if($this->dbh->execute()){
+        if(mysqli_stmt_execute($result)){
+        // if($this->dbh->execute()){
 
-            $result = $this->dbh->single();
-            // $result = mysqli_stmt_get_result($stmt);
+            // $result = $this->dbh->single();
+            $r = mysqli_stmt_get_result($stmt);
             
             // Check number of rows in the result set
-            // if(mysqli_num_rows($result) > 0){
-            if($this->dbh->rowCount() > 0){    
+            if(mysqli_num_rows($r) > 0){
+            // if($this->dbh->rowCount() > 0){    
                 // Fetch result rows as an associative array
-                // while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                while($row = $this->dbh->resultSet()){    
+                while($row = mysqli_fetch_array($r, MYSQLI_ASSOC)){
+                // while($row = $this->dbh->resultSet()){    
                     ?>
                     <div class='bg-light user mb-3 rounded p-3'>
                  <!-- <img src = "images/=$row['Profile_Picture']?>" class="img-circle" width = "40"/> -->
@@ -58,14 +62,14 @@ if(isset($_POST["term"])){
             } else{
                 echo "<div class='alert alert-warning'>No matches found</div>";
             }
-        // } 
-        // else{
-        //     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
-        // }
+        } 
+        else{
+            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+        }
+    
     }
-     
     // Close statement
-    // mysqli_stmt_close($stmt);
+    mysqli_stmt_close($stmt);
 }
 
 ?>

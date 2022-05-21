@@ -21,6 +21,7 @@ class allmeals extends View
   {
     $title = $this->model->title;
     $subtitle = $this->model->subtitle;
+	$apaction = URLROOT . 'users/appetizers';
     // $user_id = $_SESSION['user_id'];
     // $user_name = $_SESSION['user_name'];
 
@@ -34,7 +35,7 @@ class allmeals extends View
 				<img src="../../public/images/appetizers.jpeg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
-				<a href="appetizers.php">Appetizers</a>
+				<a href="$apaction">Appetizers</a>
 			</div>
 		</div>
 	</div>

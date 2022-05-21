@@ -68,7 +68,7 @@ $(document).ready(function(){
         if(inputVal!=""){
             $.ajax({
               // url:" echo URLROOT . 'views/inc/livesearch'; ?>",
-              url:"livesearch.php",
+              url:"http://localhost/software/repas-web-application--se-/mvc/app/views/inc/livesearch.php",
 					   method:"POST",
 					   data:{term:inputVal}, 
 					   success:function(data){

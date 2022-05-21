@@ -20,6 +20,7 @@ class appetizers extends View
   {
     $title = $this->model->title;
     $subtitle = $this->model->subtitle;
+	$mdaction = URLROOT . 'users/MealsDetails';
     // $user_id = $_SESSION['user_id'];
     // $user_name = $_SESSION['user_name'];
 
@@ -34,7 +35,7 @@ class appetizers extends View
 			<div class="info">
 				<h4>Kobeba Soiree</h4>
 			</div>
-			<button class="btn btn-primary" onclick="window.location.href='MealsDetails.php';">View More</button>
+			<button class="btn btn-primary" onclick="window.location.href='$mdaction';">View More</button>
 		</div>
 	</div>
 </section>

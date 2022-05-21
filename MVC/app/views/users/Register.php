@@ -41,7 +41,7 @@ class Register extends view
     $text = <<<EOT
     <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
     <h1 class='display-6 text-center'>Create An Account</h1>
-<form action="Register.php" method="post" onsubmit="validate(this,event)">
+<form action="$action" method="post" onsubmit="validate(this,event)">
 <div class="input-group mt-4 mb-3">
     <span class="input-group-text"><i class="fas fa-user"></i></span>
     <input type="text" class="form-control" placeholder="Insert your username" name="Username">

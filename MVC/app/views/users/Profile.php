@@ -26,6 +26,7 @@ class Profile extends View
   {
   	$title = $this->model->title;
     $subtitle = $this->model->subtitle;
+	$edaction = URLROOT . 'users/editProfile';
     // $user_id = $_SESSION['user_id'];
     // $user_name = $_SESSION['user_name'];
 
@@ -35,7 +36,7 @@ class Profile extends View
 	<div class="imgContainer m-auto col-4">
 		
 		<div class="editIcon">
-			<a href="editProfile.php">
+			<a href="$edaction">
 				<i class="fas fa-pen"></i>
 			</a>
 		</div>

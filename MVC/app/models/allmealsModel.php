@@ -5,11 +5,11 @@ class AllMealsModel extends UserModel
 {
     public  $title = 'All Meals Page';
 
-    public function AllMeals()
+    public function MealsCatgories()
     {
-        $this->dbh->query('SELECT * from person WHERE ID_Person=:ID_Person');
-        $this->dbh->bind(':ID_Person', $this->idperson);
-         
+        $this->dbh->query('SELECT * from meals_category WHERE ID_Category=:ID_Category');
+        $this->dbh->bind(':ID_Category', $this->idcategory);
+        
         $record = $this->dbh->resultSet();
 
         return $record;

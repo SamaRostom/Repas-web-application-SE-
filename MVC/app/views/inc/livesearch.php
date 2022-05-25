@@ -33,9 +33,17 @@ if(isset($_POST["term"])){
 
     $result=mysqli_query($dbh,"SELECT * FROM Meals Where Meal_Name LIKE '%".$_POST["term"]."%'");
     //fe fetch array     
+    while($row=mysqli_fetch_array($result)){
+        ?>
+        <div class='bg-light user mb-3 rounded p-3'>
+     <!-- <img src = "images/=$row['Profile_Picture']?>" class="img-circle" width = "40"/> -->
+<?=$row['Meal_Name']?>
+<a class='msg fs-5' href="<?php echo URLROOT . 'users/allmeals'; ?>">Meal<i class="fas fa-comment"></i></a>
+</div>
+        <?php
+    }
 
-
-    // $record = $this->dbh->single();
+ /*   // $record = $this->dbh->single();
     if($stmt = mysqli_prepare($dbh, $result)){
         
         // Attempt to execute the prepared statement
@@ -67,9 +75,9 @@ if(isset($_POST["term"])){
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
         }
     
-    }
+    }*/
     // Close statement
-    mysqli_stmt_close($stmt);
+  //  mysqli_stmt_close($stmt);
 }
 
 ?>

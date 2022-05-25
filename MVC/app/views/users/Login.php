@@ -94,8 +94,14 @@ EOT;
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fas fa-lock"></i></span>
         <input type="password" class="form-control" placeholder="Insert your password" name="password">
+        
+     
         <div class='showBtn' onclick="ShowPassword()"><i class='far fa-eye'></i></div>
     </div>
+    <div style="display:none;" id='7aga' class="alert alert-warning">
+    This alert will automatically 
+    close in 2 seconds.
+</div>
 EOT;
     echo $text;    
   }
@@ -140,7 +146,7 @@ EOT;
         }, 5000);
     </script>
 EOT;
-      echo $text;
+      //echo $text;
   }
 
 }

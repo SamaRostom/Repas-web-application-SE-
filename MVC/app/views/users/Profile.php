@@ -25,8 +25,13 @@ class Profile extends View
   public function output()
   {
   	$title = $this->model->title;
-    $subtitle = $this->model->subtitle;
+    // $subtitle = $this->model->subtitle;
 	$edaction = URLROOT . 'users/editProfile';
+	$usn = $this->model->ViewProfile();
+	$username = $usn->address;
+		
+    // $username = $this->getModel()->username;
+
     // $user_id = $_SESSION['user_id'];
     // $user_name = $_SESSION['user_name'];
 
@@ -43,7 +48,8 @@ class Profile extends View
 	</div>
 
 	<div class="userDetails col-10 col-lg-6 m-auto offset-lg-1">
-	<i class="fas fa-user"></i>"Username"<br><hr>
+
+	<i class="fas fa-user"></i><?php echo $username;?><br><hr>
 	<i class="fas fa-map-marker-alt"></i>"Address"<br><hr>
 	<i class="fas fa-phone-alt"></i>"Phone_Number"-<br> "Backup_Number"<br><hr>
 	    

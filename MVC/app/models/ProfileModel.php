@@ -1,8 +1,26 @@
 <?php
-class ProfileModel extends model
+require_once 'UserModel.php';
+class ProfileModel extends UserModel
 {
-    public $title = 'Repas ' . APP_VERSION;
-    public $subtitle = 'Example of MVC PHP framework for SE305';
+    public  $title = 'Profile Page';
+
+    public function ViewProfile()
+    {
+        $this->dbh->query('SELECT * from person WHERE ID_Person=:ID_Person');
+        $this->dbh->bind(':ID_Person', $this->idperson);
+         
+        $record = $this->dbh->resultSet();
+
+
+    //     while($row=$this->dbh->resultSet()){
+        
+    //     $this->address=$row['Address'];
+    //     $this->phonenum=$row['Phone_Number'];
+    //     $this->backupnum=$row['Backup_Number'];
+    // }
+
+        return $record;
+    }
 }
 
 

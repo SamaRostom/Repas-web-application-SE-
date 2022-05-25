@@ -73,7 +73,16 @@ class Users extends Controller
             }
 
             if (empty($userModel->getPassword())) {
-                $userModel->setPasswordErr('Please enter a password');
+                $userModel->setPasswordErr("
+                <script type='text/javascript'>
+               var x= document.getElementById('7aga');
+            //   x.style.display='block';
+                setTimeout(function () {
+          
+                    // Closing the alert
+                    $('.alert').alert('close');
+                }, 5000);
+            </script>");
             } elseif (strlen($userModel->getPassword()) < 4) {
                 $userModel->setPasswordErr('Password must contain at least 4 characters');
             }
@@ -100,8 +109,9 @@ class Users extends Controller
             }
             else{
                 //echo $userModel->getUsernameErr() . $userModel->getPasswordErr();
-                $v = $userModel->getUsernameErr() . $userModel->getPasswordErr();
-                echo "<script>alert('$v');</script>";
+                echo $userModel->getUsernameErr() . $userModel->getPasswordErr();
+                //call static function
+                // echo "<script>alert('$v');</script>";
             }
         }
         // Load form

@@ -10,27 +10,28 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?php echo URLROOT . 'public'; ?>">Home</a>
+        <li class="nav-item" style="position:relative; left:30px; font-size:20px">
+          <a class="nav-link active"  style="color:blue;" href="<?php echo URLROOT . 'public'; ?>"><i class="fas fa-home" style="color:blue;"></i> Home </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT . 'users/allmeals'; ?>">Shop</a>
+        <li class="nav-item"  style="font-size:20px; position:relative; left:35px;">
+          <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/allmeals'; ?>"><i class="fa fa-shopping-bag" style="color:blue;"></i> Shop </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo URLROOT . 'pages/about'; ?>">About Us</a>
+        <li class="nav-item " style="position:relative; left:40px;font-size:20px">
+          <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'pages/about'; ?>"><i class="fas fa-address-card" style="color:blue;"></i> About </a>
         </li>
-		<li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'pages/contact'; ?>">Contact Us</a>
+		<li class="nav-item" style="position:relative; left:45px;font-size:20px"><a class="nav-link" style="color:blue;" href="<?php echo URLROOT . 'pages/contact'; ?>"><i class="fas fa-phone" style="color:blue;"></i> Contact</a>
          </li>
-         <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/login'; ?>">Login</a>
+         <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/login'; ?>">Login</a>
          </li>
-         <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/register'; ?>">SignUp</a>
+         <li class="nav-item" style="position:relative; left:770px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/register'; ?>">SignUp</a>
          </li>
-         <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/cart'; ?>">Cart</a>
+         <li class="nav-item" style="position:relative; left:80px;font-size:20px;">   <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/cart'; ?>"><i class="fas fa-shopping-cart "style="color:blue;"></i></a>
          </li>
-         <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/profile'; ?>">Profile</a>
+         <li class="nav-item" style="position:relative; left:90px; font-size:20px" > <a class="nav-link" style="color:blue;" href="<?php echo URLROOT . 'users/profile'; ?>"><i class="fas fa-user-alt"style="color:blue;"></i></a>
+         
          </li>
-         <li class="nav-item">  <a class="nav-link" href="<?php echo URLROOT . 'users/logout'; ?>">Logout</a>
-         </li>
+         <!-- <li class="nav-item" style="font-size:26px" aria-hidden="true">  <a class="fa fa-sign-out" href="<?php echo URLROOT . 'users/logout'; ?>"></a>
+         </li> -->
             <?php if (isset($_SESSION['user_id'])) {
               echo $_SESSION['user_name'];
             } 
@@ -41,7 +42,7 @@
              
              <?php endif; ?>
           
-        
+      
 
       </ul>
       <!-- <form class="d-flex">

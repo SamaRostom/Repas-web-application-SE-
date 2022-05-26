@@ -20,8 +20,8 @@ class allmeals extends View
   public function output()
   {
     $title = $this->model->title;
-    $subtitle = $this->model->subtitle;
-	$apaction = URLROOT . 'users/appetizers';
+    // $subtitle = $this->model->subtitle;
+	$mealaction = URLROOT . 'users/appetizers';
     // $user_id = $_SESSION['user_id'];
     // $user_name = $_SESSION['user_name'];
 
@@ -35,7 +35,7 @@ class allmeals extends View
 				<img src="../../public/images/appetizers.jpeg" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
-				<a href="$apaction">Appetizers</a>
+				<a href="$mealaction"><?php echo $catname ?></a>
 			</div>
 		</div>
 	</div>

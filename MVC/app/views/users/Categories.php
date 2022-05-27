@@ -120,7 +120,10 @@ foreach($Ent as $x){
 				<?php echo $x->ID_Category ?>
 			</div>
 			<div class="info">
-				<a href="<?php echo $mealaction; ?>"><?php echo $x->Category_Name ?></a>
+				<!-- <a href="<?php echo $mealaction; ?>"><?php echo $x->Category_Name ?></a> -->
+				<form method="POST" action="<?php echo $mealaction; ?>?id=<?php echo $x->ID_Category ?>">
+					<input type="submit" name="catgname" placeholder="<?php echo $x->Category_Name ?>">
+				</form>
 			</div>
 		</div>
 	</div>

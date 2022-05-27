@@ -108,17 +108,36 @@ EOT;
   {
 	  require APPROOT . '/views/inc/header.php';
     $Ent=$this->model->MealsCatgories();
-	$str="<table class='table' width=100%>
-			<tr>
-				<th>ID</th>
-				<th>Name</th>
-			</tr>";
-			foreach($Ent as $x)
-				$str.="<tr><td>".$x->ID_Category."</td><td>".$x->Category_Name."</td></tr>";
-		//var_dump($Ent[0]->Name);	
-$str.="</table>";
-    echo $str;
-    require APPROOT . '/views/inc/footer.php';
+
+
+foreach($Ent as $x){
+	?>
+<div class="column">
+<div class="card">
+			<div class="image6">
+				<!-- <img src="../../public/images/catering.jpg" width=100% height=100% class="card-img-top"> -->
+				<?php echo $x->ID_Category ?>
+			</div>
+			<div class="info">
+				<a href="appetizers.php"><?php echo $x->Category_Name ?></a>
+			</div>
+		</div>
+	</div>
+
+<?php
+}
+// 	$str="<table class='table' width=100%>
+// 			<tr>
+// 				<th>ID</th>
+// 				<th>Name</th>
+// 			</tr>";
+
+// 			foreach($Ent as $x)
+// 				$str.="<tr><td>".$x->ID_Category."</td><td>".$x->Category_Name."</td></tr>";
+// 		//var_dump($Ent[0]->Name);	
+// $str.="</table>";
+//     echo $str;
+    // require APPROOT . '/views/inc/footer.php';
   }
 }
 ?>

@@ -16,7 +16,7 @@
 <?php
 class Meals extends View
 {
-  public function output()
+  public function o()
   {
     $title = $this->model->title;
     $subtitle = $this->model->subtitle;
@@ -43,6 +43,49 @@ EOT;
     echo $text;
     require APPROOT . '/views/inc/footer.php';
   }
+
+
+  public function output()
+  {
+	  require APPROOT . '/views/inc/header.php';
+	  $mealdetailsaction = URLROOT . 'users/MealsDetails';
+    $Ent=$this->model->Meals();
+
+
+foreach($Ent as $x){
+	?>
+<div class="column">
+<div class="card">
+			<div class="image6">
+				<img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top">
+				<?php echo $x->Meal_ID ?>
+			</div>
+			<div class="info">
+				<!-- <a href="<?php echo $mealaction; ?>"><?php echo $x->Category_Name ?></a> -->
+				<form method="POST" action="<?php echo $mealdetailsaction; ?>?id=<?php echo $x->Meal_ID ?>">
+					<input type="submit" name="mealname" placeholder="<?php echo $x->Meal_Name ?>">
+				</form>
+			</div>
+		</div>
+	</div>
+
+<?php
+}
+// 	$str="<table class='table' width=100%>
+// 			<tr>
+// 				<th>ID</th>
+// 				<th>Name</th>
+// 			</tr>";
+
+// 			foreach($Ent as $x)
+// 				$str.="<tr><td>".$x->ID_Category."</td><td>".$x->Category_Name."</td></tr>";
+// 		//var_dump($Ent[0]->Name);	
+// $str.="</table>";
+//     echo $str;
+    // require APPROOT . '/views/inc/footer.php';
+  }
+
+
 }
 ?>
 

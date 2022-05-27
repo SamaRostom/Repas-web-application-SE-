@@ -13,7 +13,7 @@ class Users extends Controller
             $registerModel->setBackup_Number(trim($_POST['Backup_Number']));
             //validation
             if (empty($registerModel->getUsername())) {
-                $registerModel->setNameErr('Please enter a name');
+                $registerModel->setUsernameErr('Please enter a name');
             }
             if (empty($registerModel->getPassword())) {
                 $registerModel->setPasswordErr('Please enter a password');
@@ -40,13 +40,20 @@ class Users extends Controller
                 //Hash Password
                 $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
 
-                if ($registerModel->signup()) {
+                $rr = $registerModel->signup();
+                if ($rr) {
                     //header('location: ' . URLROOT . 'users/login');
                     flash('register_success', 'You have registered successfully');
                     redirect('users/login');
                 } else {
                     die('Error in sign up');
                 }
+            }
+            else{
+                //echo $userModel->getUsernameErr() . $userModel->getPasswordErr();
+                echo $registerModel->getUsernameErr() . $registerModel->getPasswordErr() . $registerModel->getAddressErr() . $registerModel->getPhone_NumberErr() . $registerModel->getBackup_NumberErr();
+                //call static function
+                // echo "<script>alert('$v');</script>";
             }
         }
         // Load form

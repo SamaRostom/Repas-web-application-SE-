@@ -61,8 +61,8 @@ class Register extends view
 
 <p class='mt-3 mb-2'>Insert your contact info:</p> 
 
-<input type="number" class="form-control d-sm-inline mb-3" placeholder="Personal number" name="Phone Number"> 
-<input type="number" class="form-control d-sm-inline mb-3" placeholder="Backup number" name="Backup Number"> 
+<input type="number" class="form-control d-sm-inline mb-3" placeholder="Personal number" name="Phone_Number"> 
+<input type="number" class="form-control d-sm-inline mb-3" placeholder="Backup number" name="Backup_Number"> 
 
 
 <div class='mt-4 text-center'>

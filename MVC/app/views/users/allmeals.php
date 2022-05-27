@@ -17,7 +17,7 @@
 <?php
 class allmeals extends View
 {
-  public function output()
+  public function o()
   {
     $title = $this->model->title;
     // $subtitle = $this->model->subtitle;
@@ -101,6 +101,23 @@ class allmeals extends View
 </section>
 EOT;
     echo $text;
+    require APPROOT . '/views/inc/footer.php';
+  }
+
+  public function output()
+  {
+	  require APPROOT . '/views/inc/header.php';
+    $Ent=$this->model->MealsCatgories();
+	$str="<table class='table' width=100%>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+			</tr>";
+			foreach($Ent as $x)
+				$str.="<tr><td>".$x->ID_Category."</td><td>".$x->Category_Name."</td></tr>";
+		//var_dump($Ent[0]->Name);	
+$str.="</table>";
+    echo $str;
     require APPROOT . '/views/inc/footer.php';
   }
 }

@@ -18,10 +18,11 @@ class MealsDetails extends View
 {
   public function output()
   {
+    $productid=2;
     $title = $this->model->title;
-    $subtitle = $this->model->subtitle;
     // $user_id = $_SESSION['user_id'];
     // $user_name = $_SESSION['user_name'];
+    $mdurl = URLROOT . 'users/MealsDetails';
 
     require APPROOT . '/views/inc/header.php';
     $text = <<<EOT
@@ -36,11 +37,13 @@ class MealsDetails extends View
     <p>
       10 pieces for 65 L.E.
     </p>
-
+    
     <div class="quantity buttons_added">
+    <form method="post" action="$mdurl?action=add&id=<?php echo $productid; ?>">
     <input type="number" step="1" min="1" max="" value="1" id="quantity" name="quantity">
     <br><br>
     <input type="submit" name="add" id="addtocartbtn" class="btn btn-warning" value="Add to Cart">
+    </form>
     </div>
   </div>
 </div>

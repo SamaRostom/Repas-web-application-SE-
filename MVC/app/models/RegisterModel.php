@@ -141,6 +141,7 @@ class RegisterModel extends UserModel
         $this->dbh->bind(':Phone_Number', $this->Phone_Number);
         $this->dbh->bind(':Backup_Number', $this->Backup_Number);
 
-        return $this->dbh->execute();
+        // return $this->dbh->execute();
+        return $this->dbh->single();
     }
 }

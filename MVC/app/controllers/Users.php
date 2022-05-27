@@ -170,11 +170,11 @@ class Users extends Controller
         $view->output();
     }
 
-    public function allmeals()
+    public function Categories()
     {
-        $viewPath = VIEWS_PATH . 'users/allmeals.php';
+        $viewPath = VIEWS_PATH . 'users/Categories.php';
         require_once $viewPath;
-        $allmealsView = new allmeals($this->getModel(), $this);
+        $allmealsView = new Categories($this->getModel(), $this);
         $allmealsView->output();
     }
 

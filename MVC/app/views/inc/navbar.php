@@ -14,7 +14,7 @@
           <a class="nav-link active"  style="color:blue;" href="<?php echo URLROOT . 'public'; ?>"><i class="fas fa-home" style="color:blue;"></i> Home </a>
         </li>
         <li class="nav-item"  style="font-size:20px; position:relative; left:35px;">
-          <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/allmeals'; ?>"><i class="fa fa-shopping-bag" style="color:blue;"></i> Shop </a>
+          <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/Categories'; ?>"><i class="fa fa-shopping-bag" style="color:blue;"></i> Shop </a>
         </li>
         <li class="nav-item " style="position:relative; left:40px;font-size:20px">
           <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'pages/about'; ?>"><i class="fas fa-address-card" style="color:blue;"></i> About </a>

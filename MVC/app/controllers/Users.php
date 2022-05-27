@@ -174,8 +174,8 @@ class Users extends Controller
     {
         $viewPath = VIEWS_PATH . 'users/Categories.php';
         require_once $viewPath;
-        $allmealsView = new Categories($this->getModel(), $this);
-        $allmealsView->output();
+        $CategoriesView = new Categories($this->getModel(), $this);
+        $CategoriesView->output();
     }
 
     public function MealsDetails()
@@ -199,12 +199,12 @@ class Users extends Controller
 
     }
 
-    public function appetizers()
+    public function Meals()
     {
-        $viewPath = VIEWS_PATH . 'users/appetizers.php';
+        $viewPath = VIEWS_PATH . 'users/Meals.php';
         require_once $viewPath;
-        $appetizersView = new appetizers($this->getModel(), $this);
-        $appetizersView->output();
+        $MealsView = new Meals($this->getModel(), $this);
+        $MealsView->output();
     }
 
     public function Profile()

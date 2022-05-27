@@ -1,6 +1,27 @@
 <?php
-class MealsDetailsModel extends model
+require_once 'UserModel.php';
+class MealsDetailsModel extends UserModel
 {
-    public $title = 'Repas ' . APP_VERSION;
-    public $subtitle = 'Example of MVC PHP framework for SE305';
+    public  $title = 'MealsDetails Page';
+
+    public function MealsDetails()
+    {
+        $this->dbh->query('SELECT * from person WHERE Username = :Username AND Password = :Password');
+        $this->dbh->bind(':Username', $this->username);
+        $this->dbh->bind(':Password', $this->password);
+         
+        $record = $this->dbh->single();
+        // $hash_pass = $record->password;
+
+        // if (password_verify($this->password,  $hash_pass)) {
+        //     return $record;
+        // } else {
+        //     return false;
+        // }
+        return $record;
+
+        // $sql="SELECT * FROM person WHERE Email='".$_POST['Email']."' AND Password='".$_POST['Password']."'";
+	    // $result = mysqli_query($conn, $sql);
+	    // $row = mysqli_fetch_array($result); 
+    }
 }

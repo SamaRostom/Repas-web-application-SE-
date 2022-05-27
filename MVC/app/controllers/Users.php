@@ -173,10 +173,23 @@ class Users extends Controller
 
     public function MealsDetails()
     {
+        // $viewPath = VIEWS_PATH . 'users/MealsDetails.php';
+        // require_once $viewPath;
+        // $MealsDetailsView = new MealsDetails($this->getModel(), $this);
+        // $MealsDetailsView->output();
+
+        $userModel = $this->getModel();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //process form
+            $userModel->setUsername(trim($_POST['Username']));
+            $userModel->setPassword(trim($_POST['password']));  
+        }
         $viewPath = VIEWS_PATH . 'users/MealsDetails.php';
         require_once $viewPath;
-        $MealsDetailsView = new MealsDetails($this->getModel(), $this);
+        $MealsDetailsView = new MealsDetails($userModel, $this);
         $MealsDetailsView->output();
+
     }
 
     public function appetizers()

@@ -107,7 +107,7 @@ EOT;
   public function output()
   {
 	  require APPROOT . '/views/inc/header.php';
-	  $mealaction = URLROOT . 'users/appetizers';
+	  $mealaction = URLROOT . 'users/Meals';
     $Ent=$this->model->MealsCatgories();
 
 

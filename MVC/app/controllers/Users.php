@@ -172,6 +172,13 @@ class Users extends Controller
 
     public function Categories()
     {
+        $CatModel = $this->getModel();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //process form
+            $CatModel->setID_Category(trim($_GET['id']));  
+        }
+
         $viewPath = VIEWS_PATH . 'users/Categories.php';
         require_once $viewPath;
         $CategoriesView = new Categories($this->getModel(), $this);

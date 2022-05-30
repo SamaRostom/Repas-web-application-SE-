@@ -38,7 +38,7 @@ class Users extends Controller
                 empty($registerModel->getBackup_NumberErr())
             ) {
                 //Hash Password
-                $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
+                // $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
 
                 $rr = $registerModel->signup();
                 if ($rr) {

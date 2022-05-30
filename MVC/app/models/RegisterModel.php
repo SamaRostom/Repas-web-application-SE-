@@ -134,14 +134,16 @@ class RegisterModel extends UserModel
 
     public function signup()
     {
-        $this->dbh->query("INSERT INTO person (`Username`, `Password`, `Address`, `Phone_Number`, `Backup_Number`) VALUES(':Username', ':Password', ':Address', ':Phone_Number', ':Backup_Number')");
+        $userType = 2;
+        $this->dbh->query("INSERT INTO `person`(`Username`, `Password`, `ID_Type`, `Address`, `Phone_Number`, `Backup_Number`) VALUES(:Username, :Password, :ID_Type, :Address, :Phone_Number, :Backup_Number)");
         $this->dbh->bind(':Username', $this->Username);
         $this->dbh->bind(':Password', $this->Password);
+        $this->dbh->bind(':ID_Type', $userType);
         $this->dbh->bind(':Address', $this->Address);
         $this->dbh->bind(':Phone_Number', $this->Phone_Number);
         $this->dbh->bind(':Backup_Number', $this->Backup_Number);
 
-        // return $this->dbh->execute();
-        return $this->dbh->single();
+        return $this->dbh->execute();
+        // return $this->dbh->single();
     }
 }

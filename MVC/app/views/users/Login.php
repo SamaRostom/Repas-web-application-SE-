@@ -41,6 +41,7 @@ class Login extends view
     $action = URLROOT . 'users/login';
     $registerUrl = URLROOT . 'users/register';
     $home=URLROOT;
+    // $Ent=$this->model->ID_Type();
 
     $text = <<<EOT
     <div class="col-md-6 py-5 mx-auto">

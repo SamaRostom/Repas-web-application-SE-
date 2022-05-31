@@ -170,6 +170,21 @@ class Users extends Controller
 
     public function cart()
     {
+        if (isset($_GET["action"]))
+        {
+            if ($_GET["action"] == "delete")
+            {
+                foreach ($_SESSION["cart"] as $keys => $value)
+                {
+                    if ($value["Meal_ID"] == $_GET["id"])
+                    {
+                        unset($_SESSION["cart"][$keys]);
+                        echo '<script>alert("Trip has been Removed...!")</script>';
+                    }
+                }
+            }
+        }
+
 		$viewPath = VIEWS_PATH . 'users/Cart.php';
         require_once $viewPath;
         $cartModel = $this->getModel();
@@ -181,11 +196,11 @@ class Users extends Controller
     {
         $CatModel = $this->getModel();
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //process form
-            $CatModel->setID_Category(trim($_GET['id'])); 
+        // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //     //process form
+        //     $CatModel->setID_Category(trim($_GET['id'])); 
            
-        }
+        // }
 
         $viewPath = VIEWS_PATH . 'users/Categories.php';
         require_once $viewPath;
@@ -201,12 +216,36 @@ class Users extends Controller
         // $MealsDetailsView->output();
 
         $userModel = $this->getModel();
+        //$_SESSION['Category_ID']=$_GET['id'];
+        $userModel->setMeal_ID($_GET['id']);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //process form
-            $userModel->setUsername(trim($_POST['Username']));
-            $userModel->setPassword(trim($_POST['password']));  
+            if (isset($_SESSION["cart"])){
+                $item_array_id = array_column($_SESSION["cart"],"Meal_ID");
+                if (!in_array($userModel->getMeal_ID(),$item_array_id)){
+                    $count = count($_SESSION["cart"]);
+                    $item_array = array(
+                        'Meal_ID' => $userModel->getMeal_ID(),
+                        'Meal_Name' => $userModel->getMeal_Name(),
+                        'Meal_Price' => $userModel->getMeal_Price(),
+                    );
+                    $_SESSION["cart"][$count] = $item_array;
+                }else{
+                    // echo $_SESSION["cart"];
+                    echo '<script>alert("Meal is already Added to Cart")</script>';
+                }
+            }else{
+                $item_array = array(
+                  'Meal_ID' => $userModel->getMeal_ID(),
+                  'Meal_Name' => $userModel->getMeal_Name(),
+                  'Meal_Price' => $userModel->getMeal_Price(),
+                );
+                $_SESSION["cart"][0] = $item_array;
+            }
+           
         }
+
         $viewPath = VIEWS_PATH . 'users/MealsDetails.php';
         require_once $viewPath;
         $MealsDetailsView = new MealsDetails($userModel, $this);
@@ -216,11 +255,15 @@ class Users extends Controller
 
     public function Meals()
     {
+        $userModel = $this->getModel();
+        //$_SESSION['Category_ID']=$_GET['id'];
+        $userModel->setID_Category($_GET['ids']);
         $viewPath = VIEWS_PATH . 'users/Meals.php';
         require_once $viewPath;
         $MealsView = new Meals($this->getModel(), $this);
         $MealsView->output();
-        echo $_GET['id']; 
+        
+        // echo $_GET['id']; 
     }
 
     public function Profile()

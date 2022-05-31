@@ -100,7 +100,7 @@ class Categories extends View
 </div>
 </section>
 EOT;
-    echo $text;
+    //echo $text;
     require APPROOT . '/views/inc/footer.php';
   }
 

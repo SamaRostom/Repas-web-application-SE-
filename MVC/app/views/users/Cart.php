@@ -17,10 +17,11 @@ class Cart extends view
   {
     $title = $this->model->title;
     $checkout = URLROOT . 'users/checkout';
-
+    $carlurl = URLROOT . 'users/cart';
     require APPROOT . '/views/inc/header.php';
     flash('register_success');
-    $text = <<<EOT
+    // $text = <<<EOT
+    ?>
     <br>
     <div style="clear: both"></div>
         <div class="table-responsive">
@@ -32,18 +33,46 @@ class Cart extends view
                 <th width="25%">Quantity</th>
                 <th width="25%">Remove Meal</th>
             </tr>
+            <?php
 
+            if(!empty($_SESSION["cart"])){
+                $total = 0;
+                foreach ($_SESSION["cart"] as $key => $value) {
+                    
+                    ?>
+                    <tr>
+                        <td><?php echo $value["Meal_ID"]; ?></td>
+                        <td><?php echo $value["Meal_Name"]; ?></td>
+                        <td><?php echo $value["Meal_Price"]; ?> L.E </td>
+                        <td><?php echo $value["Meal_Price"]; ?> L.E </td>
+                        <td><a class="text-decoration-none" href="<?php echo $carlurl; ?>?action=delete&id=<?php echo $value["Meal_ID"]; ?>"><span
+                                    class="text-danger">Remove Trip</span></a></td>
+
+                    </tr>     
+
+                    <?php
+                    $total = $total +  intval($value["Meal_Price"]);
+                    // $_SESSION['Total_Price']=$total;
+                }
+                
+                $_SESSION['Total_Price']=$total;
+                ?>
             <tr>
             <td colspan="3" align="right"><b>Total</b></td>
                 <th width="15%" align="left"><?php echo number_format(100, 2); ?> L.E </th>
-                <th width="15%"><a href="$checkout"> <input type="button" class="btn btn-dark" name="submit" value="Checkout"></th>
+                <th width="15%"><a href="<?php echo $checkout; ?>"> <input type="button" class="btn btn-dark" name="submit" value="Checkout"></th>
             </tr>
+            <?php
 
+          }
+
+          ?>
             </table>
         </div>
     </div>
-EOT;
-    echo $text;
+    <?php
+// EOT;
+//     echo $text;
     // $this->printForm();
     // require APPROOT . '/views/inc/footer.php';
   }

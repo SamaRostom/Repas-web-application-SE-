@@ -47,20 +47,13 @@
          <?php endif; ?>
 
 
-        <?php if($_SESSION['ID_Type']==1) : ?>
-          <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/logout'; ?>">Admin</a>
-         </li>
-         <?php endif; ?>
-         
-         
-
-        
-         
-          
-            
-
-
-         
+        <?php 
+        if(isset($_SESSION['ID_Type'])) {
+          if($_SESSION['ID_Type']==1) : ?>
+            <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/logout'; ?>">Admin</a>
+          </li>
+          <?php endif;} ?>
+    
 
          <?php if (!isset($_SESSION['ID_Person'])) : ?>
          <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/login'; ?>">Login</a>

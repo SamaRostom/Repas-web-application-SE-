@@ -34,8 +34,66 @@ class Cart extends view
             </tr>
 
             <tr>
-                <td colspan="3" align="right"><b>Total</b></td>
+            <td colspan="3" align="right"><b>Total</b></td>
                 <th width="15%" align="left"><?php echo number_format(100, 2); ?> L.E </th>
+                <th width="15%"><a href="$checkout"> <input type="button" class="btn btn-dark" name="submit" value="Checkout"></th>
+            </tr>
+
+            </table>
+        </div>
+    </div>
+EOT;
+    echo $text;
+    // $this->printForm();
+    // require APPROOT . '/views/inc/footer.php';
+  }
+  public function o()
+  {
+    $title = $this->model->title;
+    $checkout = URLROOT . 'users/checkout';
+    $carturl = URLROOT . 'users/Cart';
+    // $Ent=$this->model->MealsCatgories();
+
+    require APPROOT . '/views/inc/header.php';
+    flash('register_success');
+    $text = <<<EOT
+    <br>
+    <div style="clear: both"></div>
+        <div class="table-responsive">
+        <?php   
+          if(count($cart->productsQuantity)>0){
+              $item_total = 0;
+        ?>
+            <table class="table table-hover table-striped table-bordered">
+            <tr>
+                <th width="10%">Meal Code</th>
+                <th width="25%">Meal Name</th>
+                <th width="25%">Meal Price</th>
+                <th width="25%">Quantity</th>
+                <th width="25%">Remove Meal</th>
+            </tr>
+              <?php	
+              foreach ($cart->productsQuantity as $productID => $quantity){  
+                $product=new Product($productID);						
+                ?>
+                <tr>
+                  <td><strong><?php echo $product->name; ?></strong></td>
+                  <td><?php echo $quantity; ?></td>
+                  <td><?php echo "$".$product->price; ?></td>
+                  <td>
+                    <form method="post" action="$carturl?action=remove&id=<?php echo $product->id; ?>">
+                      <input type="submit" value="Remove Item" class="btnAddAction" />
+                      <input type='hidden' name='cart' value='<?php echo (json_encode($cart->productsQuantity)); ?>' />
+                    </form>
+                  </td>
+                </tr>
+                <?php
+                $item_total += ($product->price*$quantity);
+              }
+              ?>
+            <tr>
+                <td colspan="3" align="right"><b>Total</b></td>
+                <th width="15%" align="left"><?php echo number_format($item_total, 2); ?> L.E </th>
                 <th width="15%"><a href="$checkout"> <input type="button" class="btn btn-dark" name="submit" value="Checkout"></th>
             </tr>
 

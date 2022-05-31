@@ -183,7 +183,8 @@ class Users extends Controller
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //process form
-            $CatModel->setID_Category(trim($_GET['id']));  
+            $CatModel->setID_Category(trim($_GET['id'])); 
+           
         }
 
         $viewPath = VIEWS_PATH . 'users/Categories.php';
@@ -219,6 +220,7 @@ class Users extends Controller
         require_once $viewPath;
         $MealsView = new Meals($this->getModel(), $this);
         $MealsView->output();
+        echo $_GET['id']; 
     }
 
     public function Profile()

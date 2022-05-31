@@ -72,4 +72,9 @@ class CartModel extends UserModel
         $this->dbh->bind(':Order_ID', $this->Order_ID);
         //set model from the output of the query
     }
+    public function getAll(){
+        $this->dbh->query("SELECT * FROM `order_details` WHERE Order_ID = :Order_ID ");
+        $this->dbh->bind(':Order_ID', $this->Order_ID);
+        //set model from the output of the query
+    }
 }

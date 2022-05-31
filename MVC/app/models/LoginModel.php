@@ -13,7 +13,13 @@ class LoginModel extends UserModel
          
         $record = $this->dbh->resultSet();
         // echo $record;
-
+        foreach($record as $x){
+            $_SESSION["ID_Type"]=$x->ID_Type;
+            $_SESSION["Password"]=$x->Password;
+            $_SESSION["Address"]=$x->Address;
+            $_SESSION["Phone_Number"]=$x->Phone_Number;
+            $_SESSION["Backup_Number"]=$x->Backup_Number;        
+        }
 
         // $this->ID_Type = $record[3];
         // echo $this->ID_Type;
@@ -24,6 +30,7 @@ class LoginModel extends UserModel
         // } else {
         //     return false;
         // }
+        
         return $record;
 
         // $sql="SELECT * FROM person WHERE Email='".$_POST['Email']."' AND Password='".$_POST['Password']."'";

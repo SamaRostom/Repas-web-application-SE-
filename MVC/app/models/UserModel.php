@@ -1,9 +1,10 @@
 <?php
 class UserModel extends model
 {
-    protected $username;
+    public $username;
     protected $password;
-
+    public $ID_Type;
+    public $ID_Person;
     protected $usernameErr;
     protected $passwordErr;
 
@@ -12,7 +13,8 @@ class UserModel extends model
         parent::__construct();
         $this->username    = '';
         $this->password = '';
-
+        $this->ID_Type = '';
+        $this->ID_Person = '';
         $this->usernameErr    = '';
         $this->passwordErr = '';
     }
@@ -33,6 +35,23 @@ class UserModel extends model
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    public function getID_Type()
+    {
+        return $this->ID_Type;
+    }
+    public function setID_Type($ID_Type)
+    {
+        $this->ID_Type = $ID_Type;
+    }
+    public function getID_Person()
+    {
+        return $this->ID_Person;
+    }
+    public function setID_Person($ID_Person)
+    {
+        $this->ID_Person = $ID_Person;
     }
 
     public function getUsernameErr()
@@ -76,4 +95,17 @@ class UserModel extends model
     //     // $userRecord = $this->dbh->single();
     //     return $this->dbh->resultSet();
     // }
+
+    public function ID_Type(){
+        
+        $this->dbh->query('SELECT ID_Type FROM `person` WHERE Username = :Username AND Password = :Password');
+        $this->dbh->bind(':Username', $this->username);
+        $this->dbh->bind(':Password', $this->password);
+
+        // $record = $this->dbh->resultSet();
+        // $this->ID_Type= $record["ID_Type"];
+        // echo $this->ID_Type;
+        $record = $this->dbh->single();
+        return $record;
+    }
 }

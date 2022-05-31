@@ -101,15 +101,20 @@ class Users extends Controller
             ) {
                 //Check login is correct
                 $loggedUser = $userModel->login();
+                // echo "<script>alert('$loggedUser');</script>";
                 if ($loggedUser) {
-
+                    // $userModel->ID_Type();
+                    // $_SESSION['ID_Type'] = $userModel->getID_Type();
                     //create related session variables
-                    $this->createUserSession($loggedUser);
+                    $this->createUserSession($userModel);
+                    // if($_SESSION['ID_Type']=="1"){
+                    //     redirect('pages/about');
+                    // }
                     die('Success log in User');
                     // redirect('public/public');
                     flash('login_success', 'You have logged in successfully');
                     // redirect('users/Register');
-                    header('location: ' . URLROOT );
+                    header('location: ' . URLROOT.'users/Categories' );
                 } else {
                     $userModel->setPasswordErr('Password is not correct');
                 }
@@ -120,6 +125,7 @@ class Users extends Controller
                 //call static function
                 // echo "<script>alert('$v');</script>";
             }
+
         }
         // Load form
         //echo 'Load form, Request method: ' . $_SERVER['REQUEST_METHOD'];
@@ -138,10 +144,11 @@ class Users extends Controller
         $view->viewuser();
     }
 
-    public function createUserSession($user)
+    public function createUserSession($UserModel)
     {
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['user_name'] = $user->name;
+        $_SESSION['ID_Person'] = $UserModel->ID_Person;
+        $_SESSION['Username'] = $UserModel->username;
+        $_SESSION['ID_Type'] = $UserModel->ID_Type;
         header('location: ' . URLROOT . 'pages');
         // redirect('pages');
     }
@@ -149,8 +156,8 @@ class Users extends Controller
     public function logout()
     {
         echo 'logout called';
-        unset($_SESSION['user_id']);
-        unset($_SESSION['user_name']);
+        unset($_SESSION['ID_Person']);
+        unset($_SESSION['Username']);
         session_destroy();
         redirect('users/login');
     }

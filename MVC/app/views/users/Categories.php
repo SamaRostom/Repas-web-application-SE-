@@ -17,92 +17,19 @@
 <?php
 class Categories extends View
 {
-  public function o()
-  {
-    $title = $this->model->title;
-    // $subtitle = $this->model->subtitle;
-	$mealaction = URLROOT . 'users/appetizers';
-    // $user_id = $_SESSION['user_id'];
-    // $user_name = $_SESSION['user_name'];
+ //  public function o()
+ //  {
+ //    $title = $this->model->title;
+ //    // $subtitle = $this->model->subtitle;
+	// $mealaction = URLROOT . 'users/appetizers';
+ //    // $user_id = $_SESSION['user_id'];
+ //    // $user_name = $_SESSION['user_name'];
 
-    require APPROOT . '/views/inc/header.php';
-    $text = <<<EOT
-    <section class="cards">
-<div>
-	<div class="column">
-		<div class="card">
-			<div class="image1">
-				<img src="../../public/images/appetizers.jpeg" width=100% height=100% class="card-img-top">
-			</div>
-			<div class="info">
-				<a href="$mealaction"><?php echo $catname ?></a>
-			</div>
-		</div>
-	</div>
-
-	<div class="column">
-	<div class="card">
-		<div class="image2">
-			<img src="../../public/images/panne.jpg" width=100% class="card-img-top">
-		</div>
-		<div class="info">
-			<a href="appetizers.php">Meals Menu</a>
-		</div>
-	</div>
-</div>
-
-<div class="column">
-<div class="card">
-			<div class="image3">
-				<img src="../../public/images/bashamel2.jpg" width=100% height=100% class="card-img-top">
-			</div>
-			<div class="info">
-				<a href="appetizers.php">Cooked Menu</a>
-			</div>
-		</div>
-</div>
-
-<div class="column">
-<div class="card">
-			<div class="image4">
-				<img src="../../public/images/miniburger.jpg" width=100% height=100% class="card-img-top">
-			</div>
-			<div class="info">
-				<a href="appetizers.php">Finger Bites Menu</a>
-			</div>
-		</div>
-	</div>
-
-
-<div class="column">
-<div class="card">
-			<div class="image5">
-				<img src="../../public/images/BabaGanoush.jpg" width=100% height=100% class="card-img-top">
-			</div>
-			<div class="info">
-				<a href="appetizers.php">Salad & Soup Menu</a>
-			</div>
-		</div>
-	</div>
-
-
-<div class="column">
-<div class="card">
-			<div class="image6">
-				<img src="../../public/images/catering.jpg" width=100% height=100% class="card-img-top">
-			</div>
-			<div class="info">
-				<a href="appetizers.php">Customize Meals For Caterings</a>
-			</div>
-		</div>
-	</div>
-
-</div>
-</section>
-EOT;
-    //echo $text;
-    require APPROOT . '/views/inc/footer.php';
-  }
+ //    require APPROOT . '/views/inc/header.php';
+    
+ //    //echo $text;
+ //    require APPROOT . '/views/inc/footer.php';
+ //  }
 
   public function output()
   {
@@ -117,12 +44,14 @@ foreach($Ent as $x){
 <div class="card">
 			<div class="image6">
 				<img src="<?php echo IMGROOT . $x->Category_Image; ?>" width=100% height=100% class="card-img-top">
-				<?php echo $x->ID_Category ?>
+				<!-- <?php echo $x->ID_Category ?> -->
 			</div>
 			<div class="info">
 				<!-- <a href="<?php echo $mealaction; ?>"><?php echo $x->Category_Name ?></a> -->
 				<form method="POST" action="<?php echo $mealaction; ?>?ids=<?php echo $x->ID_Category ?>">
-					<input type="submit" name="catgname" placeholder="<?php echo $x->Category_Name ?>">
+					<!-- <input type="submit" name="catgname" value="<?php echo $x->Category_Name ?>"> -->
+					<!-- <?php echo $x->Category_Name ?> -->
+					<a href="<?php echo $mealaction; ?>?ids=<?php echo $x->ID_Category ?>"><?php echo $x->Category_Name ?></a>
 				</form>
 			</div>
 		</div>
@@ -130,18 +59,6 @@ foreach($Ent as $x){
 
 <?php
 }
-// 	$str="<table class='table' width=100%>
-// 			<tr>
-// 				<th>ID</th>
-// 				<th>Name</th>
-// 			</tr>";
-
-// 			foreach($Ent as $x)
-// 				$str.="<tr><td>".$x->ID_Category."</td><td>".$x->Category_Name."</td></tr>";
-// 		//var_dump($Ent[0]->Name);	
-// $str.="</table>";
-//     echo $str;
-    // require APPROOT . '/views/inc/footer.php';
   }
 }
 ?>

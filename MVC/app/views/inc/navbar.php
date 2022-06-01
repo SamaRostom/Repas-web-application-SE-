@@ -43,7 +43,11 @@
            
           <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/logout'; ?>">Logout</a>
          </li>
+         <li class="nav-item" style="position:relative; left:80px;font-size:20px;">   <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/cart'; ?>"><i class="fas fa-shopping-cart "style="color:blue;"></i></a>
+         </li>
+         <li class="nav-item" style="position:relative; left:90px; font-size:20px" > <a class="nav-link" style="color:blue;" href="<?php echo URLROOT . 'users/profile'; ?>"><i class="fas fa-user-alt"style="color:blue;"></i></a>
          
+         </li>
          <?php endif; ?>
 
 
@@ -60,11 +64,7 @@
          </li>
          <li class="nav-item" style="position:relative; left:770px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/register'; ?>">SignUp</a>
          </li>
-         <li class="nav-item" style="position:relative; left:80px;font-size:20px;">   <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/cart'; ?>"><i class="fas fa-shopping-cart "style="color:blue;"></i></a>
-         </li>
-         <li class="nav-item" style="position:relative; left:90px; font-size:20px" > <a class="nav-link" style="color:blue;" href="<?php echo URLROOT . 'users/profile'; ?>"><i class="fas fa-user-alt"style="color:blue;"></i></a>
-         
-         </li>
+        
          <?php endif; ?>
 
 
@@ -80,6 +80,7 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
          <button class="btn btn-outline-success" type="submit">Search</button> -->
       <!-- </form> --> 
+      <?php if (isset($_SESSION['ID_Person'])) { ?>
       <div class='col-5 row'>
       <div class='px-4 col-7'>
         <div class="input-group mt-4 mb-3 search-box">
@@ -88,6 +89,8 @@
     </div>
     </div>
   </div>
+  <?php } ?>
+
 </nav>
 <!-- <h6>Searching on:</h6> -->
     <!-- <div id="searchresult"></div> -->

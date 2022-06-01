@@ -28,9 +28,9 @@ class MealsDetails extends View
       ?>
     
     <div class="container">
-  <div class="row">
+    <div class="row">
     <div class="column">
-    <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top">
+    <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% class="card-img-top">
     </div>
     <div class="column-66">
     <h1 style=" color:#2a718e;"><?php echo $x->Meal_Name ?></h1>
@@ -51,7 +51,7 @@ class MealsDetails extends View
     
     <?php
     }
-    require APPROOT . '/views/inc/footer.php';
+    require APPROOT . '/views/inc/footer.php';	
   }
 }
 ?>

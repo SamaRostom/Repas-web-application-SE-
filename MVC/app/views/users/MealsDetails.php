@@ -18,28 +18,28 @@ class MealsDetails extends View
 {
   public function output()
   {
-    $productid=2;
-    $title = $this->model->title;
-    // $user_id = $_SESSION['user_id'];
-    // $user_name = $_SESSION['user_name'];
-    $mdurl = URLROOT . 'users/MealsDetails';
-
     require APPROOT . '/views/inc/header.php';
-    $text = <<<EOT
-<div class="container">
+    //$productid=2;
+    $title = $this->model->title;
+    $mdurl = URLROOT . 'users/MealsDetails';
+    $Ent=$this->model->MealsDetails();
+
+    foreach($Ent as $x){
+      ?>
+    
+    <div class="container">
   <div class="row">
     <div class="column">
-      <img src="../../public/images/kobeba.jpeg">
+    <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top">
     </div>
     <div class="column-66">
-    <h1 style=" color:#2a718e;">Kobeba Soiree</h1>
+    <h1 style=" color:#2a718e;"><?php echo $x->Meal_Name ?></h1>
     <h4>Description:</h4>
     <p>
-      10 pieces for 65 L.E.
+      <?php echo $x->Description ?>
     </p>
-    
     <div class="quantity buttons_added">
-    <form method="post" action="$mdurl?action=add&id=<?php echo $productid; ?>">
+    <form method="post" action="<?php echo $mdurl; ?>?action=add&id=<?php echo $x->Meal_ID; ?>">
     <input type="number" step="1" min="1" max="" value="1" id="quantity" name="quantity">
     <br><br>
     <input type="submit" name="add" id="addtocartbtn" class="btn btn-warning" value="Add to Cart">
@@ -47,8 +47,10 @@ class MealsDetails extends View
     </div>
   </div>
 </div>
-EOT;
-    echo $text;
+    
+    
+    <?php
+    }
     require APPROOT . '/views/inc/footer.php';
   }
 }

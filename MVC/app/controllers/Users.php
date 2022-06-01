@@ -221,29 +221,33 @@ class Users extends Controller
 
          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //process form
-            if (isset($_SESSION["cart"])){
-                $item_array_id = array_column($_SESSION["cart"],"Meal_ID");
-                if (!in_array($userModel->getMeal_ID(),$item_array_id)){
-                    $count = count($_SESSION["cart"]);
-                    $item_array = array(
-                        'Meal_ID' => $userModel->getMeal_ID(),
-                        'Meal_Name' => $userModel->getMeal_Name(),
-                        'Meal_Price' => $userModel->getMeal_Price(),
-                    );
-                    $_SESSION["cart"][$count] = $item_array;
+            if (isset($_SESSION['ID_Person'])){
+                if (isset($_SESSION["cart"])){
+                    $item_array_id = array_column($_SESSION["cart"],"Meal_ID");
+                    if (!in_array($userModel->getMeal_ID(),$item_array_id)){
+                        $count = count($_SESSION["cart"]);
+                        $item_array = array(
+                            'Meal_ID' => $userModel->getMeal_ID(),
+                            'Meal_Name' => $userModel->getMeal_Name(),
+                            'Meal_Price' => $userModel->getMeal_Price(),
+                        );
+                        $_SESSION["cart"][$count] = $item_array;
+                    }else{
+                        // echo $_SESSION["cart"];
+                        echo '<script>alert("Meal is already Added to Cart")</script>';
+                    }
                 }else{
-                    // echo $_SESSION["cart"];
-                    echo '<script>alert("Meal is already Added to Cart")</script>';
+                    $item_array = array(
+                    'Meal_ID' => $userModel->getMeal_ID(),
+                    'Meal_Name' => $userModel->getMeal_Name(),
+                    'Meal_Price' => $userModel->getMeal_Price(),
+                    );
+                    $_SESSION["cart"][0] = $item_array;
                 }
-            }else{
-                $item_array = array(
-                  'Meal_ID' => $userModel->getMeal_ID(),
-                  'Meal_Name' => $userModel->getMeal_Name(),
-                  'Meal_Price' => $userModel->getMeal_Price(),
-                );
-                $_SESSION["cart"][0] = $item_array;
             }
-           
+            else{
+                echo '<script>alert("You need to login or signup")</script>';
+            }  
         }
 
         $viewPath = VIEWS_PATH . 'users/MealsDetails.php';

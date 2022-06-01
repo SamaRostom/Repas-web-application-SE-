@@ -58,30 +58,34 @@ foreach($Ent as $x){
 	<div class="column">
 		<div class="card">
 			<div class="image">
-			<img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top">
+				<!-- <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top"> -->
+
+			<!-- <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top"> -->
 			</div>
 			<div class="info">
-				<h4><?php echo $x->Meal_Name ?></h4>
+				<form method="POST" action="<?php echo $mealdetailsaction; ?>?ids=<?php echo $x->Meal_ID ?>">
+
+
+					<!-- <a href="<?php echo $mealaction; ?>?ids=<?php echo $x->ID_Category ?>"><?php echo $x->Meal_Name ?></a> -->
+
+					<?php echo $x->Meal_Name; ?>
+					<br>
+					<?php
+					 echo $x->Meal_Price;
+					 echo "LE"; ?>
+					<br>
+					<button class="btn btn-primary" onclick="window.location.href='<?php echo $mealdetailsaction; ?>?id=<?php echo $x->Meal_ID ?>';">View More</button>
+				</form>
+
+				<!-- <h4><?php echo $x->Meal_Name ?></h4> -->
 			</div>
-			<button class="btn btn-primary" onclick="window.location.href='<?php echo $mealdetailsaction; ?>?id=<?php echo $x->Meal_ID ?>';">View More</button>
+			
 		</div>
 	</div>
 </section>
 
 <?php
 }
-// 	$str="<table class='table' width=100%>
-// 			<tr>
-// 				<th>ID</th>
-// 				<th>Name</th>
-// 			</tr>";
-
-// 			foreach($Ent as $x)
-// 				$str.="<tr><td>".$x->ID_Category."</td><td>".$x->Category_Name."</td></tr>";
-// 		//var_dump($Ent[0]->Name);	
-// $str.="</table>";
-//     echo $str;
-    // require APPROOT . '/views/inc/footer.php';
   }
 
 

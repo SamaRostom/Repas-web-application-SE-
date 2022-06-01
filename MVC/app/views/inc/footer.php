@@ -9,6 +9,15 @@
             color: rgb(70, 110, 170);
             padding: 0rem .5rem
         }
+        @media (min-width: 995px) {
+		body{
+			height:100vh
+		}
+		.footer{
+			position: absolute;
+			bottom:0;
+		}
+	}
     </style>
 </head>
 <body>

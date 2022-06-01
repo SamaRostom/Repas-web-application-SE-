@@ -54,20 +54,19 @@ EOT;
 
 foreach($Ent as $x){
 	?>
-<div class="column">
-<div class="card">
-			<div class="image6">
-				<img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top">
-				<?php echo $x->Meal_ID ?>
+<section>
+	<div class="column">
+		<div class="card">
+			<div class="image">
+			<img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top">
 			</div>
 			<div class="info">
-				<!-- <a href="<?php echo $mealaction; ?>"><?php echo $x->Category_Name ?></a> -->
-				<form method="POST" action="<?php echo $mealdetailsaction; ?>?id=<?php echo $x->Meal_ID ?>">
-					<input type="submit" name="mealname" placeholder="<?php echo $x->Meal_Name ?>">
-				</form>
+				<h4><?php echo $x->Meal_Name ?></h4>
 			</div>
+			<button class="btn btn-primary" onclick="window.location.href='<?php echo $mealdetailsaction; ?>?id=<?php echo $x->Meal_ID ?>';">View More</button>
 		</div>
 	</div>
+</section>
 
 <?php
 }

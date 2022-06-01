@@ -31,7 +31,7 @@ class Register extends view
     require APPROOT .'/views/inc/header.php';
     
     $this->printForm();
-    // require APPROOT . '/views/inc/footer.php';
+    require APPROOT . '/views/inc/footer.php';
   }
 
   private function printForm()

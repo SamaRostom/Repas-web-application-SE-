@@ -63,7 +63,7 @@ class MealsModel extends UserModel
     public function Meals()
     {
         $this->dbh->query('SELECT * from meals WHERE ID_Category=:ID_Category');
-        $this->dbh->bind(':ID_Category',$this->ID_Category)
+        $this->dbh->bind(':ID_Category',$this->ID_Category);
         // $record = $this->dbh->resultSet();
         // return $record;
         

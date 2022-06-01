@@ -72,6 +72,7 @@ class About extends view
     </section>
 EOT;
     echo $text;
+    require APPROOT . '/views/inc/footer.php';	
   }
 }
 ?>

@@ -29,8 +29,8 @@ class Cart extends view
             <tr>
                 <th width="10%">Meal Code</th>
                 <th width="25%">Meal Name</th>
-                <th width="25%">Meal Price</th>
                 <th width="25%">Quantity</th>
+                <th width="25%">Meal Price</th>
                 <th width="25%">Remove Meal</th>
             </tr>
             <?php
@@ -43,10 +43,10 @@ class Cart extends view
                     <tr>
                         <td><?php echo $value["Meal_ID"]; ?></td>
                         <td><?php echo $value["Meal_Name"]; ?></td>
-                        <td><?php echo $value["Meal_Price"]; ?> L.E </td>
+                        <td><?php echo $_SESSION["Quantity"]; ?></td>
                         <td><?php echo $value["Meal_Price"]; ?> L.E </td>
                         <td><a class="text-decoration-none" href="<?php echo $carlurl; ?>?action=delete&id=<?php echo $value["Meal_ID"]; ?>"><span
-                                    class="text-danger">Remove Trip</span></a></td>
+                                    class="text-danger">Remove Meal</span></a></td>
 
                     </tr>     
 
@@ -59,7 +59,7 @@ class Cart extends view
                 ?>
             <tr>
             <td colspan="3" align="right"><b>Total</b></td>
-                <th width="15%" align="left"><?php echo number_format(100, 2); ?> L.E </th>
+                <th width="15%" align="left"><?php echo number_format($_SESSION['Total_Price'], 2); ?> L.E </th>
                 <th width="15%"><a href="<?php echo $checkout; ?>"> <input type="button" class="btn btn-dark" name="submit" value="Checkout"></th>
             </tr>
             <?php

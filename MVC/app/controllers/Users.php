@@ -148,7 +148,7 @@ class Users extends Controller
     {
         $_SESSION['ID_Person'] = $UserModel->ID_Person;
         $_SESSION['Username'] = $UserModel->username;
-        $_SESSION['ID_Type'] = $UserModel->ID_Type;
+        //$_SESSION['ID_Type'] = $UserModel->ID_Type;
         header('location: ' . URLROOT . 'pages');
         // redirect('pages');
     }
@@ -179,7 +179,7 @@ class Users extends Controller
                     if ($value["Meal_ID"] == $_GET["id"])
                     {
                         unset($_SESSION["cart"][$keys]);
-                        echo '<script>alert("Trip has been Removed...!")</script>';
+                        echo '<script>alert("Meal has been Removed...!")</script>';
                     }
                 }
             }
@@ -224,23 +224,30 @@ class Users extends Controller
             if (isset($_SESSION['ID_Person'])){
                 if (isset($_SESSION["cart"])){
                     $item_array_id = array_column($_SESSION["cart"],"Meal_ID");
-                    if (!in_array($userModel->getMeal_ID(),$item_array_id)){
+                    if (!in_array($_SESSION["Meal_ID"],$item_array_id)){
+                        $_SESSION["Quantity"]=1;
                         $count = count($_SESSION["cart"]);
                         $item_array = array(
-                            'Meal_ID' => $userModel->getMeal_ID(),
-                            'Meal_Name' => $userModel->getMeal_Name(),
-                            'Meal_Price' => $userModel->getMeal_Price(),
+                            'Meal_ID' => $_SESSION["Meal_ID"],
+                            'Meal_Name' => $_SESSION["Meal_Name"],
+                            'Quantity' => $_SESSION["Quantity"],
+                            'Meal_Price' => $_SESSION["Meal_Price"],
                         );
                         $_SESSION["cart"][$count] = $item_array;
                     }else{
                         // echo $_SESSION["cart"];
+                        // $userModel->Quantity();
+                        $_SESSION["Quantity"]+=1;
                         echo '<script>alert("Meal is already Added to Cart")</script>';
                     }
+                    $userModel->Quantity();
+                    // $userModel->setQuantity($_SESSION["Quantity"]);
                 }else{
                     $item_array = array(
-                    'Meal_ID' => $userModel->getMeal_ID(),
-                    'Meal_Name' => $userModel->getMeal_Name(),
-                    'Meal_Price' => $userModel->getMeal_Price(),
+                    'Meal_ID' => $_SESSION["Meal_ID"],
+                    'Meal_Name' => $_SESSION["Meal_Name"],
+                    'Quantity' => $_SESSION["Quantity"],
+                    'Meal_Price' => $_SESSION["Meal_Price"],
                     );
                     $_SESSION["cart"][0] = $item_array;
                 }

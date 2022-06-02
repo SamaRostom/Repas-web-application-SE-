@@ -1,6 +1,6 @@
-
-a.menu {
-  text-align: center;
-  position: center;
-  font-size:20px;
+.networks a,
+.links p, .links a{
+    text-decoration: none;
+    color: rgb(70, 110, 170);
+    padding: 0rem .5rem
 }

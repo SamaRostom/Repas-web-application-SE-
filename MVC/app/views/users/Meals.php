@@ -8,7 +8,8 @@
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="style/Meals.css">
+  	<link rel="stylesheet" href="<?php echo URLROOT. 'css/Meals.css'?>">
+
 </head>
 
 <body>
@@ -58,16 +59,11 @@ foreach($Ent as $x){
 	<div class="column">
 		<div class="card">
 			<div class="image">
-				<!-- <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top"> -->
-
-			<!-- <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top"> -->
+				<img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top">
 			</div>
+
 			<div class="info">
 				<form method="POST" action="<?php echo $mealdetailsaction; ?>?ids=<?php echo $x->Meal_ID ?>">
-
-
-					<!-- <a href="<?php echo $mealaction; ?>?ids=<?php echo $x->ID_Category ?>"><?php echo $x->Meal_Name ?></a> -->
-
 					<?php echo $x->Meal_Name; ?>
 					<br>
 					<?php
@@ -76,10 +72,8 @@ foreach($Ent as $x){
 					<br>
 					<button class="btn btn-primary" onclick="window.location.href='<?php echo $mealdetailsaction; ?>?id=<?php echo $x->Meal_ID ?>';">View More</button>
 				</form>
-
 				<!-- <h4><?php echo $x->Meal_Name ?></h4> -->
 			</div>
-			
 		</div>
 	</div>
 </section>

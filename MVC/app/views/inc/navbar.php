@@ -43,8 +43,6 @@
            
           <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/logout'; ?>">Logout</a>
          </li>
-         <li class="nav-item" style="position:relative; left:80px;font-size:20px;">   <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/cart'; ?>"><i class="fas fa-shopping-cart "style="color:blue;"></i></a>
-         </li>
          <li class="nav-item" style="position:relative; left:90px; font-size:20px" > <a class="nav-link" style="color:blue;" href="<?php echo URLROOT . 'users/profile'; ?>"><i class="fas fa-user-alt"style="color:blue;"></i></a>
          
          </li>
@@ -53,10 +51,18 @@
 
         <?php 
         if(isset($_SESSION['ID_Type'])) {
-          if($_SESSION['ID_Type']==1) : ?>
-            <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/logout'; ?>">Admin</a>
+          if($_SESSION['ID_Type']==1) { ?>
+            <li class="nav-item" style="position:relative; left: -60px;font-size:20px">  <a class="nav-link"style="color:black;" href="<?php echo URLROOT . 'users/dashboard'; ?>">Dashboard</a>
           </li>
-          <?php endif;} ?>
+          <?php
+          }
+          else if($_SESSION['ID_Type']==2) { ?>
+            <li class="nav-item" style="position:relative; left:80px;font-size:20px;">   <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/cart'; ?>"><i class="fas fa-shopping-cart "style="color:blue;"></i></a>
+         </li>
+           <?php 
+          }
+        } 
+        ?>
     
 
          <?php if (!isset($_SESSION['ID_Person'])) : ?>

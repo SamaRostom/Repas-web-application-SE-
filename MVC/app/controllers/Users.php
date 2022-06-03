@@ -277,6 +277,87 @@ class Users extends Controller
         // echo $_GET['id']; 
     }
 
+    public function Dashboard()
+    {
+        $viewPath = VIEWS_PATH . 'users/Dashboard.php';
+        require_once $viewPath;
+        $DashboardView = new Dashboard($this->getModel(), $this);
+        $DashboardView->output();
+
+    }
+
+    public function AddAdmin()
+    {
+        $registerModel = $this->getModel();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            $registerModel->setUsername(trim($_POST['Username']));
+            $registerModel->setPassword(trim($_POST['Password']));
+            $registerModel->setAddress(trim($_POST['Address']));
+            $registerModel->setPhone_Number(trim($_POST['Phone_Number']));
+            $registerModel->setBackup_Number(trim($_POST['Backup_Number']));
+            //validation
+            if (empty($registerModel->getUsername())) {
+                $registerModel->setUsernameErr('Please enter a name');
+            }
+            if (empty($registerModel->getPassword())) {
+                $registerModel->setPasswordErr('Please enter a password');
+            } elseif (strlen($registerModel->getPassword()) < 4) {
+                $registerModel->setPasswordErr('Password must contain at least 4 characters');
+            }
+            if (empty($registerModel->getAddress())) {
+                $registerModel->setAddressErr('Please enter your address');
+            } 
+            if (empty($registerModel->getPhone_Number())) {
+                $registerModel->setPhone_NumberErr('Please enter a phone number');
+            }
+            if (empty($registerModel->getBackup_Number())) {
+                $registerModel->setBackup_NumberErr('Please enter a backup phone number');
+            }
+
+            if (
+                empty($registerModel->getUsernameErr()) &&
+                empty($registerModel->getPasswordErr()) &&
+                empty($registerModel->getAddressErr()) &&
+                empty($registerModel->getPhone_NumberErr()) &&
+                empty($registerModel->getBackup_NumberErr())
+            ) {
+                //Hash Password
+                // $registerModel->setPassword(password_hash($registerModel->getPassword(), PASSWORD_DEFAULT));
+
+                $rr = $registerModel->addadmin();
+                if ($rr) {
+                    //header('location: ' . URLROOT . 'users/login');
+                    flash('register_success', 'You have added successfully');
+                    redirect('users/dashboard');
+                } else {
+                    die('Error in add');
+                }
+            }
+            else{
+                //echo $userModel->getUsernameErr() . $userModel->getPasswordErr();
+                echo $registerModel->getUsernameErr() . $registerModel->getPasswordErr() . $registerModel->getAddressErr() . $registerModel->getPhone_NumberErr() . $registerModel->getBackup_NumberErr();
+                //call static function
+                // echo "<script>alert('$v');</script>";
+            }
+        }
+        $viewPath = VIEWS_PATH . 'users/AddAdmin.php';
+        require_once $viewPath;
+        $AddAdminView = new AddAdmin($this->getModel(), $this);
+        $AddAdminView->output();
+
+    }
+
+    public function DeleteAdmin()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $userModel = $this->getModel();
+            $userModel->delete($_GET['id']);
+            redirect('users/dashboard');
+        }
+ 
+    }
+
     public function Profile()
     {
         $viewPath = VIEWS_PATH . 'users/Profile.php';

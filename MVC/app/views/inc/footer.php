@@ -60,7 +60,7 @@
 
 </head>
 <body>
-<div class='py-4 bg-light col-12 footer'>
+<div class='py-4 col-12 footer'>
  <div class='networks fs-4 text-center'>
    <a href='https://www.facebook.com/Repasfrozenmeals' target='blank'><i class="fab fa-facebook"></i></a>
    <a href='https://www.instagram.com/repas_frozenmeals/' target='blank'><i class="fab fa-instagram"></i></a>

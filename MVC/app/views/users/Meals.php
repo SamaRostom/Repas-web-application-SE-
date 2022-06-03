@@ -63,7 +63,7 @@ foreach($Ent as $x){
 			</div>
 
 			<div class="info">
-				<form method="POST" action="<?php echo $mealdetailsaction; ?>?ids=<?php echo $x->Meal_ID ?>">
+				<!-- <form method="POST" action="?ids="> -->
 					<?php echo $x->Meal_Name; ?>
 					<br>
 					<?php
@@ -71,7 +71,7 @@ foreach($Ent as $x){
 					 echo "LE"; ?>
 					<br>
 					<button class="btn btn-primary" onclick="window.location.href='<?php echo $mealdetailsaction; ?>?id=<?php echo $x->Meal_ID ?>';">View More</button>
-				</form>
+				<!-- </form> -->
 				<!-- <h4><?php echo $x->Meal_Name ?></h4> -->
 			</div>
 		</div>

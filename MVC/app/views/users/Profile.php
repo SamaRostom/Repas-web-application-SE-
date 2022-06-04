@@ -31,7 +31,10 @@ class Profile extends View
 	$usn = $this->model->ViewProfile();
 	$Ent = $this->model->ID_Type();
 	//$username = $usn->address;
-	$e=$_SESSION["ID_Person"];
+	$name=$_SESSION["Username"];
+	$e=$_SESSION["Address"];
+	$pn=$_SESSION["Phone_Number"];
+	$bn=$_SESSION["Backup_Number"];
 		
     // $username = $this->getModel()->username;
 
@@ -39,12 +42,12 @@ class Profile extends View
     // $user_name = $_SESSION['user_name'];
 
     require APPROOT . '/views/inc/header.php';
-    echo $e;?>	
+    ?>	
 <div class='container my-5 row col-10 col-sm-8 col-lg-7 m-auto rounded py-5 shadow'>
 	<div class="imgContainer m-auto col-4">
 		
 		<div class="editIcon">
-			<a href="$edaction">
+			<a href="<?php echo $edaction; ?>">
 				<i class="fas fa-pen"></i>
 			</a>
 		</div>
@@ -53,9 +56,9 @@ class Profile extends View
 
 	<div class="userDetails col-10 col-lg-6 m-auto offset-lg-1">
 
-	<i class="fas fa-user"></i><?php echo $e;?><br><hr>
-	<i class="fas fa-map-marker-alt"></i><?php echo $e;?><br><hr>
-	<i class="fas fa-phone-alt"></i>"Phone_Number"-<br> "Backup_Number"<br><hr>
+	<i class="fas fa-user"></i> <?php echo $name;?><br><hr>
+	<i class="fas fa-map-marker-alt"></i> <?php echo $e;?><br><hr>
+	<i class="fas fa-phone-alt"></i> <?php echo $pn;?><br>  <?php echo $bn;?><br><hr>
 	    
 	</div>	
 </div>	

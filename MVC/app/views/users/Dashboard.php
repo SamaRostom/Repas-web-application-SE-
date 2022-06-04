@@ -180,7 +180,7 @@ EOT;
                     <td> <a href='<?php echo $profile;?>?id=<?php echo $x->ID_Person ?>'><i class="fas fa-user-alt"></i></a> </td>
                     <td> 
                       <form method="post" action="<?php echo $deleteadmin;?>?id=<?php echo $x->ID_Person ?>">
-                        <button name='delete'><i class="fa fa-trash text-danger"></i></button>
+                        <button name='delete'class="btn btn-light"><i class="fas fa-trash-alt"></i></button>
                       </form>
                       <!-- <a href=""><i class="fa fa-trash text-danger"></i></a></td> -->
                 </tr>

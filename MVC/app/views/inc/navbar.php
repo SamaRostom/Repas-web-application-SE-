@@ -1,7 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+  <style>
+			.navbar a i,.seperator , .navbar a{
+				color: rgb(70, 110, 170) !important;
+			}
+      .logo{
+        border-radius: 100%;
+        width: 53px;
+      }
+      .d-flex{
+        /* align:right; */
+        /* position: right; */
+      }
+		</style>
+	</head>
+<body>
+<?php
+    $num_items_in_cart = isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0;
+  ?>  
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4" id="nb">
   <div class="container-fluid">
-    <!-- <a class="logo" href='../../../public/images/re.jpg'></a> -->
-    <!-- <img src='../../../public/images/re.jpg'> -->
+
     <img src="<?php echo IMGROOT . 're.jpg'; ?>" style="border-radius: 50%;" width="90" height="90">
     
     <a class="navbar-brand" href="<?php echo URLROOT . 'public'; ?>"><?php echo SITENAME; ?></a>
@@ -11,81 +31,34 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         
-        <li class="nav-item" style="position:relative; left:30px; font-size:20px">
-          <a class="nav-link active"  style="color:blue;" href="<?php echo URLROOT . 'public'; ?>"><i class="fas fa-home" style="color:blue;"></i> Home </a>
+        <li class="nav-item">
+          <a class="nav-link active home"  href="<?php echo URLROOT . 'public'; ?>"><i class="fas fa-home"></i> Home </a>
         </li>
-        <li class="nav-item"  style="font-size:20px; position:relative; left:35px;">
-          <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/Categories'; ?>"><i class="fa fa-shopping-bag" style="color:blue;"></i> Shop </a>
+        <li class="nav-item" >
+          <a class="nav-link categories" href="<?php echo URLROOT . 'users/Categories'; ?>"><i class="fa fa-shopping-bag" ></i> Shop </a>
         </li>
-        <li class="nav-item " style="position:relative; left:40px;font-size:20px">
-          <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'pages/about'; ?>"><i class="fas fa-address-card" style="color:blue;"></i> About </a>
+        <a class="nav-link catering" href="<?php echo URLROOT . 'users/Catering'; ?>"><i class="fa fa-shopping-bag" ></i> Catering </a>
         </li>
-        
-		<li class="nav-item" style="position:relative; left:45px;font-size:20px"><a class="nav-link" style="color:blue;" href="<?php echo URLROOT . 'pages/contact'; ?>"><i class="fas fa-phone" style="color:blue;"></i> Contact</a>
+        <li class="nav-item ">
+          <a class="nav-link about" href="<?php echo URLROOT . 'pages/about'; ?>"><i class="fas fa-address-card" ></i> About </a>
+        </li>
+		    <li class="nav-item contact" ><a class="nav-link"  href="<?php echo URLROOT . 'pages/contact'; ?>"><i class="fas fa-phone" ></i> Contact</a>
+         </li>
+         <li class="nav-item dashboard">  <a class="nav-link" href="<?php echo URLROOT . 'users/dashboard'; ?>"><i class="fa fa-dashboard"></i> Dashboard</a>
          </li>
 
-
-
-        
-
-
-          <?php
-        
-        if (isset($_SESSION['ID_Person'])): {
-          echo $_SESSION['Username'];
-        } 
-        ?>
-        <?php endif;?>
-        
-        
-        <?php if (isset($_SESSION['ID_Person'])) :
-           ?>
-           
-          <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/logout'; ?>">Logout</a>
-         </li>
-         <li class="nav-item" style="position:relative; left:90px; font-size:20px" > <a class="nav-link" style="color:blue;" href="<?php echo URLROOT . 'users/profile'; ?>"><i class="fas fa-user-alt"style="color:blue;"></i></a>
-         
-         </li>
-         <?php endif; ?>
-
-
-        <?php 
-        if(isset($_SESSION['ID_Type'])) {
-          if($_SESSION['ID_Type']==1) { ?>
-            <li class="nav-item" style="position:relative; left: -60px;font-size:20px">  <a class="nav-link"style="color:black;" href="<?php echo URLROOT . 'users/dashboard'; ?>">Dashboard</a>
-          </li>
-          <?php
-          }
-          else if($_SESSION['ID_Type']==2) { ?>
-            <li class="nav-item" style="position:relative; left:80px;font-size:20px;">   <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/cart'; ?>"><i class="fas fa-shopping-cart "style="color:blue;"></i></a>
-         </li>
-           <?php 
-          }
-        } 
-        ?>
-    
-
-         <?php if (!isset($_SESSION['ID_Person'])) : ?>
-         <li class="nav-item" style="position:relative; left:760px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/login'; ?>">Login</a>
-         </li>
-         <li class="nav-item" style="position:relative; left:770px;font-size:20px">  <a class="nav-link"style="color:blue;" href="<?php echo URLROOT . 'users/register'; ?>">SignUp</a>
-         </li>
-        
-         <?php endif; ?>
-
+         <div class="d-flex">
+            <a class="cart text-decoration-none me-3" href='<?php echo URLROOT . 'users/cart'; ?>'><i class="fas fa-shopping-cart"><span class="badge rounded-pill bg-danger"><?php echo $num_items_in_cart; ?></span></i></a>
+            <a class="profile text-decoration-none me-3" href='<?php echo URLROOT . 'users/profile'; ?>'><i class="fas fa-user-alt"></i></a>
+            <a class="text-decoration-none signup me-3" href='<?php echo URLROOT . 'users/register'; ?>'>Sign up</a>
+            <span class='seperator me-3'>|</span>
+            <a class="text-decoration-none me-3 signin" href='<?php echo URLROOT . 'users/login'; ?>'>Sign in</a>
+            <a class="signout text-decoration-none me-3" href='<?php echo URLROOT . 'users/logout'; ?>'>Sign out</a>
+         </div>
 
           
-           
-
-             
-      
-            
-
       </ul>
-      <!-- <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-         <button class="btn btn-outline-success" type="submit">Search</button> -->
-      <!-- </form> --> 
+
       <?php if (isset($_SESSION['ID_Person'])) { ?>
       <div class='col-5 row'>
       <div class='px-4 col-7'>
@@ -98,6 +71,39 @@
   <?php } ?>
 
 </nav>
+<?php
+if(isset($_SESSION['Username'])){ //if logged in
+echo "<script>
+console.log('Username: ".$_SESSION['Username']."')
+document.querySelector('.signin').style.display = 'none'
+document.querySelector('.signup').style.display = 'none'
+</script>";
+  if($_SESSION['ID_Type'] == "1"){ //Administrator
+	//home, profile, about, categories, contact us, dashboard, sign out
+	echo "<script>
+	document.querySelector('.cart').style.display = 'none'
+	</script>";
+  }
+  if($_SESSION['ID_Type'] == "2"){ //user
+	//home, profile, about, categories, contact us, cart, sign out
+	echo "<script>
+  document.querySelector('.dashboard').style.display = 'none'
+	</script>";
+  }
+}
+//not logged in
+else{
+	//home, about, login, sign up, contact us, categories
+	echo "<script>
+document.querySelector('.signout').style.display = 'none'
+document.querySelector('.profile').style.display = 'none'
+document.querySelector('.catering').style.display = 'none'
+document.querySelector('.cart').style.display = 'none'
+document.querySelector('.dashboard').style.display = 'none'
+</script>";
+}
+?>
+
 <!-- <h6>Searching on:</h6> -->
     <!-- <div id="searchresult"></div> -->
     <div id="searchresult"></div>
@@ -123,11 +129,8 @@ $(document).ready(function(){
             $("#searchresult").empty();
         }
     });
-    
-    // Set search input value on click of result item
-    // $(document).on("click", ".result p", function(){
-    //     $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
-    //     $(this).parent(".result").empty();
-    // });
+
 });
 </script>
+</body>
+</html> 

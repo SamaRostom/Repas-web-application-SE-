@@ -60,6 +60,54 @@ foreach($Ent as $x){
 		</div>
 	</div>
 
+
+<?php
+}
+  }
+  public function outputa()
+  {
+    require APPROOT . '/views/inc/header.php';
+    $mealaction = URLROOT . 'users/Meals';
+    $Ent=$this->model->MealsCatgories();
+    $addCategory = URLROOT . 'users/addcategory';
+    $deleteCategory = URLROOT . 'users/deletecategory';
+    $editCategory = URLROOT . 'users/editcategory';
+    ?>
+    <form action="<?php echo $addCategory;?>">
+    <button type="submit" class="btn btn-dark px-3">Add Category <i class="fa fa-plus"></i></button>
+    </form>
+    <?php
+
+foreach($Ent as $x){
+    ?>
+
+    <div class="column">
+    <div class="card">
+            <div class="image6">
+                <img src="<?php echo IMGROOT . $x->Category_Image; ?>" width=100% height=100% class="card-img-top">
+                <!-- <?php echo $x->ID_Category ?> -->
+            </div>
+            <div class="info">
+                <!-- <a href="<?php echo $mealaction; ?>"><?php echo $x->Category_Name ?></a> -->
+                <form method="POST" action="<?php echo $mealaction; ?>?ids=<?php echo $x->ID_Category ?>">
+                    <!-- <input type="submit" name="catgname" value="<?php echo $x->Category_Name ?>"> -->
+                    <!-- <?php echo $x->Category_Name ?> -->
+                    <a href="<?php echo $mealaction; ?>?ids=<?php echo $x->ID_Category ?>"><?php echo $x->Category_Name ?></a>
+                </form>
+                <div>
+                <form method="post" action="<?php echo $deleteCategory;?>?id=<?php echo $x->ID_Category ?>">
+                    <button name='delete' class="btn btn-light mt-3"><i class="fas fa-trash-alt"></i></button>
+                </form>
+
+                <form method="post" action="<?php echo $editCategory;?>?id=<?php echo $x->ID_Category ?>">
+                    <button name='edit' class="btn btn-light mt-3"> <i class="fas fa-edit"></i></button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 <?php
 }
   }

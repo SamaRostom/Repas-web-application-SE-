@@ -2,7 +2,7 @@ input{
 	margin-bottom: 10px;
 }
 body{
-	background-image: url("../../public/images/loginbackground.jpg");
+	/* background-image: url("../../public/images/loginbackground.jpg"); */
 	background-size: contain;
 	background-repeat: no-repeat;	
 	background-position-y: bottom;
@@ -10,4 +10,14 @@ body{
 }
 .container{
 	background-color: #ffffffad;
+}
+.showBtn {
+    /* /to show over the textbox/ */
+    position: absolute;
+    right: 15px;
+    top: 8px;
+    color: rgb(128, 128, 128);
+    /* /to show it when hover/ */
+    z-index: 99999;
+    cursor: pointer;
 }

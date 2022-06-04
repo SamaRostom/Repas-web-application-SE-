@@ -205,7 +205,15 @@ class Users extends Controller
         $viewPath = VIEWS_PATH . 'users/Categories.php';
         require_once $viewPath;
         $CategoriesView = new Categories($this->getModel(), $this);
-        $CategoriesView->output();
+        // if(isset($_SESSION['ID_Person'])){
+            if($_SESSION['ID_Type']=="1"){
+                $CategoriesView->outputa();
+            }
+        // }
+        else{
+            $CategoriesView->output();
+        }
+        
     }
 
     public function MealsDetails()
@@ -346,6 +354,140 @@ class Users extends Controller
         $AddAdminView = new AddAdmin($this->getModel(), $this);
         $AddAdminView->output();
 
+    }
+
+    public function AddCategory(){
+        $registerModel = $this->getModel();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            $registerModel->setCategory_Name(trim($_POST['Category_Name']));
+            $registerModel->setCategory_Image(trim($_POST['Category_Image']));
+
+            if (empty($registerModel->getCategory_Name())) {
+                $registerModel->setCategory_NameErr('Please enter a category name');
+            }
+
+            if (empty($registerModel->getCategory_NameErr())) {
+
+                $rr = $registerModel->addcategory();
+                if ($rr) {
+                    flash('register_success', 'You have added successfully');
+                    redirect('users/Categories');
+                } else {
+                    die('Error in add');
+                }
+            }
+            else{
+                echo $registerModel->getCategory_NameErr();
+            }
+        }
+        $viewPath = VIEWS_PATH . 'users/AddCategory.php';
+        require_once $viewPath;
+        $AddCategoryView = new AddCategory($this->getModel(), $this);
+        $AddCategoryView->output();
+    }
+
+    public function Catering()
+    {
+        $registerModel = $this->getModel();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            $currentDate = date('Y-m-d');
+
+            $registerModel->setNumberOfPeople(trim($_POST['adultno']));
+            $registerModel->setNumberOfChildern(trim($_POST['childno']));
+            $registerModel->setMeals(trim($_POST['food']));
+            $registerModel->setExtras(trim($_POST['extras']));
+            $registerModel->setCatering_Time(trim($_POST['catering-time']));
+            $registerModel->setOrder_Time_Catering(trim($currentDate));
+            $registerModel->setFood_Allergy(trim($_POST['allergy']));
+            //validation
+            if (empty($registerModel->getNumberOfPeople())) {
+                $registerModel->setNumberOfPeopleErr('Please enter number of adults');
+            }
+            if (empty($registerModel->getMeals())) {
+                $registerModel->setMealsErr('Please enter the meals');
+            } 
+            if (empty($registerModel->getCatering_Time())) {
+                $registerModel->setCatering_TimeErr('Please enter the catering date');
+            } 
+
+            if (
+                empty($registerModel->getNumberOfPeopleErr()) &&
+                empty($registerModel->getMealsErr()) &&
+                empty($registerModel->getCatering_TimeErr()) 
+            ) {
+                
+                $rr = $registerModel->addcatering();
+                if ($rr) {
+                    flash('register_success', 'You have added successfully');
+                    header('location: ' . URLROOT);
+                } else {
+                    die('Error in add');
+                }
+            }
+            else{
+                echo $registerModel->getNumberOfPeopleErr() . $registerModel->getMealsErr() . $registerModel->getCatering_TimeErr();
+            }
+        }
+        $viewPath = VIEWS_PATH . 'users/Catering.php';
+        require_once $viewPath;
+        $CateringView = new Catering($this->getModel(), $this);
+        if(isset($_SESSION['ID_Type'])){
+            if($_SESSION['ID_Type']=="1"){
+                $CateringView->outputa();
+            }
+            else if($_SESSION['ID_Type']=="2"){
+                $CateringView->output();
+            }
+        }
+    }
+
+    public function EditCategory(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $registerModel = $this->getModel();
+            $registerModel->setID_Category(trim($_GET['id']));
+        
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            // $registerModel->setID_Category(trim($_GET['id']));
+            $registerModel->setCategory_Name(trim($_POST['Category_Name']));
+            $registerModel->setCategory_Image(trim($_POST['Category_Image']));
+
+            if (empty($registerModel->getCategory_Name())) {
+                $registerModel->setCategory_NameErr('Please enter a category name');
+            }
+
+            if (empty($registerModel->getCategory_NameErr())) {
+
+                $rr = $registerModel->editcategory();
+                if ($rr) {
+                    flash('register_success', 'You have edited successfully');
+                    redirect('users/Categories');
+                } else {
+                    die('Error in add');
+                }
+            }
+            else{
+                echo $registerModel->getCategory_NameErr();
+            }
+        }
+    }
+        $viewPath = VIEWS_PATH . 'users/EditCategory.php';
+        require_once $viewPath;
+        $EditCategoryView = new EditCategory($this->getModel(), $this);
+        $EditCategoryView->output();
+    }
+
+    public function DeleteCategory()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $userModel = $this->getModel();
+            $userModel->delete($_GET['id']);
+            redirect('users/categories');
+        }
+ 
     }
 
     public function DeleteAdmin()

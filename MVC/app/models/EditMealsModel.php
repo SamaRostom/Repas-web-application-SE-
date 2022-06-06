@@ -35,4 +35,62 @@ class EditMealModel extends UserModel{
         $this->Meal_Name = $Meal_Name;
     }
 
+    public function getDescription()
+    {
+        return $this->Description;
+    }
+    public function setDescription($Description)
+    {
+        $this->Description = $Description;
+    }
+
+    public function getMeal_Price()
+    {
+        return $this->Meal_Price;
+    }
+    public function setMeal_Price($Meal_Price)
+    {
+        $this->Meal_Price = $Meal_Price;
+    }
+
+    public function getAmount()
+    {
+        return $this->Amount;
+    }
+    public function setAmount($Amount)
+    {
+        $this->Amount = $Amount;
+    }
+
+    public function getID_Category()
+    {
+        return $this->ID_Category;
+    }
+    public function setID_Category($ID_Category)
+    {
+        $this->ID_Category = $ID_Category;
+    }
+
+    public function getMeal_Image()
+    {
+        return $this->Meal_Image;
+    }
+    public function setMeal_Image($Meal_Image)
+    {
+        $this->Meal_Image = $Meal_Image;
+    }
+
+    public function setallMeals(){
+        $this->dbh->query("SELECT * WHERE Meal_ID=:Meal_ID, Meal_Name=:Meal_Name,Description=:Description,Meal_Price=:Meal_Price,Amount=:Amount, ID_Category=:ID_Category,Meal_Image=:Meal_Image");
+        $this->dbh->bind(':Meal_ID', $this->Meal_ID);
+        $this->dbh->bind(':Meal_Name', $this->Meal_Name);
+        $this->dbh->bind(':Description', $this->Description);
+        $this->dbh->bind(':Meal_Price', $this->Meal_Price);
+        $this->dbh->bind(':Amount', $this->Amount);
+        $this->dbh->bind(':ID_Category', $this->ID_Category);
+        $this->dbh->bind(':Meal_Image', $this->Meal_Image);
+
+        return $this->dbh->resultSet();
+    }
+
 }

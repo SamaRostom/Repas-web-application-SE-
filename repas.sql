@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2022 at 11:19 AM
+-- Generation Time: Jun 06, 2022 at 10:04 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -29,14 +29,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `catering` (
   `Catering_ID` int(255) NOT NULL,
+  `ID_Person` int(255) NOT NULL,
   `NumberOfPeople` int(255) NOT NULL,
   `NumberOfChildern` int(255) NOT NULL,
   `Meals` text NOT NULL,
   `Extras` text NOT NULL,
-  `Catering_Time` datetime NOT NULL,
+  `Catering_Time` date NOT NULL,
   `Order_Time_Catering` datetime NOT NULL,
   `Food_Allergy` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `catering`
+--
+
+INSERT INTO `catering` (`Catering_ID`, `ID_Person`, `NumberOfPeople`, `NumberOfChildern`, `Meals`, `Extras`, `Catering_Time`, `Order_Time_Catering`, `Food_Allergy`) VALUES
+(1, 0, 4, 1, 'Kofta, Miniburger', 'Ceaser Salad', '2022-06-11', '2022-06-04 00:00:00', 'no');
 
 -- --------------------------------------------------------
 
@@ -62,7 +70,7 @@ INSERT INTO `meals` (`Meal_ID`, `Meal_Name`, `Description`, `Meal_Price`, `Amoun
 (1, 'Kofta', 'Kofta meat', '20', 0, 2, 'm.jpeg'),
 (2, 'bashamel', 'pasta', '40', 0, 3, 'bashamel2.jpg'),
 (3, 'miniburger', 'burger', '30', 0, 3, 'miniburger.jpg'),
-(4, 'miniburger', 'burger', '30', 0, 3, 'miniburger.jpg');
+(4, 'miniburger', 'burger', '30', 0, 4, 'miniburger.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,7 +90,9 @@ CREATE TABLE `meals_category` (
 
 INSERT INTO `meals_category` (`ID_Category`, `Category_Name`, `Category_Image`) VALUES
 (2, 'Cooked Menu', 'bashamel2.jpg'),
-(3, 'Salad and Soup', 'BabaGanoush.jpg');
+(3, 'Salad and Soup', 'BabaGanoush.jpg'),
+(4, 'Healthy Meals', 'e.jpeg'),
+(6, 'Frozen Menu', '');
 
 -- --------------------------------------------------------
 
@@ -97,6 +107,13 @@ CREATE TABLE `orders` (
   `Total_Price` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`Order_ID`, `ID_Person`, `Order_Time`, `Total_Price`) VALUES
+(1, 3, '2022-06-03 13:59:48', '200');
+
 -- --------------------------------------------------------
 
 --
@@ -108,6 +125,14 @@ CREATE TABLE `order_details` (
   `Meal_ID` int(255) NOT NULL,
   `Quantity` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`Order_ID`, `Meal_ID`, `Quantity`) VALUES
+(1, 2, 3),
+(1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -153,13 +178,11 @@ CREATE TABLE `person` (
 --
 
 INSERT INTO `person` (`ID_Person`, `Username`, `Password`, `ID_Type`, `Address`, `Phone_Number`, `Backup_Number`) VALUES
-(2, 'Sama Rostom', '12345', 1, '124 street 2', '07353679', '02347744'),
+(1, 'Sama Rostom', '12345', 1, '123 street', '07353679', '02347744'),
 (3, 'Reema', '12345', 2, '6 october', '08766555', '9876655'),
-(4, 'Reema', '12345', 0, '6 october', '037781991', '02762722'),
-(5, 'Reema', '12345', 0, '6 october', '011672782', '07627711'),
-(6, 'Reema', '12345', 0, '6 october', '07267272', '0267282'),
-(7, 'Reema', '12345', 0, '6 october', '016172722', '0026727228'),
-(8, 'Mohamed', '00000', 2, 'nasr city', '007655', '096665');
+(5, 'Yara', '12345', 2, '6 october', '011672782', '07627711'),
+(8, 'Mohamed', '00000', 2, 'nasr city', '007655', '096665'),
+(13, 'salma', '12345', 1, 'nasr city', '38930303', '74993902');
 
 -- --------------------------------------------------------
 
@@ -256,7 +279,8 @@ INSERT INTO `usertype_pages` (`usertype_pagesID`, `ID_Type`, `PageID`) VALUES
 -- Indexes for table `catering`
 --
 ALTER TABLE `catering`
-  ADD PRIMARY KEY (`Catering_ID`);
+  ADD PRIMARY KEY (`Catering_ID`),
+  ADD KEY `ID_Person` (`ID_Person`);
 
 --
 -- Indexes for table `meals`
@@ -339,7 +363,7 @@ ALTER TABLE `usertype_pages`
 -- AUTO_INCREMENT for table `catering`
 --
 ALTER TABLE `catering`
-  MODIFY `Catering_ID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `Catering_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `meals`
@@ -351,13 +375,13 @@ ALTER TABLE `meals`
 -- AUTO_INCREMENT for table `meals_category`
 --
 ALTER TABLE `meals_category`
-  MODIFY `ID_Category` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Category` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_ID` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `Order_ID` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -369,7 +393,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `person`
 --
 ALTER TABLE `person`
-  MODIFY `ID_Person` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `ID_Person` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `rating`

@@ -35,7 +35,6 @@ class editProfile extends View
   public function output()
   {
   	$title = $this->model->title;
-    $subtitle = $this->model->subtitle;
 
     require APPROOT . '/views/inc/header.php';
 	?>

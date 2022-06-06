@@ -89,13 +89,18 @@ public function outputa()
     require APPROOT . '/views/inc/header.php';
     $mealaction = URLROOT . 'users/Meals';
     $Ent=$this->model->Meals();
-    // $addCategory = URLROOT . 'users/addcategory';
+    $AddMeal = URLROOT . 'users/AddMeal';
     $DeleteMeals = URLROOT . 'users/DeleteMeals';
     // $editCategory = URLROOT . 'users/editcategory';
     ?>
-    <form action="<?php echo $DeleteMeals;?>">
+    <!-- <form action="<?php echo $DeleteMeals;?>">
+    <button type="submit" class="btn btn-dark px-3">Add Meal <i class="fa fa-plus"></i></button>
+    </form> -->
+
+    <form action="<?php echo $AddMeal;?>">
     <button type="submit" class="btn btn-dark px-3">Add Meal <i class="fa fa-plus"></i></button>
     </form>
+
     <?php
 
 foreach($Ent as $x){

@@ -276,7 +276,7 @@ class Users extends Controller
     {
         $userModel = $this->getModel();
         //$_SESSION['Category_ID']=$_GET['id'];
-        $userModel->setID_Category($_GET['ids']);
+        
         $viewPath = VIEWS_PATH . 'users/Meals.php';
         require_once $viewPath;
         $MealsView = new Meals($this->getModel(), $this);
@@ -286,9 +286,61 @@ class Users extends Controller
             }
       
         else{
+            $userModel->setID_Category($_GET['ids']);
             $MealsView->output();
         }
         
+    }
+
+    public function AddMeal()
+    {
+        $MealModel = $this->getModel();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Process form
+            $MealModel->setMeal_Name(trim($_POST['Meal_Name']));
+            $MealModel->setDescription(trim($_POST['Description']));
+            $MealModel->setMeal_Price(trim($_POST['Meal_Price']));
+            // $MealModel->setID_Category(trim($_POST['ID_Category']));
+            $MealModel->setMeal_Image(trim($_POST['Meal_Image']));
+
+            if (empty($MealModel->getMeal_Name())) {
+                $MealModel->setMeal_NameErr('Please enter a meal name');
+            }
+
+            if (empty($MealModel->getDescription())) {
+                $MealModel->setDescriptionErr('Please enter a description');
+            }
+
+            if (empty($MealModel->getMeal_Price())) {
+                $MealModel->setMeal_PriceErr('Please enter a meal price');
+            }
+
+            // if (empty($MealModel->getID_Category())) {
+            //     $MealModel->setID_CategoryErr('Please enter a category id');
+            // }
+
+            if(empty($MealModel->getMeal_NameErr()) && empty($MealModel->getDescriptionErr()) && empty($MealModel->getMeal_PriceErr())){
+                $mm = $MealModel->addmeal();
+                if($mm) {
+                    flash('register_success', 'You have added successfully');
+                    redirect('users/Meals');
+                } else {
+                    die('Error in add');
+                }
+            }
+
+            else{
+                echo $MealModel->getMeal_NameErr();
+                echo $MealModel->getDescriptionErr();
+                echo $MealModel->getMeal_PriceErr();
+                // echo $MealModel->getID_CategoryErr();
+            }
+        }
+        
+        $viewPath = VIEWS_PATH . 'users/AddMeal.php';
+        require_once $viewPath;
+        $AddMealView = new AddMeal($this->getModel(), $this);
+        $AddMealView->output();
     }
 
     public function Dashboard()

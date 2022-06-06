@@ -280,9 +280,15 @@ class Users extends Controller
         $viewPath = VIEWS_PATH . 'users/Meals.php';
         require_once $viewPath;
         $MealsView = new Meals($this->getModel(), $this);
-        $MealsView->output();
+
+        if($_SESSION['ID_Type']=="1"){
+                $MealsView->outputa();
+            }
+      
+        else{
+            $MealsView->output();
+        }
         
-        // echo $_GET['id']; 
     }
 
     public function Dashboard()

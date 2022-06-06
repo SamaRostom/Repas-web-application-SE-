@@ -90,7 +90,7 @@ public function outputa()
     $mealaction = URLROOT . 'users/Meals';
     $Ent=$this->model->Meals();
     // $addCategory = URLROOT . 'users/addcategory';
-    $DeleteMeal = URLROOT . 'users/DeleteMeals';
+    $DeleteMeals = URLROOT . 'users/DeleteMeals';
     // $editCategory = URLROOT . 'users/editcategory';
     ?>
     <form action="<?php echo $DeleteMeals;?>">
@@ -115,7 +115,7 @@ foreach($Ent as $x){
                     <a href="<?php echo $mealaction; ?>?ids=<?php echo $x->Meal_ID ?>"><?php echo $x->Meal_Name ?></a>
                 </form>
                 <div>
-                <form method="post" action="<?php echo $DeleteMeal;?>?id=<?php echo $x->Meal_ID ?>">
+                <form method="post" action="<?php echo $DeleteMeals;?>?id=<?php echo $x->Meal_ID ?>">
                     <button name='delete' class="btn btn-light mt-3"><i class="fas fa-trash-alt"></i></button>
                 </form>
 

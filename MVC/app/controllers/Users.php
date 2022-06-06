@@ -272,6 +272,15 @@ class Users extends Controller
 
     }
 
+    public function Checkout()
+    {
+        $userModel = $this->getModel();
+        $viewPath = VIEWS_PATH . 'users/Checkout.php';
+        require_once $viewPath;
+        $CheckoutView = new Checkout($this->getModel(), $this);
+        $CheckoutView->output();
+    }
+
     public function Meals()
     {
         $userModel = $this->getModel();

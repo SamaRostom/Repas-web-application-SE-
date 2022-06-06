@@ -14,6 +14,7 @@ class LoginModel extends UserModel
         $record = $this->dbh->resultSet();
         // echo $record;
         foreach($record as $x){
+            $_SESSION["ID_Person"]=$x->ID_Person;
             $_SESSION["ID_Type"]=$x->ID_Type;
             $_SESSION["Password"]=$x->Password;
             $_SESSION["Address"]=$x->Address;

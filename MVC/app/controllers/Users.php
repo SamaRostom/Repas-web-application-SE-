@@ -292,6 +292,16 @@ class Users extends Controller
         
     }
 
+    public function DeleteMeals()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $userModel = $this->getModel();
+            $userModel->delete($_GET['id']);
+            redirect('users/meals');
+        }
+ 
+    }
+
     public function AddMeal()
     {
         $MealModel = $this->getModel();

@@ -84,7 +84,53 @@ foreach($Ent as $x){
 }
   }
 
+public function outputa()
+  {
+    require APPROOT . '/views/inc/header.php';
+    $mealaction = URLROOT . 'users/Meals';
+    $Ent=$this->model->Meals();
+    // $addCategory = URLROOT . 'users/addcategory';
+    $DeleteMeal = URLROOT . 'users/DeleteMeals';
+    // $editCategory = URLROOT . 'users/editcategory';
+    ?>
+    <form action="<?php echo $DeleteMeals;?>">
+    <button type="submit" class="btn btn-dark px-3">Add Meal <i class="fa fa-plus"></i></button>
+    </form>
+    <?php
 
+foreach($Ent as $x){
+    ?>
+
+    <div class="column">
+    <div class="card">
+            <div class="image6">
+                <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% height=100% class="card-img-top">
+                <!-- <?php echo $x->ID_Category ?> -->
+            </div>
+            <div class="info">
+                <!-- <a href="<?php echo $mealaction; ?>"><?php echo $x->Category_Name ?></a> -->
+                <form method="POST" action="<?php echo $mealaction; ?>?ids=<?php echo $x->Meal_ID ?>">
+                    <!-- <input type="submit" name="catgname" value="<?php echo $x->Category_Name ?>"> -->
+                    <!-- <?php echo $x->Category_Name ?> -->
+                    <a href="<?php echo $mealaction; ?>?ids=<?php echo $x->Meal_ID ?>"><?php echo $x->Meal_Name ?></a>
+                </form>
+                <div>
+                <form method="post" action="<?php echo $DeleteMeal;?>?id=<?php echo $x->Meal_ID ?>">
+                    <button name='delete' class="btn btn-light mt-3"><i class="fas fa-trash-alt"></i></button>
+                </form>
+
+                <form method="post" action="<?php echo $EditMeal;?>?id=<?php echo $x->Meal_ID ?>">
+                    <button name='edit' class="btn btn-light mt-3"> <i class="fas fa-edit"></i></button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<?php
+}
+  }
 }
 ?>
 

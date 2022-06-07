@@ -117,7 +117,9 @@ foreach($Ent as $x){
                 <form method="POST" action="<?php echo $mealaction; ?>?ids=<?php echo $x->Meal_ID ?>">
                     <!-- <input type="submit" name="catgname" value="<?php echo $x->Category_Name ?>"> -->
                     <!-- <?php echo $x->Category_Name ?> -->
-                    <a href="<?php echo $mealaction; ?>?ids=<?php echo $x->Meal_ID ?>"><?php echo $x->Meal_Name ?></a>
+                    <!-- <a href="<?php echo $mealaction; ?>?ids=<?php echo $x->Meal_ID ?>"> -->
+                    <?php echo $x->Meal_Name ?>
+                  <!-- </a> -->
                 </form>
                 <div>
                 <form method="post" action="<?php echo $DeleteMeals;?>?id=<?php echo $x->Meal_ID ?>">

@@ -131,7 +131,6 @@ EOT;
               <tr>
                   <th>ID_Person</th>
                   <th>Username</th>
-                  <th>Profile</th>
               </tr>
           </thead>
           <tbody>
@@ -139,9 +138,7 @@ EOT;
               foreach($u as $x){
                 echo"<tr><td> ".$x->ID_Person."</td>
                 <td>".$x->Username."</td>";
-                ?>
-                <td> <a href='<?php echo $profile;?>?id=<?php echo $x->ID_Person ?>'><i class="fas fa-user-alt"></i></a> </td></tr>
-                <?php
+               
                 }
               ?>
           </tbody>
@@ -166,7 +163,6 @@ EOT;
             <tr>
                 <th>ID_Person</th>
                 <th>Username</th>
-                <th>Profile</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -177,7 +173,6 @@ EOT;
                 <tr>
                    	<td> <?php echo $x->ID_Person ?></td>
                     <td> <?php echo $x->Username ?></td>
-                    <td> <a href='<?php echo $profile;?>?id=<?php echo $x->ID_Person ?>'><i class="fas fa-user-alt"></i></a> </td>
                     <td> 
                       <form method="post" action="<?php echo $deleteadmin;?>?id=<?php echo $x->ID_Person ?>">
                         <button name='delete'class="btn btn-light"><i class="fas fa-trash-alt"></i></button>
@@ -196,15 +191,17 @@ EOT;
   {
     $u=$this->model->ordersc(); 
     $profile=URLROOT."/users/profile";
+    $d=URLROOT."/users/Dashboard";
     ?>
     <div class="tab-pane fade py-5" id="orders">
   <table class="table table-hover table-striped table-bordered">	
         <thead>
             <tr>
                 <th>Order_ID</th>
-                <th>ID_Person</th>
+                <th>Username</th>
                 <th>Order_Time</th>
                 <th>Total_Price</th>
+                <th>view details</th>
             </tr>
         </thead>
         <tbody>
@@ -213,16 +210,56 @@ EOT;
                 ?>
                 <tr>
                    	<td> <?php echo $x->Order_ID ?></td>
-                    <td> <?php echo $x->ID_Person ?></td>
+                    <td> <?php echo $x->Username ?></td>
                     <td> <?php echo $x->Order_Time ?></td>
                     <td> <?php echo $x->Total_Price ?></td>
+                    <td> <form action="?id=<?php echo $x->Order_ID ?>"  method="post"><input type="submit" name="view" placeholder="view"></form></td>
                 </tr>
                 <?php
                 }
               ?>
           </tbody>
         </table>
+        <?php
+    if(isset($_POST['view'])){
+      $this->det();
+    }?>
     </div>
+    <?php
+    // if(isset($_POST['view'])){
+    //   $this->det();
+    // }
+  }
+  private function det()
+  {
+    $u=$this->model->ord(); 
+    //$profile=URLROOT."/users/profile";
+    $d=URLROOT."/users/Dashboard";
+    ?>
+    <!-- <div class="tab-pane fade py-5" id="orders"> -->
+  <table class="table table-hover table-striped table-bordered">	
+        <thead>
+            <tr>
+                <th>Order_ID</th>
+                <th>meals</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+              <?php
+              foreach($u as $x){
+                ?>
+                <tr>
+                   	<td> <?php echo $x->Order_ID ?></td>
+                    <td> <?php echo $x->Meal_Name ?></td>
+                    <td> <?php echo $x->Quantity ?></td>
+                </tr>
+                <?php
+                }
+              ?>
+          </tbody>
+        </table>
+    <!-- </div> -->
     <?php
   }
 }

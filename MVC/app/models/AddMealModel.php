@@ -4,7 +4,6 @@ require_once 'UserModel.php';
 class AddMealModel extends UserModel
 {
     public  $title = 'Add Meal Page';
-    // protected $ID_Category;
     protected $Meal_Name;
     protected $Description;
     protected $Meal_Price;
@@ -16,7 +15,7 @@ class AddMealModel extends UserModel
     public function __construct()
     {
         parent::__construct();
-        // $this->ID_Category    = '';
+        $this->ID_Category    = '';
         $this->Meal_Name = '';
         $this->Description = '';
         $this->Meal_Price = '';
@@ -26,14 +25,14 @@ class AddMealModel extends UserModel
         $this->Meal_PriceErr = '';
     }
 
-    // public function getID_Category()
-    // {
-    //     return $this->ID_Category;
-    // }
-    // public function setID_Category($ID_Category)
-    // {
-    //     $this->ID_Category = $ID_Category;
-    // }
+    public function getID_Category()
+    {
+        return $this->ID_Category;
+    }
+    public function setID_Category($ID_Category)
+    {
+        $this->ID_Category = $ID_Category;
+    }
 
 
     public function getMeal_Name()
@@ -99,13 +98,14 @@ class AddMealModel extends UserModel
     }
 
     public function addmeal(){
-        $this->dbh->query("INSERT INTO `meals`(`Meal_Name`, `Description`, `Meal_Price`,`Meal_Image`) VALUES(:Meal_Name, :Description, :Meal_Price, :Meal_Image)");
+        $this->dbh->query("INSERT INTO `meals`(`Meal_Name`, `Description`, `Meal_Price`, `ID_Category`, `Meal_Image`) VALUES(:Meal_Name, :Description, :Meal_Price, :ID_Category, :Meal_Image)");
         $this->dbh->bind(':Meal_Name', $this->Meal_Name);
         $this->dbh->bind(':Description', $this->Description);
         $this->dbh->bind(':Meal_Price', $this->Meal_Price);
-        // $this->dbh->bind(':ID_Category', $this->ID_Category);
+        $this->dbh->bind(':ID_Category', $_SESSION['ID_Category']);
         $this->dbh->bind(':Meal_Image', $this->Meal_Image);
 
-        return $this->dbh->execute();
+        $record = $this->dbh->execute();
+        return $record;
     }
 }

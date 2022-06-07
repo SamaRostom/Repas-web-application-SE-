@@ -84,7 +84,37 @@ class DashboardModel extends UserModel
     }
     
     public function ordersc(){
-        $this->dbh->query('SELECT * FROM orders');
+        //$this->dbh->query('SELECT * FROM orders');
+        $this->dbh->query('select
+        o.Order_ID,
+        o.Order_Time,
+        o.Total_Price,
+        m.Meal_Name,
+        p.Username,
+        oi.Quantity FROM
+        orders o
+        inner join order_details oi on oi.Order_ID = o.Order_ID
+        inner join meals m on m.Meal_ID = oi.Meal_ID
+        inner join person p on p.ID_Person = o.ID_Person GROUP BY ORDER_ID');
+        $record = $this->dbh->resultSet();
+
+        return $record;
+       
+    }
+    public function ord(){
+        //$this->dbh->query('SELECT * FROM orders');
+        $this->dbh->query('select
+        o.Order_ID,
+        o.Order_Time,
+        o.Total_Price,
+        m.Meal_Name,
+        p.Username,
+        oi.Quantity FROM
+        orders o
+        inner join order_details oi on oi.Order_ID = o.Order_ID
+        inner join meals m on m.Meal_ID = oi.Meal_ID
+        inner join person p on p.ID_Person = o.ID_Person WHERE oi.Order_ID= :Order_ID');
+        $this->dbh->bind(':Order_ID',$_SESSION['Order']);
         $record = $this->dbh->resultSet();
 
         return $record;

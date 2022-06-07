@@ -91,6 +91,7 @@ public function outputa()
     $Ent=$this->model->Meals();
     $AddMeal = URLROOT . 'users/AddMeal';
     $DeleteMeals = URLROOT . 'users/DeleteMeals';
+    $EditMeal = URLROOT . 'users/EditMeal';
     // $editCategory = URLROOT . 'users/editcategory';
     ?>
     <!-- <form action="<?php echo $DeleteMeals;?>">

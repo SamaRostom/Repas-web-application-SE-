@@ -9,9 +9,10 @@
  
   <style>
       body{
-        background-image: url("<?php echo IMGROOT."loginbackground.jpg";?>");
+        background-image: url("<?php echo IMGROOT."rr.jpg";?>");
         background-size: contain;
 	      background-repeat: no-repeat;	
+        background-size: 100%;
  	      background-position-y: bottom;
 	      height:110vh;
       }

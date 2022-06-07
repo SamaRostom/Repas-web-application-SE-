@@ -170,6 +170,7 @@ class Users extends Controller
 
     public function cart()
     {
+        // echo $_SESSION['Address'];
         if (isset($_GET["action"]))
         {
             if ($_GET["action"] == "delete")
@@ -276,10 +277,11 @@ class Users extends Controller
 
     public function Checkout()
     {
-
+        // echo $_SESSION['ID_Person'];
         $registerModel = $this->getModel();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $currentDate = date('Y-m-d H:i:s');
+            $registerModel->setID_Person(trim($_SESSION['ID_Person']));
             $registerModel->setOrder_Time(trim($currentDate));
             $registerModel->setUsername(trim($_POST['Username']));
             $registerModel->setAddress(trim($_POST['Address']));
@@ -308,9 +310,12 @@ class Users extends Controller
                 $rr2 = $registerModel->Checkoutord();
                 // $rr4 = $registerModel->selectlastid();
                 $rr3 = $registerModel->Checkoutdet();
-                if ($rr && $rr2 && $rr3) {
-                    flash('register_success', 'You have registered successfully');
-                    // redirect('users/login');
+                if ($rr && $rr2) {
+                    //flash('register_success', 'You have registered successfully');
+                    echo "<script>alert('Order has been placed');</script>";
+                    unset($_SESSION['cart']);
+                    redirect('public/');
+                    
                 } else {
                     die('Error in sign up');
                 }
@@ -449,6 +454,10 @@ class Users extends Controller
         require_once $viewPath;
         $DashboardView = new Dashboard($this->getModel(), $this);
         $DashboardView->output();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_SESSION["Order"]=$_GET['id'];
+            //$DashboardView->det();
+        }
 
     }
 

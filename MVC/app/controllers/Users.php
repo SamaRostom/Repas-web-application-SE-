@@ -607,10 +607,12 @@ class Users extends Controller
     public function EditCategory(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $registerModel = $this->getModel();
+            $_SESSION['ID_Category']=$_GET['id'];
             $registerModel->setID_Category(trim($_GET['id']));
         
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST["Edit"])){
             // Process form
             // $registerModel->setID_Category(trim($_GET['id']));
             $registerModel->setCategory_Name(trim($_POST['Category_Name']));
@@ -634,6 +636,7 @@ class Users extends Controller
                 echo $registerModel->getCategory_NameErr();
             }
         }
+    }
     }
         $viewPath = VIEWS_PATH . 'users/EditCategory.php';
         require_once $viewPath;

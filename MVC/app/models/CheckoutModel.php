@@ -16,6 +16,7 @@ class CheckoutModel extends UserModel
     protected $Phone_NumberErr;
     protected $Backup_Number;
     protected $Backup_NumberErr;
+    public $ID_Person;
 
     public function __construct()
     {
@@ -27,6 +28,7 @@ class CheckoutModel extends UserModel
         $this->Quantity = "";
         $this->Username     = "";
         $this->UsernameErr = "";
+        $this->ID_Person = "";
 
         $this->Address = "";
         $this->AddressErr = "";
@@ -45,6 +47,16 @@ class CheckoutModel extends UserModel
     public function setUsername($Username)
     {
         $this->Username = $Username;
+    }
+
+    public function getID_Person()
+    {
+        return $this->ID_Person;
+    }
+
+    public function setID_Person($ID_Person)
+    {
+        $this->ID_Person = $ID_Person;
     }
     public function getUsernameErr()
     {
@@ -163,24 +175,44 @@ class CheckoutModel extends UserModel
     {
         $this->Quantity = $Quantity;
     }
+    public function idp(){
+        $this->dbh->query('SELECT * from person WHERE Username = :Username AND Password = :Password');
+        $this->dbh->bind(':Username', $_SESSION['Username']);
+        $this->dbh->bind(':Password', $_SESSION["Password"]);
+         
+        $record = $this->dbh->resultSet();
+        // echo $record;
+        foreach($record as $x){
+            $_SESSION["ID_Person"]=$x->ID_Person;
+            $this->ID_Person=  $x->ID_Person;     
+        }
+        
+        // $this->dbh->query('UPDATE `person` SET `Username`=:Username, `Address`=:Address ,`Phone_Number`=:Phone_Number,`Backup_Number`=:Backup_Number WHERE ID_Person =:ID_Person');
+        // $this->dbh->bind(':ID_Person', $this->ID_Person);
+        // $this->dbh->bind(':Username', $this->Username);
+    }
+
     public function UpdateInfo(){
+        $this->idp();
         $this->dbh->query('UPDATE `person` SET `Username`=:Username, `Address`=:Address ,`Phone_Number`=:Phone_Number,`Backup_Number`=:Backup_Number WHERE ID_Person =:ID_Person');
-        $this->dbh->bind(':ID_Person', $_SESSION['ID_Person']);
+        $this->dbh->bind(':ID_Person', $this->ID_Person);
         $this->dbh->bind(':Username', $this->Username);
         $this->dbh->bind(':Address', $this->Address);
         $this->dbh->bind(':Phone_Number', $this->Phone_Number);
         $this->dbh->bind(':Backup_Number', $this->Backup_Number);
         $record = $this->dbh->execute();
+        return $record;
     }
 
     public function Checkoutord()
     {
+        // echo $_SESSION['ID_Person'];
         $this->dbh->query('INSERT INTO `orders`(`ID_Person`, `Order_Time`, `Total_Price`) VALUES (:ID_Person, :Order_Time, :Total_Price);');
-        $this->dbh->bind(':ID_Person', $_SESSION['ID_Person']);
+        $this->dbh->bind(':ID_Person', $this->ID_Person);
         $this->dbh->bind(':Order_Time', $this->Order_Time);
         $this->dbh->bind(':Total_Price', $_SESSION['Total_Price']); 
         $record = $this->dbh->execute();
-        // return $record;
+        return $record;
     }
     public function selectlastid()
     {
@@ -202,6 +234,7 @@ class CheckoutModel extends UserModel
         $r2=mysqli_query($conn,$sql);
         $row = mysqli_fetch_array($r2);
         $_SESSION['Order_ID']= $row['Order_ID'];
+        // echo $_SESSION['Order_ID'];
     }
     public function Checkoutdet()
     {
@@ -211,9 +244,22 @@ class CheckoutModel extends UserModel
             $this->dbh->query('INSERT INTO `order_details`(`Order_ID`, `Meal_ID`, `Quantity`) VALUES (:Order_ID, :Meal_ID, :Quantity)');
             $this->dbh->bind(':Order_ID', $_SESSION['Order_ID']);
             $this->dbh->bind(':Meal_ID', $value["Meal_ID"]);
-            $this->dbh->bind(':Quantity', $_SESSION["Quantity"]); 
-            // $this->dbh->execute();
+            $this->dbh->bind(':Quantity', $value["Quantity"]); 
+            $this->dbh->execute();
         }
+
+        // $servername = "localhost";
+        // $username = "root";
+        // $password = "";
+        // $dbname = "repas";
+        
+        // $conn = new mysqli($servername, $username, $password, $dbname);
+        // foreach ($_SESSION["cart"] as $key => $value) {
+        //     $Meal_ID = $value["Meal_ID"];
+        //     $ID_Person = $value["ID_Person"];
+        //     $sql = "INSERT INTO `order`(`ID_Person`, `Trip_Code`, `Order_Date`, `Total_Price`) VALUES ('$ID_Person','$Trip_Code','$currentDateTime','$Total_Price')";
+        //     $r2=mysqli_query($conn,$sql);
+        // }
         
     }
 }

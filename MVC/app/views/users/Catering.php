@@ -67,8 +67,8 @@ class Catering extends View
             <tr>
                 <th>Catering Number</th>
                 <!-- <th>Username</th> -->
-                <th>ID_Person</th>
-                <th>Number Of People</th>
+                <th>Person's ID</th>
+                <th>Number Of Adults</th>
                 <th>Number Of Childern</th>
                 <th>Meals</th>
                 <th>Extras</th>

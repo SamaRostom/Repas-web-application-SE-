@@ -2,6 +2,11 @@
   background-color: rgb(255, 255, 255, 0.774);
 }
 
-body {
+/*.cat{
+	background-color: rgb(255, 255, 255, 0.774);
+}*/
+
+.cat {
   background-image: url('../images/h.jpeg');
+  /*width:100%;*/
 }

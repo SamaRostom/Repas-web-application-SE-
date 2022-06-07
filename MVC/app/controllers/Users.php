@@ -327,7 +327,7 @@ class Users extends Controller
     public function Meals()
     {
         $userModel = $this->getModel();
-        //$_SESSION['Category_ID']=$_GET['id'];
+        $_SESSION['Category_ID']=$_GET['ids'];
         $userModel->setID_Category($_GET['ids']);
         $viewPath = VIEWS_PATH . 'users/Meals.php';
         require_once $viewPath;

@@ -52,36 +52,49 @@ class Catering extends View
 <?php
 
   }
-  public function outputa()
+
+
+ public function outputa()
   {
-	require APPROOT . '/views/inc/header.php';
-	$u=$this->model->ordersc(); 
-    $profile=URLROOT."/users/profile";
+  require APPROOT . '/views/inc/header.php';
+  // $u=$this->model->ordersc();
+    $printcaterings = $this->model->PrintAllCaterings();
+    $catering = URLROOT."/users/Catering";
     ?>
-    <div class="tab-pane fade py-5" id="orders">
-  <table class="table table-hover table-striped table-bordered">	
+    <div id="catering">
+  <table class="table table-hover table-striped table-bordered">
         <thead>
             <tr>
-                <th>Catering_ID</th>
-                <th>Username</th>
+                <th>Catering Number</th>
+                <!-- <th>Username</th> -->
+                <th>ID_Person</th>
                 <th>Number Of People</th>
                 <th>Number Of Childern</th>
                 <th>Meals</th>
                 <th>Extras</th>
-                <th>Catering_Time</th>
-                <th>Order_Time_Catering</th>
+                <!-- <th>Catering_Time</th>
+                <th>Order_Time_Catering</th> -->
                 <th>Food_Allergy</th>
             </tr>
         </thead>
         <tbody>
               <?php
-              foreach($u as $x){
+              foreach($printcaterings as $x){
                 ?>
-                <tr>
-                   	<td> <?php echo $x->Order_ID ?></td>
-                    <td> <?php echo $x->ID_Person ?></td>
-                    <td> <?php echo $x->Order_Time ?></td>
-                    <td> <?php echo $x->Total_Price ?></td>
+                <td> <?php echo $x->Catering_ID ?></td>
+
+                <td> <?php echo $x->ID_Person ?></td>
+
+                <td> <?php echo $x->NumberOfPeople ?></td>
+
+                <td> <?php echo $x->NumberOfChildern?></td>
+
+                <td> <?php echo $x->Meals ?></td>
+
+                <td> <?php echo $x->Extras ?></td>
+
+                <td> <?php echo $x->Food_Allergy?></td>
+                
                 </tr>
                 <?php
                 }
@@ -90,7 +103,6 @@ class Catering extends View
         </table>
     </div>
     <?php
-
   }
 }
 ?>

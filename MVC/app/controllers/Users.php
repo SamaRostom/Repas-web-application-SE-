@@ -425,7 +425,7 @@ class Users extends Controller
                 $mm = $MealModel->addmeal();
                 if($mm) {
                     flash('register_success', 'You have added successfully');
-                    redirect('users/Meals');
+                    redirect('users/Categories');
                 } else {
                     die('Error in add');
                 }

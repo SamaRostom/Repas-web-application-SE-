@@ -1,4 +1,5 @@
 <?php
+// require()
 // $servername = "localhost";
 // $username = "root";
 // $password = "";
@@ -26,13 +27,15 @@ for(var i=0; i<img.length;i++){
 </style>
 ";
 //include_once('http://localhost/software/repas-web-application--se-/mvc/app/libraries/Database');
+// $mdaction = URLROOT . 'users/MealsDetails';
 if(isset($_POST["term"])){
     // Prepare a select statement
     // $sql = "SELECT * FROM `Meals` AND Username LIKE '%".$_POST["term"]."%'";
     $dbh = new mysqli('localhost','root','','repas');
 
     $result=mysqli_query($dbh,"SELECT * FROM Meals Where Meal_Name LIKE '%".$_POST["term"]."%'");
-    //fe fetch array     
+    //fe fetch array   
+    if(mysqli_num_rows($result) > 0){  
     while($row=mysqli_fetch_array($result)){
         ?>
         <div class='bg-light user mb-3 rounded p-3'>
@@ -42,6 +45,9 @@ if(isset($_POST["term"])){
 </div>
         <?php
     }
+} else{
+    echo "<div class='alert alert-warning'>No matches found</div>";
+}
 
  /*   // $record = $this->dbh->single();
     if($stmt = mysqli_prepare($dbh, $result)){

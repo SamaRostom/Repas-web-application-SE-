@@ -43,15 +43,17 @@ class Cart extends view
                     <tr>
                         <td><?php echo $value["Meal_ID"]; ?></td>
                         <td><?php echo $value["Meal_Name"]; ?></td>
-                        <td><?php echo $_SESSION["Quantity"]; ?></td>
-                        <td><?php echo $value["Meal_Price"]; ?> L.E </td>
+                        <td><?php echo $value["Quantity"]; ?></td>
+                        <!-- <td><?php echo $_SESSION["Quantity"]; ?></td> -->
+                        <?php $v=$value["Meal_Price"] * $value["Quantity"];?>
+                        <td><?php echo $v; ?> L.E </td>
                         <td><a class="text-decoration-none" href="<?php echo $carlurl; ?>?action=delete&id=<?php echo $value["Meal_ID"]; ?>"><span
                                     class="text-danger">Remove Meal</span></a></td>
 
                     </tr>     
 
                     <?php
-                    $total = $total +  intval($value["Meal_Price"]);
+                    $total = $total +  $v;
                     // $_SESSION['Total_Price']=$total;
                 }
                 

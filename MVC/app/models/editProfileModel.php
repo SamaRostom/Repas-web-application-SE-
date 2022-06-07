@@ -15,7 +15,6 @@ class editProfileModel extends UserModel
     protected $Backup_NumberErr;
 
 
-
     public function __construct()
     {
          parent::__construct();
@@ -132,12 +131,25 @@ class editProfileModel extends UserModel
     {
         $this->Backup_NumberErr = $Backup_NumberErr;
     }
-    
+
+    public function idp(){
+        $this->dbh->query('SELECT * from person WHERE Username = :Username AND Password = :Password');
+        $this->dbh->bind(':Username', $_SESSION['Username']);
+        $this->dbh->bind(':Password', $_SESSION["Password"]);
+         
+        $record = $this->dbh->resultSet();
+        // echo $record;
+        foreach($record as $x){
+            $_SESSION["ID_Person"]=$x->ID_Person;
+            $this->ID_Person=  $x->ID_Person;     
+        }
+    }
+
 
     public function updateProfile()
     {
-
-        $this->dbh->query('UPDATE `person` SET `Username`=:Username,`Password`=:Password,`Address`=:Address,`Phone_Number`=:Phone_Number,`Backup_Number`=:Backup_Number WHERE ID_Person=:ID_Person');
+        $this->idp();
+        $this->dbh->query('UPDATE person SET Username=:Username, Password=:Password, Address=:Address, Phone_Number=:Phone_Number, Backup_Number=:Backup_Number WHERE ID_Person=:ID_Person');
         $this->dbh->bind(':ID_Person', $_SESSION['ID_Person']);
         $this->dbh->bind(':Username', $this->Username);
         $this->dbh->bind(':Password', $this->Password);

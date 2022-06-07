@@ -23,14 +23,14 @@ class Checkout extends view
         <div class="alert alert-info">
             <strong>Note!</strong> if you want to update your info
         </div>
-
+   <form method="post" action="">
 		Username: <input type= 'text' class='form-control' name= 'Username'  value='<?php echo $_SESSION['Username']; ?>'>
 
         Address: <input type= 'text'  class='form-control' name= 'Address' value="<?php echo $_SESSION['Address']; ?>">
 
 		Phone Number: <input type= 'text'  class='form-control' name= 'Phone_Number' value="<?php echo $_SESSION['Phone_Number']; ?>">
 
-		Backup Number: <input type= 'text'  class='form-control' name= 'Backup Number' value="<?php echo $_SESSION['Backup_Number']; ?>">
+		Backup Number: <input type= 'text'  class='form-control' name= 'Backup_Number' value="<?php echo $_SESSION['Backup_Number']; ?>">
 
 
 

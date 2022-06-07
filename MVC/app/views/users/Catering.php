@@ -63,6 +63,10 @@ $text = <<<EOT
     <input type="date" class="form-control d-sm-inline mb-3" placeholder="Catering Date" name="catering-time">
 </div> 
 
+<div class="alert alert-warning" role="alert">
+  You should do your reservation at least <b>7 Days</b> apart!
+</div>
+
 <div class='mt-4 text-center'>
 <input type="submit" class='btn btn-primary px-5 mb-3' value="Complete" name="submit">
 <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>

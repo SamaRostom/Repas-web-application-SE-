@@ -29,7 +29,7 @@ class EditMeal extends view
     
     <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
     <h1 class='display-6 text-center'>Edit Meals</h1>
-    <form action="$action" method="post" enctype='multipart/form-data'>
+    <form action=" " method="post" enctype='multipart/form-data'>
     <div class="input-group mt-4 mb-3">
         <span class="input-group-text"><i class="fa fa-list"></i></span>
         <input type="text" class="form-control" placeholder="Insert meal name" name="Meal_Name" value="<?php echo $x->Meal_Name; ?>">
@@ -56,7 +56,7 @@ class EditMeal extends view
 
 
     <div class='mt-4 text-center'>
-    <input type="submit" class='btn btn-primary px-5 mb-3' value="Edit" name="Submit">
+    <input type="submit" class='btn btn-primary px-5 mb-3' value="Edit" name="Edit">
     <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
 
     </div>

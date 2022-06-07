@@ -3,7 +3,7 @@ require_once 'UserModel.php';
 
 class EditMealModel extends UserModel{
     public  $title = 'Edit Meal Page';
-    protected $Meal_ID,$Meal_Name,$Description,$Meal_Price,$Amount,$ID_Category,$Meal_Image;
+    protected $Meal_ID,$Meal_Name,$Description,$Meal_Price,$Amount,$ID_Category,$Meal_Image,$Meal_NameErr;
 
     public function __construct()
     {
@@ -15,6 +15,7 @@ class EditMealModel extends UserModel{
         $this->Amount = '';
         $this->ID_Category = '';
         $this->Meal_Image = '';
+        $this->Meal_NameErr = '';
     }
 
     public function getMeal_ID()
@@ -80,26 +81,30 @@ class EditMealModel extends UserModel{
         $this->Meal_Image = $Meal_Image;
     }
 
+    public function getMeal_NameErr()
+    {
+        return $this->Meal_NameErr;
+    }
+    public function setMeal_NameErr($Meal_NameErr)
+    {
+        $this->Meal_NameErr = $Meal_NameErr;
+    }
+
     public function setallMeals(){
-        $this->dbh->query("SELECT * WHERE Meal_ID=:Meal_ID, Meal_Name=:Meal_Name,Description=:Description,Meal_Price=:Meal_Price,Amount=:Amount, ID_Category=:ID_Category,Meal_Image=:Meal_Image");
+        $this->dbh->query("SELECT * FROM meals WHERE Meal_ID=:Meal_ID");
         $this->dbh->bind(':Meal_ID', $this->Meal_ID);
-        $this->dbh->bind(':Meal_Name', $this->Meal_Name);
-        $this->dbh->bind(':Description', $this->Description);
-        $this->dbh->bind(':Meal_Price', $this->Meal_Price);
-        $this->dbh->bind(':Amount', $this->Amount);
-        $this->dbh->bind(':ID_Category', $this->ID_Category);
-        $this->dbh->bind(':Meal_Image', $this->Meal_Image);
+       
 
         return $this->dbh->resultSet();
     }
 
     public function editMeal(){
-        $this->dbh->query("UPDATE meals SET Meal_Name = :Meal_Name,Description=:Description,Meal_Price=:Meal_Price,Amount=Amount,ID_Category=:ID_Category,Meal_Image=:Meal_Image WHERE Meal_ID=:Meal_ID ");
+        $this->dbh->query("UPDATE meals SET Meal_Name=:Meal_Name,Description=:Description,Meal_Price=:Meal_Price,Amount=:Amount,Meal_Image=:Meal_Image WHERE Meal_ID=:Meal_ID ");
+        $this->dbh->bind(':Meal_ID', $this->Meal_ID);
         $this->dbh->bind(':Meal_Name', $this->Meal_Name);
         $this->dbh->bind(':Description', $this->Description);
         $this->dbh->bind(':Meal_Price', $this->Meal_Price);
         $this->dbh->bind(':Amount', $this->Amount);
-        $this->dbh->bind(':ID_Category', $this->ID_Category);
         $this->dbh->bind(':Meal_Image', $this->Meal_Image);
         
         return $this->dbh->execute();

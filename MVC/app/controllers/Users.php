@@ -76,7 +76,7 @@ class Users extends Controller
             if (empty($userModel->getUsername())) {
                 $userModel->setUsernameErr("<script>alert('Please enter an username')</script>");
             } elseif (!($userModel->usernameExist($_POST['Username']))) {
-                $userModel->setUsernameErr('No user found');
+                $userModel->setUsernameErr("<script>alert('Incorrect username or password')</script>");
             }
 
             if (empty($userModel->getPassword())) {
@@ -115,8 +115,9 @@ class Users extends Controller
                     flash('login_success', 'You have logged in successfully');
                     // redirect('users/Register');
                     header('location: ' . URLROOT.'users/Categories' );
-                } else {
-                    $userModel->setPasswordErr('Password is not correct');
+                } 
+                else {
+                    $userModel->setPasswordErr("<script>alert('Incorrect username or password')</script>");
                 }
             }
             else{

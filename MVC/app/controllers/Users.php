@@ -403,7 +403,6 @@ class Users extends Controller
             $MealModel->setMeal_Name(trim($_POST['Meal_Name']));
             $MealModel->setDescription(trim($_POST['Description']));
             $MealModel->setMeal_Price(trim($_POST['Meal_Price']));
-            // $MealModel->setID_Category(trim($_POST['ID_Category']));
             $MealModel->setMeal_Image(trim($_POST['Meal_Image']));
 
             if (empty($MealModel->getMeal_Name())) {
@@ -418,9 +417,6 @@ class Users extends Controller
                 $MealModel->setMeal_PriceErr('Please enter a meal price');
             }
 
-            // if (empty($MealModel->getID_Category())) {
-            //     $MealModel->setID_CategoryErr('Please enter a category id');
-            // }
 
             if(empty($MealModel->getMeal_NameErr()) && empty($MealModel->getDescriptionErr()) && empty($MealModel->getMeal_PriceErr())){
                 $mm = $MealModel->addmeal();
@@ -436,7 +432,6 @@ class Users extends Controller
                 echo $MealModel->getMeal_NameErr();
                 echo $MealModel->getDescriptionErr();
                 echo $MealModel->getMeal_PriceErr();
-                // echo $MealModel->getID_CategoryErr();
             }
         }
         
@@ -674,6 +669,59 @@ class Users extends Controller
 
     public function editProfile()
     {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $UpdateProfileModel = $this->getModel();
+            // $EditProfileModel->setMeal_ID(trim($_GET['id']));
+        
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST["Edit"])){
+
+            $UpdateProfileModel->setUsername(trim($_POST['Username']));
+            $UpdateProfileModel->setPassword(trim($_POST['Password']));
+            $UpdateProfileModel->setAddress(trim($_POST['Address']));
+            $UpdateProfileModel->setPhone_Number(trim($_POST['Phone_Number']));
+            $UpdateProfileModel->setBackup_Number(trim($_POST['Backup_Number']));
+            if (empty($UpdateProfileModel->getUsername())) {
+                $UpdateProfileModel->setUsernameErr('Please enter a name');
+            }
+            if (empty($UpdateProfileModel->getPassword())) {
+                $UpdateProfileModel->setPasswordErr('Please enter a password');
+            } elseif (strlen($UpdateProfileModel->getPassword()) < 4) {
+                $UpdateProfileModel->setPasswordErr('Password must contain at least 4 characters');
+            }
+            if (empty($UpdateProfileModel->getAddress())) {
+                $UpdateProfileModel->setAddressErr('Please enter your address');
+            } 
+            if (empty($UpdateProfileModel->getPhone_Number())) {
+                $UpdateProfileModel->setPhone_NumberErr('Please enter a phone number');
+            }
+            if (empty($UpdateProfileModel->getBackup_Number())) {
+                $UpdateProfileModel->setBackup_NumberErr('Please enter a backup phone number');
+            }
+
+            if (
+                empty($UpdateProfileModel->getUsernameErr()) &&
+                empty($UpdateProfileModel->getPasswordErr()) &&
+                empty($UpdateProfileModel->getAddressErr()) &&
+                empty($UpdateProfileModel->getPhone_NumberErr()) &&
+                empty($UpdateProfileModel->getBackup_NumberErr())
+            ){
+
+                $rr = $UpdateProfileModel->updateProfile();
+                if ($rr) {
+                    flash('register_success', 'You have updated successfully');
+                    redirect('users/Profile');
+                } else {
+                    die('Error in update');
+                }
+            }
+            else{
+                echo $EditProfileModel->getUsernameErr();
+            }
+        }
+    }
+    }
         $viewPath = VIEWS_PATH . 'users/editProfile.php';
         require_once $viewPath;
         $editProfileView = new editProfile($this->getModel(), $this);

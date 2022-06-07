@@ -274,7 +274,50 @@ class Users extends Controller
 
     public function Checkout()
     {
-        $userModel = $this->getModel();
+
+        $registerModel = $this->getModel();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $currentDate = date('Y-m-d H:i:s');
+            $registerModel->setOrder_Time(trim($currentDate));
+            $registerModel->setUsername(trim($_POST['Username']));
+            $registerModel->setAddress(trim($_POST['Address']));
+            $registerModel->setPhone_Number(trim($_POST['Phone_Number']));
+            $registerModel->setBackup_Number(trim($_POST['Backup_Number']));
+            if (empty($registerModel->getUsername())) {
+                $registerModel->setUsernameErr('Please enter a name');
+            }
+            if (empty($registerModel->getAddress())) {
+                $registerModel->setAddressErr('Please enter your address');
+            } 
+            if (empty($registerModel->getPhone_Number())) {
+                $registerModel->setPhone_NumberErr('Please enter a phone number');
+            }
+            if (empty($registerModel->getBackup_Number())) {
+                $registerModel->setBackup_NumberErr('Please enter a backup phone number');
+            }
+
+            if (
+                empty($registerModel->getUsernameErr()) &&
+                empty($registerModel->getAddressErr()) &&
+                empty($registerModel->getPhone_NumberErr()) &&
+                empty($registerModel->getBackup_NumberErr())
+            ) {
+                $rr = $registerModel->UpdateInfo();
+                $rr2 = $registerModel->Checkoutord();
+                // $rr4 = $registerModel->selectlastid();
+                $rr3 = $registerModel->Checkoutdet();
+                if ($rr && $rr2 && $rr3) {
+                    flash('register_success', 'You have registered successfully');
+                    // redirect('users/login');
+                } else {
+                    die('Error in sign up');
+                }
+            }
+            else{
+                echo $registerModel->getUsernameErr() . $registerModel->getAddressErr() . $registerModel->getPhone_NumberErr() . $registerModel->getBackup_NumberErr();
+
+            }
+        }
         $viewPath = VIEWS_PATH . 'users/Checkout.php';
         require_once $viewPath;
         $CheckoutView = new Checkout($this->getModel(), $this);
@@ -285,7 +328,7 @@ class Users extends Controller
     {
         $userModel = $this->getModel();
         //$_SESSION['Category_ID']=$_GET['id'];
-        
+        $userModel->setID_Category($_GET['ids']);
         $viewPath = VIEWS_PATH . 'users/Meals.php';
         require_once $viewPath;
         $MealsView = new Meals($this->getModel(), $this);
@@ -295,7 +338,7 @@ class Users extends Controller
             }
       
         else{
-            $userModel->setID_Category($_GET['ids']);
+            // $userModel->setID_Category($_GET['ids']);
             $MealsView->output();
         }
         

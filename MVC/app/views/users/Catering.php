@@ -12,14 +12,13 @@
   	<link rel="icon" type="image/png" href="icon.png">
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  	<link rel="stylesheet" href="<?php echo URLROOT; ?>css/StyleMeals.css">
+  	<link rel="stylesheet" href="<?php echo URLROOT; ?>css/StyleCatering.css">
     <script>
         n =  new Date();
         y = n.getFullYear();
         m = n.getMonth();
         d = n.getDate();
-        document.getElementById("catering-time").min = (d+7) + "/" + m + "/" + y;
-        
+        // document.getElementById("catering-time").min = (d+7) + "/" + m + "/" + y;
     </script>
 </head>
 <body>
@@ -35,21 +34,46 @@ class Catering extends View
     // $Ent=$this->model->MealsCatgories();
     // $currentDateTime = date('Y-m-d H:i:s');
     // $afterweek= $currentDateTime
-	?>
-            
-	  <div class="info">
-	    <form method="POST" action="">
-            <input type="text" name="food" placeholder="Meals">
-            <input type="text" name="extras" placeholder="Extras">
-            <input type="number" name="adultno" placeholder="Enter number of adults">
-            <input type="number" name="childno" placeholder="Enter number of childern">
-            <input type="text" name="allergy" placeholder="Enter if there is any food allergy">
-            <input type="date" id="catering-time" name="catering-time">
-            <input type="submit" name="submit" value="Place Reservation">
-		</form>
-	  </div>
 
+?>
 <?php
+$text = <<<EOT
+    <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
+    <h1 class='display-6 text-center'>For Special Events</h1>
+<form action="" method="POST">
+<div class="input-group mt-4 mb-3">
+    <textarea class="form-control" placeholder="Enter Required Meals" name="food"></textarea>
+</div>
+
+<div class="input-group mt-4 mb-3">
+<input type="text" class="form-control" placeholder="Extras" name="extras">
+</div>
+
+<div class="input-group mb-3">
+    <input type="number" class="form-control" step="1" min="1" max="" placeholder="Number of Adults" name="adultno">
+    <input type="number" class="form-control" step="1" min="1" max="" placeholder="Number of Children" name="childno">
+</div>
+
+<div class="input-group mt-4 mb-3">
+    <input type="text" class="form-control d-sm-inline mb-3" placeholder="Food Allergy (Yes/No)" name="allergy">
+</div>
+
+<div><h6>Catering Date</h6></div>
+<div class="input-group mt-4 mb-3">
+    <input type="date" class="form-control d-sm-inline mb-3" placeholder="Catering Date" name="catering-time">
+</div> 
+
+<div class='mt-4 text-center'>
+<input type="submit" class='btn btn-primary px-5 mb-3' value="Complete" name="submit">
+<input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
+
+</div>
+</form> 
+</div>
+EOT;
+    echo $text;
+
+// <?php
 
   }
 

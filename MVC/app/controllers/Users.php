@@ -228,12 +228,13 @@ class Users extends Controller
         $userModel->setMeal_ID($_GET['id']);
 
          if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+             $_SESSION['Quantity']=$_POST['quantity'];
             //process form
             if (isset($_SESSION['ID_Person'])){
                 if (isset($_SESSION["cart"])){
                     $item_array_id = array_column($_SESSION["cart"],"Meal_ID");
                     if (!in_array($_SESSION["Meal_ID"],$item_array_id)){
-                        $_SESSION["Quantity"]=1;
+                        // $_SESSION["Quantity"]=1;
                         $count = count($_SESSION["cart"]);
                         $item_array = array(
                             'Meal_ID' => $_SESSION["Meal_ID"],
@@ -245,10 +246,11 @@ class Users extends Controller
                     }else{
                         // echo $_SESSION["cart"];
                         // $userModel->Quantity();
-                        $_SESSION["Quantity"]+=1;
+                        //$_SESSION["Quantity"]=intval($_SESSION["Quantity"])+1;
+                        //$_SESSION["cart"][2] +=1;
                         echo '<script>alert("Meal is already Added to Cart")</script>';
                     }
-                    $userModel->Quantity();
+                    // $userModel->Quantity();
                     // $userModel->setQuantity($_SESSION["Quantity"]);
                 }else{
                     $item_array = array(

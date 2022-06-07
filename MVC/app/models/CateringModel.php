@@ -126,4 +126,16 @@ class CateringModel extends UserModel
 
         return $this->dbh->execute();
     }
+
+    public function PrintAllCaterings()
+    {
+        $this->dbh->query('SELECT * FROM catering');
+        $record = $this->dbh->resultSet();
+        return $record;
+
+        // $this->dbh->query('SELECT Username FROM person WHERE ID_Person = :ID_Person');
+        // $this->dbh->bind(':ID_Person', $ID);
+        // $record2 = $this->dbh->resultSet();
+        // return $record;
+    }
 }

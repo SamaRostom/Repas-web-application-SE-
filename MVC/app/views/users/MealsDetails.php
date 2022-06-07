@@ -6,12 +6,10 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-
   <link rel="icon" type="image/png" href="icon.png">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="style/MealsDetails.css">
+  <link rel="stylesheet" href="<?php echo URLROOT.'css/MealsDetails.css'?>">
 </head>
 
 <body>
@@ -22,7 +20,6 @@ class MealsDetails extends View
   public function output()
   {
     require APPROOT . '/views/inc/header.php';
-    //$productid=2;
     $title = $this->model->title;
     $mdurl = URLROOT . 'users/MealsDetails';
     $Ent=$this->model->MealsDetails();
@@ -31,7 +28,6 @@ class MealsDetails extends View
       ?>
     
     <div class="container">
-    <div class="row">
     <div class="column">
     <img src="<?php echo IMGROOT . $x->Meal_Image; ?>" width=100% class="card-img-top">
     </div>
@@ -48,7 +44,6 @@ class MealsDetails extends View
     <input type="submit" name="add" id="addtocartbtn" class="btn btn-warning" value="Add to Cart">
     </form>
     </div>
-  </div>
 </div>
     
     

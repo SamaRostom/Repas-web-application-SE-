@@ -50,16 +50,21 @@ class EditCategoryModel extends UserModel
         $this->Category_Image = $Category_Image;
     }
     public function setallcat(){
-        $this->dbh->query("SELECT * WHERE ID_Category=:ID_Category");
-        $this->dbh->bind(':ID_Category', $this->ID_Category);
+        $this->dbh->query("SELECT * FROM meals_category WHERE ID_Category=:ID_Category");
+        $this->dbh->bind(':ID_Category', $_SESSION['ID_Category']);
 
-        return $this->dbh->resultSet();
+        $record= $this->dbh->resultSet();
+        foreach($record as $x){
+            $_SESSION['Category_Name']= $x->Category_Name;
+            $_SESSION['Category_Image']= $x->Category_Image;
+        }
     }
 
     public function editcategory(){
         $this->dbh->query("UPDATE meals_category SET Category_Name = :Category_Name , Category_Image =:Category_Image WHERE ID_Category=:ID_Category");
         $this->dbh->bind(':Category_Name', $this->Category_Name);
         $this->dbh->bind(':Category_Image', $this->Category_Image);
+        $this->dbh->bind(':ID_Category', $this->ID_Category);
 
         return $this->dbh->execute();
     }

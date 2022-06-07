@@ -14,5 +14,8 @@
 }
 
 body {
-  background-image: url('../images/loginbackground.jpg');
+  background-image: url('../images/rr.jpg');
+  width: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }

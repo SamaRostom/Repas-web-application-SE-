@@ -24,31 +24,32 @@ class EditCategory extends view
     $action = URLROOT . 'users/editcategory';
     $Url = URLROOT . 'users/Categories';
     $t=$this->model->setallcat();
-    foreach($t as $x){
+    //foreach($t as $x){
     ?>
     
     <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
     <h1 class='display-6 text-center'>Edit Category</h1>
-    <form action="$action" method="post" enctype='multipart/form-data'>
+    
+    <form action="" method="post" enctype='multipart/form-data'>
     <div class="input-group mt-4 mb-3">
         <span class="input-group-text"><i class="fa fa-list"></i></span>
-        <input type="text" class="form-control" placeholder="Insert category name" name="Category_Name" value="<?php echo $x->Category_Name; ?>">
+        <input type="text" class="form-control" placeholder="Insert category name" name="Category_Name" value="<?php echo $_SESSION['Category_Name']; ?>">
     </div>
 
     <div class="input-group mb-3">
-        <input type= 'file'  class='form-control' name='Category_Image' id ='Category_Image' value="<?php echo $x->Category_Image; ?>">
+        <input type= 'file'  class='form-control' name='Category_Image' id ='Category_Image' value="<?php echo $_SESSION['Category_Image']; ?>">
     </div>
 
-
     <div class='mt-4 text-center'>
-    <input type="submit" class='btn btn-primary px-5 mb-3' value="Add" name="Submit">
+    <input type="submit" class='btn btn-primary px-5 mb-3' value="Add" name="Edit">
     <input type="reset" class='btn btn-outline-dark px-5 ms-2 mb-3'>
 
     </div>
     </form> 
     </div>
 <?php
-    }
+   
+   // }
   }
 }
 ?>

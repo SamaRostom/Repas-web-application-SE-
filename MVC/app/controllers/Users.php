@@ -361,37 +361,38 @@ class Users extends Controller
         
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+            if (isset($_POST["Edit"])){
+
             $EditmealModel->setMeal_Name(trim($_POST['Meal_Name']));
             $EditmealModel->setDescription(trim($_POST['Description']));
             $EditmealModel->setMeal_Price(trim($_POST['Meal_Price']));
             $EditmealModel->setAmount(trim($_POST['Amount']));
-            $EditmealModel->setID_Category(trim($_POST['ID_Category']));
             $EditmealModel->setMeal_Image(trim($_POST['Meal_Image']));
 
             if (empty($EditmealModel->getMeal_Name())) {
-                $EditmealModel->setMeal_Name('Please enter a Meal name');
+                $EditmealModel->setMeal_NameErr('Please enter a Meal name');
             }
 
-            if (empty($EditmealModel->getMeal_Name())) {
+            if (empty($EditmealModel->getMeal_NameErr())) {
 
                 $rr = $EditmealModel->editMeal();
                 if ($rr) {
                     flash('register_success', 'You have edited successfully');
-                    redirect('users/Meals');
+                    redirect('users/Categories');
                 } else {
                     die('Error in add');
                 }
             }
             else{
-                echo $EditmealModel->getMeal_Name();
+                echo $EditmealModel->getMeal_NameErr();
             }
         }
     }
-        $viewPath = VIEWS_PATH . 'users/EditCategory.php';
+    }
+        $viewPath = VIEWS_PATH . 'users/EditMeal.php';
         require_once $viewPath;
-        $EditCategoryView = new EditCategory($this->getModel(), $this);
-        $EditCategoryView->output();
+        $EditmealView = new EditMeal($this->getModel(), $this);
+        $EditmealView->output();
     }
 
     public function AddMeal()

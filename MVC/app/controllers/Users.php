@@ -74,24 +74,24 @@ class Users extends Controller
 
             //validate login form
             if (empty($userModel->getUsername())) {
-                $userModel->setUsernameErr('Please enter an username');
+                $userModel->setUsernameErr("<script>alert('Please enter an username')</script>");
             } elseif (!($userModel->usernameExist($_POST['Username']))) {
                 $userModel->setUsernameErr('No user found');
             }
 
             if (empty($userModel->getPassword())) {
-                $userModel->setPasswordErr("
-                <script type='text/javascript'>
-               var x= document.getElementById('7aga');
-            //   x.style.display='block';
-                setTimeout(function () {
+                $userModel->setPasswordErr("<script>alert('Please enter an Password')</script>");
+            //     <script type='text/javascript'>
+            //    var x= document.getElementById('7aga');
+            // //   x.style.display='block';
+            //     setTimeout(function () {
           
-                    // Closing the alert
-                    $('.alert').alert('close');
-                }, 5000);
-            </script>");
+            //         // Closing the alert
+            //         $('.alert').alert('close');
+            //     }, 5000);
+            // </script>");
             } elseif (strlen($userModel->getPassword()) < 4) {
-                $userModel->setPasswordErr('Password must contain at least 4 characters');
+                $userModel->setPasswordErr("<script>alert('Password must contain at least 4 characters')</script>");
             }
 
             // If no errors

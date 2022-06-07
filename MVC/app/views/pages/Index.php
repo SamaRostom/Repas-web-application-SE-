@@ -7,155 +7,153 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Neucha' rel='stylesheet' type='text/css'>
+
 <link rel="stylesheet" href="<?php echo URLROOT.'css/index.css'?>">
 
 
-
-	<!-- <script>
- function currentDiv(n) {
-  showDivs(slideIndex = n);
- }
-
- function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  if (n > x.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-  }
-  x[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " w3-opacity-off";
-}
-</script> -->
-<script>
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
+ <style>
+* {
+  margin: 0;
+  padding: 0;
 }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+ body {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  
+  background-color: #6adecd;
 }
 
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-</script>
-<style>
-/* * {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none}
-img {vertical-align: middle;}  */
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 2500px;
-  position: relative;
-  margin: auto;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.9s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
+#slideshow {
+  margin: 0 auto;
+  padding-top: 50px;
+  height: 600px;
   width: 100%;
+  
+  box-sizing: border-box;
+}
+
+.slideshow-title {
+  font-family: 'Allerta Stencil';
+  font-size: 62px;
+  color: #fff;
+  margin: 0 auto;
   text-align: center;
+  margin-top: 25%;
+  letter-spacing: 3px;
+  font-weight: 300;
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
+.sub-heading {
+  padding-top: 50px;
+  font-size: 18px;
+} .sub-heading-two {
+  font-size: 15px;
+} .sub-heading-three {
+  font-size: 13px;
+} .sub-heading-four {
+  font-size: 11px;
+} .sub-heading-five {
+  font-size: 9px;
+} .sub-heading-six {
+  font-size: 7px;
+} .sub-heading-seven {
+  font-size: 5px;
+} .sub-heading-eight {
+  font-size: 3px;
+} .sub-heading-nine {
+  font-size: 1px;
+}
+
+.entire-content {
+  margin: auto;
+  width: 200px;
+  perspective: 1800px;
+  position: relative;
+  padding-top: 80px;
+}
+
+.content-carrousel {
+  width: 100%;
   position: absolute;
-  top: 0;
+  float: right;
+  animation: rotar 15s infinite linear;
+  transform-style: preserve-3d;
 }
 
-/* The dots/bullets/indicators */
-.dot {
+.content-carrousel:hover {
+  animation-play-state: paused;
   cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.9s ease;
 }
 
-.active, .dot:hover {
-  background-color: #717171;
+.content-carrousel figure {
+  width:250px;
+  height: 190px;
+  border: 1px solid #3b444b;
+  overflow: hidden;
+  position: absolute;
 }
 
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 60s;
+.content-carrousel figure:nth-child(1) {
+  transform: rotateY(0deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(2) {
+  transform: rotateY(40deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(3) {
+  transform: rotateY(80deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(4) {
+  transform: rotateY(120deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(5) {
+  transform: rotateY(160deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(6) {
+  transform: rotateY(200deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(7) {
+  transform: rotateY(240deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(8) {
+  transform: rotateY(280deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(9) {
+  transform: rotateY(320deg) translateZ(500px); 
+} .content-carrousel figure:nth-child(10) {
+  transform: rotateY(360deg) translateZ(500px); 
+} 
+
+.shadow {
+    position: absolute;
+    box-shadow: 0px 0px 20px 0px #000;
+    border-radius: 1px;
 }
 
-@keyframes fade {
-  from {opacity: .9} 
-  to {opacity: 1}
+.content-carrousel img {
+  image-rendering: auto;
+  transition: all 300ms;
+  width: 100%;
+  height: 100%;
 }
 
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+.content-carrousel img:hover {
+  transform: scale(1.2);
+  transition: all 300ms;
 }
-</style>
+
+@keyframes rotar {
+  from {
+    transform: rotateY(0deg);
+  } to {
+    transform: rotateY(360deg);
+  }
+}
+
+  </style>
+
+
 </head>
 <body>
 <?php
@@ -173,41 +171,69 @@ class Index extends View
     $text = <<<EOT
 	
 
+  
 
 
-<div class="slideshow-container">
 
-<div class="mySlides fade">
-  <div class="numbertext">1 / 3</div>
-  <img src="images/e.jpeg" style="width:100%">
-  <div class="text">Caption Text</div>
-</div>
+    <section id="slideshow">
+      <div class="entire-content">
+        <div class="content-carrousel">
+          <figure class="shadow"><img src="images/bashamel2.jpg"/></figure>
+          <figure class="shadow"><img src="images/miniburgers.jpg"/></figure>
+          <figure class="shadow"><img src="images/S.jpg"/></figure>
+          <figure class="shadow"><img src="images/h.jpeg"/></figure>
+          <figure class="shadow"><img src="images/f.jpeg"/></figure>
+          <figure class="shadow"><img src="images/kobeba.jpeg"/></figure>
+          <figure class="shadow"><img src="images/g.jpeg"/></figure>
+          <figure class="shadow"><img src="images/d.jpeg"/></figure>
+          <figure class="shadow"><img src="images/e.jpeg"/></figure>
+    </div>
+  </div>
+</section>
 
-<div class="mySlides fade">
-  <div class="numbertext">2 / 3</div>
-  <img src="images/m.jpeg" style="width:100%">
-  <div class="text">Caption Two</div>
-</div>
 
-<div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
-  <img src="images/h.jpeg" style="width:100%">
-  <div class="text">Caption Three</div>
-</div>
 
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-<a class="next" onclick="plusSlides(1)">❯</a>
 
-</div>
-<br>
+<div class="w3-content w3-padding" style="max-width:1564px">
 
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span> 
-  <span class="dot" onclick="currentSlide(2)"></span> 
-  <span class="dot" onclick="currentSlide(3)"></span> 
-</div>
+  
+  <div class="w3-container w3-padding-32" id="categories">
+    <h3 class="w3-border-bottom w3-border-light-blue w3-padding-16">Categories</h3>
+  </div>
 
-<h2>   To all the housewives you deserve all the best......</h2>
+  <div class="w3-row-padding">
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-yellow w3-padding">Frozen food</div>
+        <img src="images/FF.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-yellow w3-padding">Cooked food</div>
+        <img src="images/bashamel2.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-yellow w3-padding">Salad and Soup</div>
+        <img src="images/panne.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+    <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container">
+        <div class="w3-display-topleft w3-yellow w3-padding">Appitizers</div>
+        <img src="images/S.jpg" alt="House" style="width:100%">
+      </div>
+    </div>
+  </div>
+
+ 
+
+
+<h2>   To all the housewives you deserve all the best...........</h2>
+
+
   
 EOT;
     echo $text;
@@ -219,3 +245,4 @@ EOT;
 
 </body>
 </html>
+

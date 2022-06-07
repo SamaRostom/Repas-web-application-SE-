@@ -543,9 +543,14 @@ class Users extends Controller
         $AddCategoryView->output();
     }
 
-    public function Catering()
+        public function Catering()
     {
         $registerModel = $this->getModel();
+
+        if(isset($_SESSION['ID_Type'])){
+            if($_SESSION['ID_Type']=="2"){
+                
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Process form
             $currentDate = date('Y-m-d');
@@ -589,14 +594,15 @@ class Users extends Controller
         $viewPath = VIEWS_PATH . 'users/Catering.php';
         require_once $viewPath;
         $CateringView = new Catering($this->getModel(), $this);
-        if(isset($_SESSION['ID_Type'])){
-            if($_SESSION['ID_Type']=="1"){
-                $CateringView->outputa();
-            }
-            else if($_SESSION['ID_Type']=="2"){
-                $CateringView->output();
-            }
-        }
+        $CateringView->output();
+    }
+    else if($_SESSION['ID_Type']=="1"){
+        $viewPath = VIEWS_PATH . 'users/Catering.php';
+        require_once $viewPath;
+        $CateringView = new Catering($this->getModel(), $this);
+        $CateringView->outputa();
+    }
+}
     }
 
     public function EditCategory(){
@@ -646,7 +652,6 @@ class Users extends Controller
             $userModel->delete($_GET['id']);
             redirect('users/categories');
         }
- 
     }
 
     public function DeleteAdmin()

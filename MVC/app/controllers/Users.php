@@ -349,7 +349,7 @@ class Users extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $userModel = $this->getModel();
             $userModel->delete($_GET['id']);
-            redirect('users/meals');
+            redirect('users/categories');
         }
  
     }

@@ -38,7 +38,9 @@ class Catering extends View
 ?>
 <?php
 $text = <<<EOT
+<div class="cat">
     <div class='col-10 col-md-7 col-lg-6 col-xl-5 m-auto form-container px-5 py-4 my-5'>
+    
     <h1 class='display-6 text-center'>For Special Events</h1>
 <form action="" method="POST">
 <div class="input-group mt-4 mb-3">
@@ -74,6 +76,7 @@ $text = <<<EOT
 </div>
 </form> 
 </div>
+</div>
 EOT;
     echo $text;
 
@@ -89,19 +92,19 @@ EOT;
     $printcaterings = $this->model->PrintAllCaterings();
     $catering = URLROOT."/users/Catering";
     ?>
+    
     <div id="catering">
   <table class="table table-hover table-striped table-bordered">
         <thead>
             <tr>
                 <th>Catering Number</th>
-                <!-- <th>Username</th> -->
                 <th>Person's ID</th>
                 <th>Number Of Adults</th>
                 <th>Number Of Childern</th>
                 <th>Meals</th>
                 <th>Extras</th>
-                <!-- <th>Catering_Time</th>
-                <th>Order_Time_Catering</th> -->
+                <th>Catering Date</th>
+                <th>Order Time Catering</th>
                 <th>Food_Allergy</th>
             </tr>
         </thead>
@@ -121,6 +124,10 @@ EOT;
 
                 <td> <?php echo $x->Extras ?></td>
 
+                <td> <?php echo $x->Catering_Time ?></td>
+
+                <td> <?php echo $x->Order_Time_Catering ?></td>
+
                 <td> <?php echo $x->Food_Allergy?></td>
                 
                 </tr>
@@ -130,6 +137,7 @@ EOT;
           </tbody>
         </table>
     </div>
+  </div>
     <?php
   }
 }

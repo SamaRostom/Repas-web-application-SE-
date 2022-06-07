@@ -206,11 +206,14 @@ class Users extends Controller
         $viewPath = VIEWS_PATH . 'users/Categories.php';
         require_once $viewPath;
         $CategoriesView = new Categories($this->getModel(), $this);
-        // if(isset($_SESSION['ID_Person'])){
+         if(isset($_SESSION['ID_Type'])){
             if($_SESSION['ID_Type']=="1"){
                 $CategoriesView->outputa();
             }
-        // }
+            else if($_SESSION['ID_Type']=="2"){
+                $CategoriesView->output();
+            }
+        }
         else{
             $CategoriesView->output();
         }

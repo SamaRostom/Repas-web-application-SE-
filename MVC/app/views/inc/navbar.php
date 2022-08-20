@@ -47,7 +47,7 @@
          <li class="nav-item dashboard">  <a class="nav-link" href="<?php echo URLROOT . 'users/dashboard'; ?>"><i class="fa fa-dashboard"></i> Dashboard</a>
          </li>
 
-         <div class="d-flex">
+         <div class="d-flex" ">
             <a class="cart text-decoration-none me-3" href='<?php echo URLROOT . 'users/cart'; ?>'><i class="fas fa-shopping-cart"><span class="badge rounded-pill bg-danger"><?php echo $num_items_in_cart; ?></span></i></a>
             <a class="profile text-decoration-none me-3" href='<?php echo URLROOT . 'users/profile'; ?>'><i class="fas fa-user-alt"></i></a>
             <a class="text-decoration-none signup me-3" href='<?php echo URLROOT . 'users/register'; ?>'>Sign up</a>
